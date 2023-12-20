@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="choose_manufacturer">Choose manufacturer</string>
+    <string name="choose_filter">Choose filter</string>
+    <string name="spec_vitroclean_vfa_text">Vitroclean VFA</string>
+    <string name="spec_sand_load_text">Sand Load</string>
+    <string name="spec_pebble_text">Pebble</string>
+    <string name="spec_total_vitroclean_text">Total Vitroclean</string>
+    <string name="spec_fifty_bag_vitroclean_text">Vitroclean 50 Lbs.</string>
+    <string name="spec_fifty_bag_pebble_text">50 Lbs. Pebble</string>
+    <string name="calculate_by_filter">Calculate by filter</string>
+    <string name="calculate_by_cubic_feet">Calculate by cubic feet</string>
+    <string name="calculate_by_sand">Calculate by sand needed</string>
+    <string name="faqs">FAQs</string>
+    <string name="contact_us">"Contact us "</string>
+    <string name="title_navigate_out_of_app">Navigating out of app</string>
+    <string name="explanation_navigate_out_of_app">You are about to leave the app to go to to the Trivitro website. Do you want to proceed?</string>
+    <string name="content_desc_cancel">Cancel</string>
+    <string name="content_desc_accept">Accept</string>
+    <string name="content_desc_vitroclean_logo">VitroClean Logo</string>
+    <string name="title_error">Whoops...</string>
+    <string name="error_message">An error occurred. Error: %1$s</string>
+    <string name="content_desc_back_button">back button</string>
+    <string name="retry">Retry</string>
+    <string name="dropdown_select_manufacturer">Select manufacturer</string>
+    <string name="dropdown_select_model">Select model</string>
+    <string name="prompt_start_calculating">Start calculating</string>
+    <string name="subtext_cubic_feet">cubic feet</string>
+    <string name="subtext_sand_needed">sand needed</string>
+</resources>
