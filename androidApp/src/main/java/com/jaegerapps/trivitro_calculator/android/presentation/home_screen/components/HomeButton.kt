@@ -1,5 +1,6 @@
 package com.jaegerapps.trivitro_calculator.android.presentation.home_screen.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -27,7 +28,7 @@ fun HomeButton(
 ) {
     Box(modifier = modifier
         .boxShadow()
-        .background(MaterialTheme.colors.surface)
+        .background(MaterialTheme.colors.background)
         .clickable { onClick() }) {
         Row(
             modifier = Modifier
@@ -65,6 +66,52 @@ fun HomeButton(
 @Preview
 @Composable
 fun HomeButtonPreview() {
+    TrivitroTheme {
+        Column(
+            modifier = Modifier
+                .background(MaterialTheme.colors.surface)
+                .padding(horizontal = 12.dp, vertical = 16.dp)
+        ) {
+            HomeButton(
+                text = "Calculate by filter",
+                icon = com.jaegerapps.trivitro_calculator.R.drawable.icon_calculator,
+                onClick = { /*TODO*/ },
+                contentDescription = "go to calculate",
+            )
+            Spacer(Modifier.height(25.dp))
+            HomeButton(
+                text = "Calculate by cubic feet",
+                icon = com.jaegerapps.trivitro_calculator.R.drawable.icon_cube,
+                onClick = { /*TODO*/ },
+                contentDescription = "go to calculate",
+            )
+            Spacer(Modifier.height(25.dp))
+            HomeButton(
+                text = "Calculate by sand",
+                icon = com.jaegerapps.trivitro_calculator.R.drawable.icon_sand,
+                onClick = { /*TODO*/ },
+                contentDescription = "go to calculate",
+            )
+            Spacer(Modifier.height(25.dp))
+            HomeButton(
+                text = "FAQs",
+                icon = com.jaegerapps.trivitro_calculator.R.drawable.icon_question,
+                onClick = { /*TODO*/ },
+                contentDescription = "go to calculate",
+            )
+            Spacer(Modifier.height(25.dp))
+            HomeButton(
+                text = "Contact Us",
+                icon = com.jaegerapps.trivitro_calculator.R.drawable.icon_message,
+                onClick = { /*TODO*/ },
+                contentDescription = "go to calculate",
+            )
+        }
+    }
+}
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun HomeButtonPreview_DARK() {
     TrivitroTheme {
         Column(
             modifier = Modifier

@@ -24,6 +24,7 @@ class SharedViewModel(
 
 
     fun onEvent(event: SharedUiEvent) {
+        println()
         when (event) {
             SharedUiEvent.LoadData -> {
                 if (state.value.poolFilterList.isNotEmpty() && state.value.faqsList.isNotEmpty() && state.value.error == null) {
@@ -37,6 +38,7 @@ class SharedViewModel(
                     loadData()
                 }
             }
+
             is SharedUiEvent.OnRetry -> {
                 _state.update {
                     it.copy(
@@ -44,6 +46,7 @@ class SharedViewModel(
                         isLoading = true
                     )
                 }
+                loadData()
             }
         }
     }
@@ -56,23 +59,32 @@ class SharedViewModel(
             val filters = async { getFilters() }.await()
             val faqs = async { getFaqs() }.await()
             // Update the state after successful loading
-            _state.update { it.copy(isLoading = false, faqsList = faqs, poolFilterList = filters, loaded = filters.isNotEmpty() && faqs.isNotEmpty() && state.value.error == null) }
+            _state.update {
+                it.copy(
+                    isLoading = false,
+                    faqsList = faqs,
+                    poolFilterList = filters,
+                    loaded = filters.isNotEmpty() && faqs.isNotEmpty() && state.value.error == null
+                )
+            }
             println("loadData is complete")
             println("final state: ${state.value}")
         }
     }
 
     private suspend fun getFaqs(): List<Faq> {
+        println("getFaqs")
+
         when (val result = getFaqs.invoke()) {
             is Resource.Success -> {
                 result.data?.let { faqs ->
                     return faqs
                 }
             }
+
             is Resource.Error -> {
                 _state.update {
                     it.copy(
-                        loaded = false,
                         error = (result.throwable as? SupabaseException)?.error
                     )
                 }
@@ -91,10 +103,10 @@ class SharedViewModel(
                     return filterList
                 }
             }
+
             is Resource.Error -> {
                 _state.update {
                     it.copy(
-                        loaded = false,
                         error = (result.throwable as? SupabaseException)?.error
                     )
                 }

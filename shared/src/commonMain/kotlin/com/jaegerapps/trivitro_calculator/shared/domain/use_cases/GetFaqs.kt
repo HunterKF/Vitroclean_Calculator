@@ -9,11 +9,11 @@ class GetFaqs(
 ) {
     suspend operator fun invoke(): Resource<List<Faq>> {
         return try {
-           val faqs = repo.getFaqs().data
-           if (faqs != null && faqs.isNotEmpty()) {
-               Resource.Success(faqs)
+           val faqs = repo.getFaqs()
+           if (!faqs.data.isNullOrEmpty()) {
+               Resource.Success(faqs.data)
            } else {
-               Resource.Error(throwable = Throwable(message = "Faq list was empty"))
+               Resource.Error(faqs.throwable!!)
            }
         } catch (e: Exception) {
             Resource.Error(e)

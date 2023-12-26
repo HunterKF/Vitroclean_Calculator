@@ -9,11 +9,11 @@ class CalcuatorFunctions {
             return PoolFilter(
                 manufacturer = "",
                 model = "",
-                recommendedVitrocleanVfaLoad = (value * 0.8).toInt(),
-                recommendedSandLoad = (value * 0.2).toInt(),
-                recommendedPebble = (value * 0.3).toInt(),
-                fiftyBagPebble = (value * 1.8).toInt(),
-                fiftyBagVitroclean = (value * 0.5).toInt()
+                recommendedVitrocleanVfaLoad = (value * 2.0).toInt(),
+                recommendedSandLoad = (value * 3.0).toInt(),
+                recommendedPebble = (value * 4.0).toInt(),
+                fiftyBagPebble = (value * 5.0).toInt(),
+                fiftyBagVitroclean = (value * 6.0).toInt()
             )
         }
         fun createStatsBySandNeeded(value: Int): PoolFilter {

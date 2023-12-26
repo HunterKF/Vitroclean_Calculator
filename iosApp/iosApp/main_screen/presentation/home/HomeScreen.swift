@@ -11,62 +11,66 @@ import shared
 
 struct HomeScreen: View {
     private var sharedState: SharedUiState
-    @State var accentColor: Color
+    @State private var showingAlert = false
+    @Environment(\.openURL) var openURL
     
     init(sharedState: SharedUiState) {
         self.sharedState = sharedState
-        self.accentColor = Color.onSurface
     }
     var body: some View {
         NavigationView {
-            
-            VStack {
-                
-                NavigationLink {
-                    CalculatorScreen(sharedState: sharedState, mode: "by_filter")
-                } label: {
-                    HomeButton(text: "Caculate by filter", icon: "plus.forwardslash.minus", onClick: {}, contentDescription: "")
-                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
-                }
-                NavigationLink {
-                    CalculatorScreen(sharedState: sharedState, mode: "by_cubic_feet")
-                } label: {
-                    HomeButton(text: "Caculate by cubic feet", icon: "cube", onClick: {}, contentDescription: "")
-                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
-                }
-                NavigationLink {
-                    CalculatorScreen(sharedState: sharedState, mode: "by_sand")
-                } label: {
-                    HomeButton(text: "Caculate by sand needed", icon: "sand", onClick: {}, contentDescription: "")
-                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
-                }
-                
-                NavigationLink {
-                    FAQsScreen(list: sharedState.faqsList)
-                } label: {
-                    HomeButton(text: "FAQs", icon: "questionmark.circle", onClick: {}, contentDescription: "")
-                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
-                }
-                .onTapGesture {
-                    accentColor = Color.onSurface
-                    print("Here is accent color: \(accentColor)")
-                }
-                NavigationLink {
-                    ContactScreen()
-                } label: {
-                    HomeButton(text: "Contact Us", icon: "message", onClick: {}, contentDescription: "")
-                        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
-                }
-                
-                GuideLinkBox() {
+            ScrollView(.vertical){
+                VStack {
+                    NavigationLink {
+                        CalculatorScreen(sharedState: sharedState, mode: "by_filter")
+                    } label: {
+                        HomeButton(text: "Caculate by filter", icon: "plus.forwardslash.minus", onClick: {}, contentDescription: "")
+                            .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+                    }
+                    NavigationLink {
+                        CalculatorScreen(sharedState: sharedState, mode: "by_cubic_feet")
+                    } label: {
+                        HomeButton(text: "Caculate by cubic feet", icon: "cube", onClick: {}, contentDescription: "")
+                            .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+                    }
+                    NavigationLink {
+                        CalculatorScreen(sharedState: sharedState, mode: "by_sand")
+                    } label: {
+                        HomeButton(text: "Caculate by sand needed", icon: "sand", onClick: {}, contentDescription: "")
+                            .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+                    }
                     
-                }
-                
+                    NavigationLink {
+                        FAQsScreen(list: sharedState.faqsList)
+                    } label: {
+                        HomeButton(text: "FAQs", icon: "questionmark.circle", onClick: {}, contentDescription: "")
+                            .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+                    }
+                    NavigationLink {
+                        ContactScreen()
+                    } label: {
+                        HomeButton(text: "Contact Us", icon: "message", onClick: {}, contentDescription: "")
+                            .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+                    }
+                    
+                    GuideLinkBox() {
+                        showingAlert = true
+                    }
+                    
+                }.padding()
             }
-            .padding()
-        }
-        .accentColor(accentColor)
-        .background(Color.background)
+            
+            
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Navigating out of app"), message: Text("You are about to leave the app to go to to the Trivitro website. Do you want to proceed?"), primaryButton: .cancel(Text("No")), secondaryButton: .default(Text("Yes"), action: {
+                          openURL(URL(string: "https://trivitro.com/about/resources/#vitroclean")!)
+                      }))
+                    }
+            
+            
+            
+        }.accentColor(.white)
+        
     }
 }
 

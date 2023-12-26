@@ -47,6 +47,7 @@ struct CalculatorScreen: View {
             case .bySand:
                 ByNumber(
                     displayText: Binding(get: { calculatorVM.state.input }, set: { value in
+                        
                         calculatorVM.onEvent(event:CalculateUiEvent.OnNumberChange(value: value))
                     }),
                     subtext: "sand needed",
@@ -90,13 +91,13 @@ private struct ByFilter: View {
             TopBarCalc {
                 VStack(spacing: 18) {
                     DropDownBox(
-                        list: Array(Set(poolFilterList.map { $0.manufacturer})),
+                        list: Array(poolFilterList.unique { $0.manufacturer}.map { $0.manufacturer}),
                         currentItem: manufacturerText,
                         showDropDown: isChoosingManufacturer,
                         defaultText: "Select manufacturer", onEvent: { item in onEvent(CalculateUiEvent.SelectManufacturer(text: item))},
                         onToggleEvent: {onEvent(CalculateUiEvent.ToggleManufacturerDropdown())})
                     DropDownBox(
-                        list: Array(Set(poolFilterList.filter { $0.manufacturer == manufacturerText} .map { $0.model})),
+                        list: Array(poolFilterList.filter { $0.manufacturer == manufacturerText }.map { $0.model}),
                         currentItem: filterText,
                         showDropDown: isChoosingModel,
                         defaultText: "Select model",
@@ -131,7 +132,7 @@ private struct ByNumber: View {
     var body: some View {
         VStack {
             TopBarCalc {
-                NumberDisplay(text: $displayText, subtext: subtext, onClick: { item in })
+                NumberDisplay(text: $displayText.wrappedValue, vmText: $displayText, subtext: subtext, onClick: { item in })
             }
             VStack {
                 if selectedFilter != nil {

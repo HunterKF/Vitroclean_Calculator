@@ -1,11 +1,15 @@
 package com.jaegerapps.trivitro_calculator.android.presentation.loading_screen
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.AlertDialog
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -29,13 +33,14 @@ import com.jaegerapps.trivitro_calculator.android.presentation.components.PopUpC
 import com.jaegerapps.trivitro_calculator.shared.domain.NetworkError
 import com.jaegerapps.trivitro_calculator.shared.presentation.SharedUiState
 import com.jaegerapps.trivitro_calculator.shared.presentation.SharedUiEvent
+import com.jaegerapps.trivitro_calculator.shared.presentation.home.HomeUiEvent
 import kotlinx.coroutines.delay
 
 @Composable
 fun LoadingScreen(
     isLoading: Boolean,
     error: NetworkError? = null,
-    onDismiss: () -> Unit
+    onRetry: () -> Unit,
 ) {
     Box(
         modifier = Modifier
@@ -47,20 +52,39 @@ fun LoadingScreen(
         if (isLoading && error == null) {
             LoadingContent()
         } else if (error != null) {
-            PopUpContent(title = stringResource(R.string.title_error), stringResource(R.string.error_message, error.name)) {
-                Box(
-                    modifier = Modifier.fillMaxWidth()
-                        .clickable { onDismiss() },
-                     contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        "OK"
-                    )
+            AlertDialog(
+                onDismissRequest = { },
+                title = {
+                    Text(stringResource(R.string.title_error))
+                },
+                text = {
+                    Text(stringResource(R.string.error_message, error))
+                },
+                shape = RoundedCornerShape(5.dp),
+                buttons = {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(12.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        Box(
+                            modifier = Modifier.fillMaxWidth().clickable {
+                                onRetry()
+                            },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text("Retry")
+                        }
+
+                    }
                 }
-            }
+            )
         }
     }
 }
+
 
 @Composable
 fun LoadingContent() {

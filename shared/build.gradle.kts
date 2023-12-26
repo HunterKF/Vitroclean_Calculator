@@ -58,6 +58,7 @@ kotlin {
                 implementation(Deps.assertK)
                 implementation(Deps.turbine)
                 implementation(Deps.mockative)
+                implementation(Deps.ktorTesting)
             }
         }
         val androidMain by getting {

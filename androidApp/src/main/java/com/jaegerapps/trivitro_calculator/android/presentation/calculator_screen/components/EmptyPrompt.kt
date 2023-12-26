@@ -1,5 +1,6 @@
 package com.jaegerapps.trivitro_calculator.android.presentation.calculator_screen.components
 
+import android.content.res.Configuration
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -32,12 +33,13 @@ fun EmptyPrompt(
             painter = painterResource(id = icon),
             contentDescription = null,
             tint = MaterialTheme.colors.onSurface.copy(
-                alpha = 0.08f
+                alpha = 0.1f
             )
         )
         Text(
             text = text,
-            style = MaterialTheme.typography.h1
+            style = MaterialTheme.typography.h1,
+            color = MaterialTheme.colors.onSurface
         )
     }
 }
@@ -45,6 +47,25 @@ fun EmptyPrompt(
 @Preview
 @Composable
 private fun EmptyPromptPreview() {
+    TrivitroTheme {
+        Column(
+            Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colors.background),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            EmptyPrompt(
+                text = "Find your filter",
+                icon = com.jaegerapps.trivitro_calculator.R.drawable.icon_calculator
+            )
+
+        }
+    }
+}
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showSystemUi = true)
+@Composable
+private fun EmptyPromptPreview_DARK() {
     TrivitroTheme {
         Column(
             Modifier

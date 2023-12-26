@@ -9,7 +9,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,7 +36,8 @@ fun TopBarCalc(
             IconButton(onClick = { onBackClick() }, modifier = Modifier.align(Alignment.TopEnd)) {
                 Icon(
                     imageVector = Icons.Rounded.ArrowBack,
-                    contentDescription = stringResource(R.string.content_desc_back_button)
+                    contentDescription = stringResource(R.string.content_desc_back_button),
+                    tint = MaterialTheme.colors.onSurface
                 )
             }
         }
@@ -42,6 +45,7 @@ fun TopBarCalc(
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Preview
 @Composable
 fun TopBarCalc() {
@@ -59,13 +63,17 @@ fun TopBarCalc() {
         PoolFilter("Hayward", "S160T", 150, 120, 120, 0, 3),
         PoolFilter("Waterway Carefree Top-Mount", "FS02629-B (26\")", 300, 240, 168, 72, 4)
     )
+
+
     TrivitroTheme {
         Column {
+            val controller = LocalSoftwareKeyboardController.current
             TopBarCalc(onBackClick = { /*TODO*/ }) {
                 NumberDisplay(
                     text = "0", subtext = "sand needed",
+                    onClick = {},
                     modifier = Modifier.fillMaxWidth(0.9f),
-                    onClick = {}
+                    controller = controller
                 )
 
             }

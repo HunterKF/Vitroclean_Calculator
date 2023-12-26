@@ -8,19 +8,19 @@ class GetFilters(
     private val repo: TrivitroSupabaseRepo
 ) {
     suspend operator fun invoke(): Resource<List<PoolFilter>> {
-        return try {
-            val filters = repo.getFilters().data
-            if (!filters.isNullOrEmpty()) {
-                println("Success!")
-                Resource.Success(filters)
-            } else {
-                println("There was an error! empty or null")
 
-                Resource.Error(throwable = Throwable(message = "Pool Filter list was empty"))
+        return try {
+            val filters = repo.getFilters()
+            if (!filters.data.isNullOrEmpty()) {
+                Resource.Success(filters.data)
+            } else {
+                println("filters.throwable?.message")
+                println(filters.throwable?.message)
+                Resource.Error(throwable = filters.throwable!!)
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            println("There was an error!")
+            println(e)
             Resource.Error(throwable = e)
         }
     }

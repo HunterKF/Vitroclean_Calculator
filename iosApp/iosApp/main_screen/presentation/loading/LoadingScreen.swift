@@ -13,8 +13,9 @@ struct LoadingScreen: View {
     private let error: NetworkError?
     
     @State private var showErrorAlert: Bool
-    
-    var onClick: () -> Void
+    @State var scales: [CGFloat] = DATA.map { _ in return 0 }
+    var animation = Animation.easeInOut.speed(0.5)
+    let onClick: () -> Void
     init(error: NetworkError?, onClick: @escaping () -> Void) {
         self.error = error
         self._showErrorAlert = State(initialValue: error != nil)
@@ -31,10 +32,13 @@ struct LoadingScreen: View {
                 
             }.padding(32)
             HStack {
-                DotView(delay: Double(0.0), state: !showErrorAlert)
-                DotView(delay: Double(0.3), state: !showErrorAlert)
-                DotView(delay: Double(0.6), state: !showErrorAlert)
-            }
+                        DotView(scale: .constant(scales[0]))
+                        DotView(scale: .constant(scales[1]))
+                        DotView(scale: .constant(scales[2]))
+                    }
+                    .onAppear {
+                        animateDots() // Not defined yet
+                    }
             
         }
         .padding(48)
@@ -50,25 +54,60 @@ struct LoadingScreen: View {
         }
         
     }
-}
+    struct AnimationData {
+        var delay: TimeInterval
+    }
 
-struct DotView: View {
-    var delay: Double
-    var state: Bool
-    var body: some View {
-        Circle()
-            .frame(width: 25, height: 25)
-            .foregroundColor(.primaryColor)
-            .scaleEffect(state ? 1.0 : 0.5)
-            .animation(.easeOut(duration: 0.5).repeatForever().delay(delay))
+    static let DATA = [
+        AnimationData(delay: 0.0),
+        AnimationData(delay: 0.2),
+        AnimationData(delay: 0.4),
+    ]
+    func animateDots() {
+        for (index, data) in Self.DATA.enumerated() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + data.delay) {
+                animateDot(binding: $scales[index], animationData: data)
+            }
+        }
+
+        //Repeat
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            animateDots()
+        }
+    }
+
+    func animateDot(binding: Binding<CGFloat>, animationData: AnimationData) {
+        withAnimation(animation) {
+            binding.wrappedValue = 1
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            withAnimation(animation) {
+                binding.wrappedValue = 0.2
+            }
+        }
     }
 }
+
+private struct DotView: View {
+    
+    @Binding var scale: CGFloat
+
+    var body: some View {
+        Circle()
+            .scale(scale)
+            .fill(Color.primaryColor.opacity(scale >= 0.9 ? scale : scale - 0.1))
+            .frame(width: 40, height: 40, alignment: .center)
+    }
+   
+}
+
 
 
 
 struct LoadingScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingScreen(error: NetworkError.clientError) {
+        LoadingScreen(error: nil) {
             
         }
     }

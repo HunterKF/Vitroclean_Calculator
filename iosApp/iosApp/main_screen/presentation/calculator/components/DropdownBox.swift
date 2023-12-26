@@ -72,10 +72,11 @@ struct DropDownBox: View {
                             }
                         }
                     }
-                    .frame(maxHeight: 150)
                     .background(Color(.systemBackground))
+                    .frame(maxHeight: 150)
                 }
             }
+                .fixedSize(horizontal: false, vertical: true)
             .cornerRadius(5)
 
         }

@@ -25,18 +25,9 @@ struct TrivitroRoot: View {
                 sharedVM.onEvent(event: SharedUiEvent.LoadData())
                 sharedVM.startObserving()
             }
-        } else if !sharedVM.state.isLoading && !sharedVM.state.loaded && sharedVM.state.error != nil {
-                    Text("An error occurred")
-                    Text("FaqsList: \(sharedVM.state.description())")
-                    Text("FilterList: ")
-                } else if !sharedVM.state.isLoading && sharedVM.state.loaded {
+        } else if !sharedVM.state.isLoading && sharedVM.state.loaded {
                     HomeScreen(sharedState: sharedVM.state)
                 } 
     }
 }
-//
-//struct TrivitroRoot_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TrivitroRoot()
-//    }
-//}
+

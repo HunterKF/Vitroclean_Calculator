@@ -1,5 +1,6 @@
 package com.jaegerapps.trivitro_calculator.android.presentation.contact_us_screen
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -70,6 +71,9 @@ fun ContactScreen(
                     ContactError.DATA_MISSING -> {
                         "Fill out all of the fields"
                     }
+                    ContactError.LENGTH_TOO_LONG -> {
+                        "Reached maximum length."
+                    }
                     ContactError.NO_EMAIL_APP -> {
                         "Couldn't find email app. Please go to website to contact us."
                     }
@@ -79,20 +83,22 @@ fun ContactScreen(
                 }
 
             snackbarHostState.showSnackbar(message)
-            onEvent(ContactUiEvent.ClearToast)
+            onEvent(ContactUiEvent.ClearSnackbar)
         }
+
     }
     /*Added scaffold to display the snackbar*/
     Scaffold(
 
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
-        }
+        },
+        backgroundColor = MaterialTheme.colors.surface
     ) { padding ->
 
         Surface(
             modifier = Modifier.padding(padding),
-            color = MaterialTheme.colors.background
+            color = MaterialTheme.colors.surface
         ) {
             /*Lazy column is used because it scales the content nicely and the user can scroll even when keyboard is open*/
             LazyColumn(
@@ -111,7 +117,8 @@ fun ContactScreen(
                             ) {
                                 Icon(
                                     imageVector = Icons.Rounded.ArrowBack,
-                                    contentDescription = stringResource(R.string.content_desc_back_button)
+                                    contentDescription = stringResource(R.string.content_desc_back_button),
+                                    tint = MaterialTheme.colors.onSurface
                                 )
                             }
                         }
@@ -169,9 +176,11 @@ fun ContactScreen(
                         )*/
                         ContactTextField(
                             text = state.subject,
-                            extraContent = {},
                             error = state.subjectError,
                             defaultText = "Subject",
+                            extraContent = {
+                                Text((state.maxSubjectCount- state.subject.length).toString())
+                            },
                             onValueChange = {
                                 onEvent(ContactUiEvent.OnSubjectChange(it))
                             },
@@ -186,7 +195,7 @@ fun ContactScreen(
                             text = state.content,
                             error = state.contentError,
                             extraContent = {
-                                Text((400 - state.content.length).toString())
+                                Text((state.maxMessageCount- state.content.length).toString())
                             },
                             defaultText = "Content",
                             onValueChange = {
@@ -239,6 +248,15 @@ fun ContactScreen(
 @Preview
 @Composable
 fun ContactScreenPreview() {
+    val viewModel = ContactViewModel()
+    val state by viewModel.state.collectAsState()
+    TrivitroTheme {
+        ContactScreen(state = state, onEvent = { viewModel.onEvent(it) }, onBack = {})
+    }
+}
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun ContactScreenPreview_DARK() {
     val viewModel = ContactViewModel()
     val state by viewModel.state.collectAsState()
     TrivitroTheme {

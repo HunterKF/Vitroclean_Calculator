@@ -1,5 +1,6 @@
 package com.jaegerapps.trivitro_calculator.android.presentation.calculator_screen.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -27,7 +28,7 @@ fun StatDisplay(
         modifier = modifier
             .fillMaxWidth()
             .boxShadow()
-            .background(MaterialTheme.colors.surface),
+            .background(MaterialTheme.colors.background),
         contentAlignment = Alignment.Center
     ) {
         Column(modifier = Modifier.fillMaxWidth()) {
@@ -63,6 +64,35 @@ fun StatDisplay(
 @Preview
 @Composable
 fun StatDisplayPreview() {
+    TrivitroTheme {
+        Column(
+            modifier = Modifier
+                .padding(19.dp)
+                .background(MaterialTheme.colors.background),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(25.dp)
+        ) {
+            StatDisplay(
+                text = "175", subtext = "Recommended Sand Load Lbs."
+            )
+            StatDisplay(
+                text = "140", subtext = "Recommended Vitroclean (VFA) Load Lbs."
+            )
+            StatDisplay(
+                text = "0", subtext = "Recommended Vitroclean Pebble (VF8) Load Lbs."
+            )
+            StatDisplay(
+                text = "3", subtext = "50 lb. Bags of Vitroclean VFA"
+            )
+            StatDisplay(
+                text = "0", subtext = "50 lb. Bags of Pebble (VF8)."
+            )
+        }
+    }
+}
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun StatDisplayPreview_DARK() {
     TrivitroTheme {
         Column(
             modifier = Modifier

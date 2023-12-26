@@ -17,28 +17,26 @@ struct MessageTextField: View {
     
     
     var body: some View {
-        ZStack {
-            TextEditor(text: $text)
-                .onChange(of: text, perform: { value in
-                    onEvent(value)
-                })
-                .foregroundColor(self.text == defaultText ? .gray.opacity(0.5) : .primaryColor)
-                .onTapGesture {
-                            if self.text == defaultText {
-                              self.text = ""
-                            } else if self.text == "" {
-                                self.text = defaultText
-                            }
-                          }
-                .frame(height: 200)
+        ZStack(alignment: .leading) {
+                if text.isEmpty {
+                    Text(defaultText)
+                        .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                        .frame(height: 200, alignment: .top)
+                }
+                
+                TextEditor(text: $text)
+                    .foregroundColor(.primaryColor)
+                    .onChange(of: text, perform: { value in
+                        onEvent(value)
+                    })
+
+                    .opacity(text.isEmpty ? 0.8 : 1)
+                    .padding(EdgeInsets(top: 0, leading: -4, bottom: 0, trailing: 0))
+                    .frame(height: 200, alignment: .top)
+
             
         }
-        .onAppear {
-            if self.text == "" {
-                self.text = defaultText
-            }
-        }
-        .padding(10)
+        .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 4))
         .background(Color.onBackground)
         .cornerRadius(5)
         .shadow(radius: 2)

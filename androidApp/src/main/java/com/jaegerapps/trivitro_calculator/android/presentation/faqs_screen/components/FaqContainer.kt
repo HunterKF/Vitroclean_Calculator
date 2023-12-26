@@ -1,8 +1,10 @@
 package com.jaegerapps.trivitro_calculator.android.presentation.faqs_screen.components
 
+import android.content.res.Configuration
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -13,6 +15,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowDropDown
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
@@ -31,14 +36,16 @@ fun FaqContainer(
     onClick: () -> Unit,
 ) {
     val fgColor: Color by animateColorAsState(if (isOpen) MaterialTheme.colors.onPrimary else MaterialTheme.colors.primary)
-    val bgColor: Color by animateColorAsState(if (!isOpen) MaterialTheme.colors.onPrimary else MaterialTheme.colors.primary)
+    val bgColor: Color by animateColorAsState(if (!isOpen) MaterialTheme.colors.background else MaterialTheme.colors.primary)
     val animateFloat: Float by animateFloatAsState(if (isOpen) 180f else 0f)
     Column(
         modifier = modifier
             .boxShadow()
-            .animateContentSize()
             .background(bgColor)
             .clickable { onClick() }
+            .animateContentSize(
+                animationSpec = tween(350)
+            )
     ) {
         Row(
             modifier = Modifier
@@ -50,7 +57,8 @@ fun FaqContainer(
                 text = title,
                 style = MaterialTheme.typography.h3.copy(
                     color = fgColor
-                )
+                ),
+                modifier = Modifier.weight(1f)
             )
             Icon(
                 modifier = Modifier.rotate(animateFloat),
@@ -88,12 +96,90 @@ fun FaqContainerPreview() {
             ) {
 
             }
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(12.dp))
             FaqContainer(
                 title = "How do I install a filter?",
                 contentText = "Lorem ipsum dolor sit amet consectetur. Ut aenean dignissim mauris gravida volutpat etiam. Purus viverra ut in aliquam egestas enim eget in. Diam faucibus diam ullamcorper ac. Sed elit semper vitae tristique velit leo pretium commodo. Sit viverra dui turpis sit ac diam sed pellentesque. Enim ut ut",
                 isOpen = true
             ) {
+
+            }
+        }
+
+    }
+}
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun FaqContainerPreview_DARK() {
+    TrivitroTheme {
+        Column {
+            FaqContainer(
+                title = "How do I install a filter?",
+                contentText = "Lorem ipsum dolor sit amet consectetur. Ut aenean dignissim mauris gravida volutpat etiam. Purus viverra ut in aliquam egestas enim eget in. Diam faucibus diam ullamcorper ac. Sed elit semper vitae tristique velit leo pretium commodo. Sit viverra dui turpis sit ac diam sed pellentesque. Enim ut ut",
+                isOpen = false
+            ) {
+
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+            FaqContainer(
+                title = "How do I install a filter?",
+                contentText = "Lorem ipsum dolor sit amet consectetur. Ut aenean dignissim mauris gravida volutpat etiam. Purus viverra ut in aliquam egestas enim eget in. Diam faucibus diam ullamcorper ac. Sed elit semper vitae tristique velit leo pretium commodo. Sit viverra dui turpis sit ac diam sed pellentesque. Enim ut ut",
+                isOpen = true
+            ) {
+
+            }
+        }
+
+    }
+}
+
+@Preview
+@Composable
+fun FaqContainerListPreview() {
+    TrivitroTheme {
+        var state by remember { mutableStateOf(false) }
+        Column {
+            FaqContainer(
+                title = "How do I install a filter?",
+                contentText = "Lorem ipsum dolor sit amet consectetur. Ut aenean dignissim mauris gravida volutpat etiam. Purus viverra ut in aliquam egestas enim eget in. Diam faucibus diam ullamcorper ac. Sed elit semper vitae tristique velit leo pretium commodo. Sit viverra dui turpis sit ac diam sed pellentesque. Enim ut ut",
+                isOpen = state
+            ) {
+                state = !state
+            }
+            Spacer(modifier = Modifier.height(20.dp))
+            FaqContainer(
+                title = "How do I install a filter?2134122354423534534523453245345",
+                contentText = "Lorem ipsum dolor sit amet consectetur. Ut aenean dignissim mauris gravida volutpat etiam. Purus viverra ut in aliquam egestas enim eget in. Diam faucibus diam ullamcorper ac. Sed elit semper vitae tristique velit leo pretium commodo. Sit viverra dui turpis sit ac diam sed pellentesque. Enim ut ut",
+                isOpen = !state
+            ) {
+                state = !state
+
+            }
+            Spacer(modifier = Modifier.height(20.dp))
+            FaqContainer(
+                title = "How do I install a filter?",
+                contentText = "Lorem ipsum dolor sit amet consectetur. Ut aenean dignissim mauris gravida volutpat etiam. Purus viverra ut in aliquam egestas enim eget in. Diam faucibus diam ullamcorper ac. Sed elit semper vitae tristique velit leo pretium commodo. Sit viverra dui turpis sit ac diam sed pellentesque. Enim ut ut",
+                isOpen = !state
+            ) {
+                state = !state
+
+            }
+            Spacer(modifier = Modifier.height(20.dp))
+            FaqContainer(
+                title = "How do I install a filter?",
+                contentText = "Lorem ipsum dolor sit amet consectetur. Ut aenean dignissim mauris gravida volutpat etiam. Purus viverra ut in aliquam egestas enim eget in. Diam faucibus diam ullamcorper ac. Sed elit semper vitae tristique velit leo pretium commodo. Sit viverra dui turpis sit ac diam sed pellentesque. Enim ut ut",
+                isOpen = !state
+            ) {
+                state = !state
+
+            }
+            Spacer(modifier = Modifier.height(20.dp))
+            FaqContainer(
+                title = "How do I install a filter?",
+                contentText = "Lorem ipsum dolor sit amet consectetur. Ut aenean dignissim mauris gravida volutpat etiam. Purus viverra ut in aliquam egestas enim eget in. Diam faucibus diam ullamcorper ac. Sed elit semper vitae tristique velit leo pretium commodo. Sit viverra dui turpis sit ac diam sed pellentesque. Enim ut ut",
+                isOpen = !state
+            ) {
+                state = !state
 
             }
         }

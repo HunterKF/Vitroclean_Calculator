@@ -17,31 +17,43 @@ struct FAQsScreen: View {
         self.expand = -1
     }
     var body: some View {
-        ScrollView {
-            if !list.isEmpty {
-                LazyVStack(spacing: 12) {
+        VStack {
+            TopBarCalc(content: {
+                HStack(content: {
                     Text("FAQs")
                         .bold()
                         .font(.largeTitle)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundColor(Color.primaryColor)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
-                    ForEach(list.indices, id: \.self) { index in
-                        FAQsContainer(title: list[index].question, contentText: list[index].answer, isOpen: index == expand, onClick: {
-                            if expand != index {
-                                expand = index
-                            } else {
-                                expand = -1
-                            }
-                        })
-                    }
-                }.padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
-            } else {
-                Text("Whoops, nothing is here....")
+                        .foregroundColor(Color.white)
+                })
+                
+                .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+                
+            })
+            ScrollView {
+                
+                if !list.isEmpty {
+                    LazyVStack(spacing: 12) {
+                        Spacer(minLength: 12)
+                        ForEach(list.indices, id: \.self) { index in
+                            FAQsContainer(title: list[index].question, contentText: list[index].answer, isOpen: index == expand, onClick: {
+                                if expand != index {
+                                    expand = index
+                                } else {
+                                    expand = -1
+                                }
+                            })
+                        }
+                    }.padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+                } else {
+                    Text("Whoops, nothing is here....")
+                }
+                
+                
             }
-            
-            
         }
+        
+        
         
         
      }

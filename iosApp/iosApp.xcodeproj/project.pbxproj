@@ -15,6 +15,8 @@
 		DF0A39F42B2A9BBE009AD36F /* FAQsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0A39F32B2A9BBE009AD36F /* FAQsScreen.swift */; };
 		DF0A39F72B2A9BD1009AD36F /* FAQsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0A39F62B2A9BD1009AD36F /* FAQsContainer.swift */; };
 		DF5A5CBC2AE21B76004302B1 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = DF5A5CBB2AE21B76004302B1 /* Supabase */; };
+		DF90CFE12B34F73A0043792D /* FilterText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF90CFE02B34F73A0043792D /* FilterText.swift */; };
+		DF90CFE32B3516EE0043792D /* UniqueFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF90CFE22B3516EE0043792D /* UniqueFilter.swift */; };
 		DF914FFC2B3181A300D2AF97 /* IosContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF914FFB2B3181A300D2AF97 /* IosContactViewModel.swift */; };
 		DF914FFE2B31825C00D2AF97 /* MessageTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF914FFD2B31825C00D2AF97 /* MessageTextField.swift */; };
 		DF9150002B318E3300D2AF97 /* SubjectTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF914FFF2B318E3200D2AF97 /* SubjectTextfield.swift */; };
@@ -50,6 +52,8 @@
 		CF3490E4D6046114D1A058D6 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
 		DF0A39F32B2A9BBE009AD36F /* FAQsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQsScreen.swift; sourceTree = "<group>"; };
 		DF0A39F62B2A9BD1009AD36F /* FAQsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQsContainer.swift; sourceTree = "<group>"; };
+		DF90CFE02B34F73A0043792D /* FilterText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterText.swift; sourceTree = "<group>"; };
+		DF90CFE22B3516EE0043792D /* UniqueFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueFilter.swift; sourceTree = "<group>"; };
 		DF914FFB2B3181A300D2AF97 /* IosContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IosContactViewModel.swift; sourceTree = "<group>"; };
 		DF914FFD2B31825C00D2AF97 /* MessageTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTextField.swift; sourceTree = "<group>"; };
 		DF914FFF2B318E3200D2AF97 /* SubjectTextfield.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectTextfield.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 		058557D7273AAEEB004C7B11 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				DFC841472AF376B7002D7C1E /* core */,
 				058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -154,7 +159,6 @@
 		DF5A5CAA2ADF7822004302B1 /* main_screen */ = {
 			isa = PBXGroup;
 			children = (
-				DFC841472AF376B7002D7C1E /* core */,
 				DF5A5CAB2ADF7845004302B1 /* presentation */,
 			);
 			path = main_screen;
@@ -256,6 +260,8 @@
 				DFB818CC2B27DF3C005DECDC /* StatDisplay.swift */,
 				DFA5B5D22B27FF73002C7E8A /* EmptyPrompt.swift */,
 				DFA5B5D42B291AA8002C7E8A /* StatDisplayColumn.swift */,
+				DF90CFE02B34F73A0043792D /* FilterText.swift */,
+				DF90CFE22B3516EE0043792D /* UniqueFilter.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -410,11 +416,13 @@
 				DFEC3FB52B26C97A00469136 /* IosCalculatorViewModel.swift in Sources */,
 				DFCE6F4D2B26D1F1006F8C3E /* DropdownBox.swift in Sources */,
 				DFB818CB2B27D5C5005DECDC /* NumberDisplay.swift in Sources */,
+				DF90CFE12B34F73A0043792D /* FilterText.swift in Sources */,
 				DFB818CD2B27DF3C005DECDC /* StatDisplay.swift in Sources */,
 				DFB90C732AF9F9FE00C4461E /* HomeViewModel.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				DFB818C92B27D11D005DECDC /* CalculatorScreen.swift in Sources */,
 				DFB90C662AF85BA400C4461E /* TrivitroRoot.swift in Sources */,
+				DF90CFE32B3516EE0043792D /* UniqueFilter.swift in Sources */,
 				DFB90C762AF9FB1300C4461E /* HomeButton.swift in Sources */,
 				DF9150022B3192EA00D2AF97 /* ContactScreen.swift in Sources */,
 				DF914FFC2B3181A300D2AF97 /* IosContactViewModel.swift in Sources */,

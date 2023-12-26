@@ -1,5 +1,6 @@
 package com.jaegerapps.trivitro_calculator.android.presentation.contact_us_screen.components
 
+import android.content.res.Configuration
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -68,6 +69,22 @@ fun ActionButton(
 @Preview
 @Composable
 fun ActionButtonPreview() {
+    TrivitroTheme {
+        Column {
+            ActionButton(text = "Send", isEnabled = false) {
+
+            }
+            Spacer(modifier = Modifier.height(12.dp))
+            ActionButton(text = "Send", isEnabled = true) {
+
+            }
+        }
+
+    }
+}
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun ActionButtonPreview_DARK() {
     TrivitroTheme {
         Column {
             ActionButton(text = "Send", isEnabled = false) {

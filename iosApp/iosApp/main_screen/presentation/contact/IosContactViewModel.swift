@@ -11,7 +11,7 @@ import shared
 
 class IosContactViewModel: ObservableObject {
     private let viewModel: ContactViewModel = ContactViewModel()
-    @Published var state: ContactState = ContactState(email: "", name: "", subject: "", content: "", emailError: false, nameError: false, subjectError: false, contentError: false, error: nil, sent: false)
+    @Published var state: ContactState = ContactState(email: "", name: "", subject: "", content: "", emailError: false, nameError: false, subjectError: false, contentError: false, error: nil, sent: false, maxMessageCount: 500, maxSubjectCount: 120)
     
     
     private var handle: Kotlinx_coroutines_coreDisposableHandle?

@@ -36,17 +36,19 @@ struct FAQsContainer: View {
         .padding(18)
         .foregroundColor(isOpen ? Color.onPrimary : Color.primaryColor)
         .background(isOpen ? Color.primaryColor : Color.onPrimary)
+        .animation(.easeInOut, value: isOpen)
+        .transition(.slide)
         .cornerRadius(5)
         .shadow(radius: 5)
         .onTapGesture {
             onClick()
         }
-        .animation(.easeInOut, value: isOpen)
         
     }
 }
 
 struct FAQsContainer_Previews: PreviewProvider {
+    
     static var previews: some View {
         VStack {
             FAQsContainer(title: "How do I do this?", contentText: "Lorem ipsum2", isOpen: false) {

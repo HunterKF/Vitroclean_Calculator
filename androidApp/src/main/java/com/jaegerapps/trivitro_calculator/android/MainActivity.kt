@@ -60,11 +60,17 @@ fun TrivitroRoot() {
                 sharedViewModel.onEvent(SharedUiEvent.LoadData)
             }
             LaunchedEffect(key1 = sharedState.loaded) {
-                navController.navigate(Routes.HOME)
+                println("from main activity $sharedState")
+                if (sharedState.loaded && sharedState.error == null) {
+                    navController.navigate(Routes.HOME)
+                }
             }
-            LoadingScreen(isLoading = sharedState.isLoading, error = sharedState.error) {
-                sharedViewModel.onEvent(SharedUiEvent.OnRetry)
-            }
+            LoadingScreen(
+                isLoading = sharedState.isLoading,
+                error = sharedState.error,
+                onRetry = {
+                    sharedViewModel.onEvent(SharedUiEvent.OnRetry)
+                })
         }
         composable(Routes.HOME) {
             val homeState by androidHomeScreenViewModel.state.collectAsState()
@@ -79,6 +85,7 @@ fun TrivitroRoot() {
                             navController.navigate(event.route)
                         }
                     }
+
                     else -> androidHomeScreenViewModel.onEvent(event)
                 }
             })

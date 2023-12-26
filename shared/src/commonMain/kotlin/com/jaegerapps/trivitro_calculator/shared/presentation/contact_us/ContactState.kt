@@ -10,11 +10,14 @@ data class ContactState(
     val subjectError: Boolean = false,
     val contentError: Boolean = false,
     val error: ContactError? = null,
-    val sent: Boolean = false
+    val sent: Boolean = false,
+    val maxMessageCount: Int = 500,
+    val maxSubjectCount: Int = 120
 )
 
 enum class ContactError {
     INVALID_EMAIL,
+    LENGTH_TOO_LONG,
     DATA_MISSING,
     NO_EMAIL_APP,
     UNKNOWN_ERROR

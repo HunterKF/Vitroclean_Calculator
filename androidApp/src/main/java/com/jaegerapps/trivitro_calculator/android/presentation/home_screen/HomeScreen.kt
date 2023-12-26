@@ -1,6 +1,7 @@
 package com.jaegerapps.trivitro_calculator.android.presentation.home_screen
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -93,12 +94,11 @@ fun HomeScreen(
                 )
         )
     }
-    LaunchedEffect(key1 = homeState, block = {println("YO IT CHANGED $homeState")})
 
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
-        backgroundColor = MaterialTheme.colors.background
+        backgroundColor = MaterialTheme.colors.surface
     ) { padding ->
 
         LazyColumn(
@@ -184,7 +184,7 @@ fun HomeScreen(
 }
 
 
-@Preview(showSystemUi = true)
+@Preview(showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun HomeScreenPreview() {
     TrivitroTheme() {

@@ -14,23 +14,18 @@ class ContactViewModel {
             is ContactUiEvent.OnContentChange -> {
                 _state.update {
                     it.copy(
-                        content = event.value
+                        content = event.value.take(state.value.maxMessageCount),
+                        error = if (event.value.length >= state.value.maxMessageCount) ContactError.LENGTH_TOO_LONG else null
                     )
                 }
             }
 
-            is ContactUiEvent.OnEmailChange -> {
-                _state.update {
-                    it.copy(
-                        email = event.value
-                    )
-                }
-            }
 
             is ContactUiEvent.OnSubjectChange -> {
                 _state.update {
                     it.copy(
-                        subject = event.value
+                        subject = event.value.take(state.value.maxSubjectCount),
+                        error = if (event.value.length >= state.value.maxSubjectCount) ContactError.LENGTH_TOO_LONG else null
                     )
                 }
             }
@@ -40,8 +35,17 @@ class ContactViewModel {
                     name = event.value
                 )
             }
+            is ContactUiEvent.OnEmailChange -> {
+                _state.update {
+                    it.copy(
+                        email = event.value
+                    )
+                }
+            }
+
 
             is ContactUiEvent.ClearError -> {
+                /*This was originally put in for adding red error borders, but has been decided not to be used.*/
                 when (event.error) {
                     "email" -> {
                         _state.update {
@@ -83,7 +87,7 @@ class ContactViewModel {
                 }
             }
 
-            ContactUiEvent.ClearToast -> {
+            ContactUiEvent.ClearSnackbar -> {
                 _state.update {
                     it.copy(
                         error = null

@@ -18,6 +18,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -35,8 +36,8 @@ fun NumberDisplay(
     subtext: String,
     onClick: (CalculateUiEvent) -> Unit,
     modifier: Modifier = Modifier,
+    controller: SoftwareKeyboardController?,
 ) {
-    val controller = LocalSoftwareKeyboardController.current
     val focus = LocalFocusManager.current
     val focusRequester = remember { FocusRequester() }
     LaunchedEffect(Unit) {
@@ -98,10 +99,13 @@ fun NumberDisplay(
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Preview
 @Composable
 private fun NumberDisplayPreview() {
+    val controller = LocalSoftwareKeyboardController.current
+
     TrivitroTheme {
-        NumberDisplay(text = "0", subtext = "sand needed", onClick = {})
+        NumberDisplay(text = "0", subtext = "sand needed", onClick = {}, controller = controller)
     }
 }

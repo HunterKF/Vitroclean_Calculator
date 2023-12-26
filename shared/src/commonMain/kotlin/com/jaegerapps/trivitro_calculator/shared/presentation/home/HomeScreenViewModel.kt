@@ -13,7 +13,6 @@ class HomeScreenViewModel {
         when (event) {
             is HomeUiEvent.OnNavigate -> TODO()
             HomeUiEvent.OnClick -> {
-                println("On click is done")
                 _state.update {
                     it.copy(
                         showPopUp = true

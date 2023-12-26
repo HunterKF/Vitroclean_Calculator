@@ -18,6 +18,7 @@ class CalculatorViewModel {
                     it.copy(
                         isChoosingManufacturer = !it.isChoosingManufacturer,
                         isChoosingFilter = false,
+                        selectedFilter = null,
                         filterText = null
                     )
                 }
@@ -53,6 +54,7 @@ class CalculatorViewModel {
                 }
             }
             is CalculateUiEvent.OnNumberChange -> {
+                println("Coming from the VM: ${event.value}")
                 if (event.value.isNotBlank()) {
                     var value = event.value.filter { it.isDigit() }.take(3)
                     when (state.value.mode) {
@@ -69,10 +71,10 @@ class CalculatorViewModel {
                         CalculatorMode.BY_SAND -> {
                             _state.update {
                                 it.copy(
-                                    input = value,
-                                    selectedFilter = CalcuatorFunctions.createStatsBySandNeeded(
+                                    input = if (!value.isNullOrBlank()) value else "0",
+                                    selectedFilter = if (value != "") CalcuatorFunctions.createStatsBySandNeeded(
                                         value.toInt()
-                                    )
+                                    ) else null
                                 )
                             }
                         }
@@ -80,10 +82,18 @@ class CalculatorViewModel {
 
                         }
                     }
+                } else {
+                    _state.update {
+                        it.copy(
+                            input = "",
+                            selectedFilter = null
+                        )
+                    }
                 }
             }
             CalculateUiEvent.OnNavigate -> TODO()
             is CalculateUiEvent.ChangeMode -> {
+                println(event.mode)
                 _state.update {
                     it.copy(
                         mode = returnModeFromString(event.mode)
