@@ -9,10 +9,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jaegerapps.trivitro_calculator.android.R
 import com.jaegerapps.trivitro_calculator.android.TrivitroTheme
 import com.jaegerapps.trivitro_calculator.android.core.theme.SeaGreen
 import com.jaegerapps.trivitro_calculator.android.presentation.components.boxShadow
@@ -123,7 +126,7 @@ fun StatDisplayPreview_DARK() {
 @Composable
 fun StatDisplayColumn(selectedFilter: PoolFilter) {
     LazyColumn(
-        modifier = Modifier.fillMaxWidth(1f),
+        modifier = Modifier.fillMaxWidth(1f).testTag("stat display"),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(25.dp)
     ) {
@@ -157,31 +160,31 @@ fun StatDisplayColumn(selectedFilter: PoolFilter) {
         item {
             StatDisplay(
                 text = selectedFilter.recommendedSandLoad.toString(),
-                subtext = "Recommended Sand Load Lbs."
+                subtext = stringResource(R.string.recommended_sand_load_lbs)
             )
         }
         item {
             StatDisplay(
                 text = selectedFilter.recommendedVitrocleanVfaLoad.toString(),
-                subtext = "Recommended Vitroclean (VFA) Load Lbs."
+                subtext = stringResource(R.string.recommended_vitroclean_vfa_load_lbs)
             )
         }
         item {
             StatDisplay(
                 text = selectedFilter.recommendedPebble.toString(),
-                subtext = "Recommended Vitroclean Pebble (VF8) Load Lbs."
+                subtext = stringResource(R.string.recommended_vitroclean_pebble_vf8_load_lbs)
             )
         }
         item {
             StatDisplay(
                 text = selectedFilter.fiftyBagVitroclean.toString(),
-                subtext = "50 lb. Bags of Vitroclean VFA"
+                subtext = stringResource(R.string.recommended_50_lb_bags_of_vitroclean_vfa)
             )
         }
         item {
             StatDisplay(
                 text = selectedFilter.fiftyBagPebble.toString(),
-                subtext = "50 lb. Bags of Pebble (VF8)."
+                subtext = stringResource(R.string.recommended_50_lb_bags_of_pebble_vf8)
             )
             Spacer(Modifier.height(18.dp))
         }

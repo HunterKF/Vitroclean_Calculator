@@ -28,7 +28,8 @@ struct GuideLinkBox: View {
                 .padding(.bottom)
             }
         }
-        .background(Color.surface)
+        .accessibilityIdentifier("link")
+        .background(Color.background)
         
         .frame(maxWidth: .infinity)
         .cornerRadius(10) // Optional for rounded corners

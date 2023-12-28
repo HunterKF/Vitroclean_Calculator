@@ -58,7 +58,9 @@ struct ContactScreen: View {
                         .stroke(.red, lineWidth: 2)}
                 }
                 .accentColor(.primaryColor)
+                
                 Spacer()
+                
                 Button(action: {
                     contactViewModel.onEvent(event: ContactUiEvent.AttemptToSend(intent: { SupportEmail(subject: contactViewModel.state.subject, body: contactViewModel.state.content).send(openURL: openURL) }))
                 }, label: {
@@ -75,6 +77,7 @@ struct ContactScreen: View {
             .padding()
             
         }
+        .background(Color.surface)
         .frame(
                 maxWidth: .infinity,
                 maxHeight: .infinity,

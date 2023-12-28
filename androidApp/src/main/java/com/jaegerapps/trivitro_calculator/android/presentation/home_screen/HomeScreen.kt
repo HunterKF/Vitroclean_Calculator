@@ -67,7 +67,7 @@ fun HomeScreen(
                             onUiEvent(HomeUiEvent.OnDismiss)
                         }
                     ) {
-                        Text("No")
+                        Text(stringResource(R.string.no))
                     }
                     Box(
                         modifier = Modifier.clickable {
@@ -77,7 +77,7 @@ fun HomeScreen(
                             onUiEvent(HomeUiEvent.OnAccept { context.startActivity(intent) })
                         }
                     ) {
-                        Text("Yes")
+                        Text(stringResource(R.string.yes))
                     }
 
                 }

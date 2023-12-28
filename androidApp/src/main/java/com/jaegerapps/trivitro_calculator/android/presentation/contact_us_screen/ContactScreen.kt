@@ -123,7 +123,7 @@ fun ContactScreen(
                             }
                         }
                         Text(
-                            text = "Contact Us",
+                            text = stringResource(id = R.string.contact_us),
                             style = MaterialTheme.typography.h1.copy(
                                 color = MaterialTheme.colors.primary
                             )
@@ -177,7 +177,7 @@ fun ContactScreen(
                         ContactTextField(
                             text = state.subject,
                             error = state.subjectError,
-                            defaultText = "Subject",
+                            defaultText = stringResource(R.string.email_subject),
                             extraContent = {
                                 Text((state.maxSubjectCount- state.subject.length).toString())
                             },
@@ -197,7 +197,7 @@ fun ContactScreen(
                             extraContent = {
                                 Text((state.maxMessageCount- state.content.length).toString())
                             },
-                            defaultText = "Content",
+                            defaultText = stringResource(R.string.email_content),
                             onValueChange = {
                                 onEvent(ContactUiEvent.OnContentChange(it))
                             },
@@ -217,7 +217,7 @@ fun ContactScreen(
 
                 item {
                     ActionButton(
-                        text = "Send",
+                        text = stringResource(R.string.action_send),
                         isEnabled = /*state.email.isNotBlank() && state.name.isNotBlank() &&*/ state.subject.isNotBlank() && state.content.isNotBlank()
                     ) {
                         /*Passing the intent so it will be called only if there are no errors*/

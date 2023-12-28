@@ -11,8 +11,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.jaegerapps.trivitro_calculator.android.R
 import com.jaegerapps.trivitro_calculator.android.TrivitroTheme
 import com.jaegerapps.trivitro_calculator.android.presentation.components.boxShadow
 import com.jaegerapps.trivitro_calculator.shared.presentation.home.HomeUiEvent
@@ -46,7 +48,7 @@ fun GuideLinkBox(
                     .padding(horizontal = 16.dp, vertical = 8.dp)
             ) {
                 Text(
-                    text = "Vitroclean Specifications and Installation",
+                    text = stringResource(R.string.prompt_link_to_site),
                     style = MaterialTheme.typography.h3,
                     color = Color.White
                 )
@@ -61,7 +63,9 @@ fun GuideLinkBox(
 fun GuideLinkBoxPreview() {
     TrivitroTheme() {
         GuideLinkBox(
-            modifier = Modifier.fillMaxWidth().padding(12.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp),
             onClick = {}
         )
     }

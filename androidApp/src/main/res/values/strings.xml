@@ -12,7 +12,7 @@
     <string name="calculate_by_cubic_feet">Calculate by cubic feet</string>
     <string name="calculate_by_sand">Calculate by sand needed</string>
     <string name="faqs">FAQs</string>
-    <string name="contact_us">"Contact us "</string>
+    <string name="contact_us">"Contact Us "</string>
     <string name="title_navigate_out_of_app">Navigating out of app</string>
     <string name="explanation_navigate_out_of_app">You are about to leave the app to go to to the Trivitro website. Do you want to proceed?</string>
     <string name="content_desc_cancel">Cancel</string>
@@ -27,4 +27,16 @@
     <string name="prompt_start_calculating">Start calculating</string>
     <string name="subtext_cubic_feet">cubic feet</string>
     <string name="subtext_sand_needed">sand needed</string>
+    <string name="recommended_sand_load_lbs">Recommended Sand Load Lbs.</string>
+    <string name="recommended_vitroclean_vfa_load_lbs">Recommended Vitroclean (VFA) Load Lbs.</string>
+    <string name="recommended_vitroclean_pebble_vf8_load_lbs">Recommended Vitroclean Pebble (VF8) Load Lbs.</string>
+    <string name="recommended_50_lb_bags_of_vitroclean_vfa">50 lb. Bags of Vitroclean VFA</string>
+    <string name="recommended_50_lb_bags_of_pebble_vf8">50 lb. Bags of Pebble (VF8).</string>
+    <string name="prompt_select_manufacturer_first">Select manufacturer first.</string>
+    <string name="email_subject">Subject</string>
+    <string name="email_content">Content</string>
+    <string name="action_send">Send</string>
+    <string name="prompt_link_to_site">Vitroclean Specifications and Installation</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 </resources>

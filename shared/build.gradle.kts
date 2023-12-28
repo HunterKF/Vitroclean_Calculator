@@ -1,9 +1,13 @@
+import java.util.Properties
+
 buildscript {
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.21")
+        classpath("com.codingfeline.buildkonfig:buildkonfig-gradle-plugin:0.15.1")
+
     }
 }
 
@@ -13,6 +17,7 @@ plugins {
     id("com.android.library")
     kotlin("plugin.serialization") version Deps.kotlinVersion
     id("com.google.devtools.ksp") version Deps.kspVersion
+    id("com.codingfeline.buildkonfig") version "+"
 }
 repositories {
     mavenCentral()
@@ -51,6 +56,7 @@ kotlin {
                 implementation(Deps.supabasePostgrest)
 
             }
+
         }
         val commonTest by getting {
             dependencies {
@@ -111,4 +117,22 @@ android {
         minSdk = 24
     }
 
+}
+
+
+buildkonfig {
+    packageName = "com.jaegerapps.trivitro_calculator"
+
+    defaultConfigs {
+        val localProperties = Properties()
+        val localPropertiesFile = rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            localPropertiesFile.inputStream().use {
+                localProperties.load(it)
+            }
+        }
+        val apiKey = localProperties.getProperty("API_KEY") ?: "default_value"
+        buildConfigField(com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING,
+            "API_KEY", apiKey)
+    }
 }

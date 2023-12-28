@@ -22,16 +22,18 @@ extension Color {
     }
     private static let colors = Colors()
     static let trivitroBlue = Color(hex: colors.TrivitroBlue)
+    static let trivitroBlueDark = Color(hex: colors.TrivitroBlueDarkMode)
     static let lightGray = Color(hex: colors.LightGray)
     static let secondarySeaGreen = Color(hex: colors.SecondarySeaGreen)
     static let textBlack = Color(hex: colors.TextBlack)
     static let darkGrey = Color(hex: colors.DarkGray)
+    static let regularGrey = Color(hex: colors.Gray)
 
-    static let primaryColor = Color(light: .trivitroBlue, dark: .trivitroBlue)
-    static let background = Color(light: .lightGray, dark: .darkGrey)
+    static let primaryColor = Color(light: .trivitroBlue, dark: .trivitroBlueDark)
+    static let background = Color(light: .white, dark: .regularGrey)
     static let onPrimary = Color(light: .white, dark: .white)
-    static let onBackground = Color(light: .white, dark: .lightGray)
-    static let surface = Color(light: .white, dark: .darkGrey)
+    static let onBackground = Color(light: .textBlack, dark: .white)
+    static let surface = Color(light: .lightGray, dark: .darkGrey)
     static let onSurface = Color(light: .textBlack, dark: .white)
 }
 

@@ -16,9 +16,10 @@ struct SubjectTextfield: View {
             TextField(defaultText, text: $text)
                 .keyboardType(.default)
                 .foregroundColor(.primaryColor)
+                .accessibilityIdentifier("Subject Textfield")
         }
         .padding()
-        .background(Color.onBackground)
+        .background(Color.background)
         .cornerRadius(5)
         .shadow(radius: 2)
     }

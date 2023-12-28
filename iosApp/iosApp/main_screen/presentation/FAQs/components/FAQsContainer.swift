@@ -24,18 +24,23 @@ struct FAQsContainer: View {
                 Image(systemName: "arrowtriangle.down.fill")
                     .rotationEffect(.degrees(isOpen ? 180 : 0))
             }
-            if isOpen {
-                Text(contentText)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .multilineTextAlignment(.leading)
-                    .padding(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
-                    .font(.body)
-               
+            VStack {
+                if isOpen {
+                    Text(contentText)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .multilineTextAlignment(.leading)
+                        .padding(EdgeInsets(top: 12, leading: 0, bottom: 0, trailing: 0))
+                        .font(.body)
+                        .frame(height: isOpen ? nil : 0, alignment: .top)
+                        .clipped()
+                   
+                }
             }
+            
         }
         .padding(18)
         .foregroundColor(isOpen ? Color.onPrimary : Color.primaryColor)
-        .background(isOpen ? Color.primaryColor : Color.onPrimary)
+        .background(isOpen ? Color.primaryColor : Color.background)
         .animation(.easeInOut, value: isOpen)
         .transition(.slide)
         .cornerRadius(5)

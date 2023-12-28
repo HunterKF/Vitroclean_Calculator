@@ -6,17 +6,22 @@ import com.jaegerapps.trivitro_calculator.shared.domain.TrivitroSupabaseRepo
 import com.jaegerapps.trivitro_calculator.shared.domain.use_cases.GetFaqs
 import com.jaegerapps.trivitro_calculator.shared.domain.use_cases.GetFilters
 
-class AppModule {
+interface AppModule {
+    val repo: TrivitroSupabaseRepo
+    val getFilters: GetFilters
+    val getFaqs: GetFaqs
+}
+class AppModuleImpl: AppModule {
 
-    val repo: TrivitroSupabaseRepo by lazy {
+    override val repo: TrivitroSupabaseRepo by lazy {
         SupabaseKtroRepoImpl(HttpClientFactory().create())
     }
 
-    val getFilters by lazy {
+    override val getFilters by lazy {
         GetFilters(repo)
     }
 
-    val getFaqs by lazy {
+    override val getFaqs by lazy {
         GetFaqs(repo)
     }
 

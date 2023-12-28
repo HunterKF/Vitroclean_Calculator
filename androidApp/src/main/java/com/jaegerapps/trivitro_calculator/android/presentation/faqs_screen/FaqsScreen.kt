@@ -59,7 +59,7 @@ fun FaqsScreen(
                     }
                 }
                 Text(
-                    text = "FAQs",
+                    text = stringResource(id = R.string.faqs),
                     style = MaterialTheme.typography.h1.copy(
                         color = MaterialTheme.colors.primary
                     )

@@ -44,6 +44,7 @@ struct TopBarCalc_Previews: PreviewProvider {
             Spacer()
             
         }.frame(width: .infinity, height: .infinity, alignment: .top)
+            .background(.gray)
         
     }
 }

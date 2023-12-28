@@ -8,12 +8,12 @@
 
 import SwiftUI
 
+
 struct MessageTextField: View {
     @State var text: String
     let defaultText: String
     let onEvent: (String) -> Void
     
-    @FocusState var isNameFocused:Bool
     
     
     var body: some View {
@@ -25,21 +25,21 @@ struct MessageTextField: View {
                 }
                 
                 TextEditor(text: $text)
+                    .padding(EdgeInsets(top: 0, leading: -4,    bottom: 0, trailing: 0))
+                    .frame(height: 200, alignment: .top)
                     .foregroundColor(.primaryColor)
+                    .textEditorBackground(Color.background.opacity(text.isEmpty ? 0.8 : 1))
                     .onChange(of: text, perform: { value in
                         onEvent(value)
                     })
-
-                    .opacity(text.isEmpty ? 0.8 : 1)
-                    .padding(EdgeInsets(top: 0, leading: -4, bottom: 0, trailing: 0))
-                    .frame(height: 200, alignment: .top)
-
+                    .accessibilityIdentifier("Message Textfield")
             
         }
         .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 4))
-        .background(Color.onBackground)
+        .background(Color.background)
         .cornerRadius(5)
         .shadow(radius: 2)
+        
             
     }
 }

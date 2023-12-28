@@ -14,6 +14,8 @@ android {
         minSdk = 24
         versionCode = 1
         versionName = "1.0"
+
+        testInstrumentationRunner = "com.jaegerapps.trivitro_calculator.shared.TestHiltRunner"
     }
     buildFeatures {
         compose = true

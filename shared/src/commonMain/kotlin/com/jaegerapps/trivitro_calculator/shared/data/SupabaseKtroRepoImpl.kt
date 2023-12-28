@@ -1,5 +1,6 @@
 package com.jaegerapps.trivitro_calculator.shared.data
 
+import com.jaegerapps.trivitro_calculator.BuildKonfig.API_KEY
 import com.jaegerapps.trivitro_calculator.core.domain.util.Resource
 import com.jaegerapps.trivitro_calculator.shared.domain.TrivitroSupabaseRepo
 import com.jaegerapps.trivitro_calculator.shared.data.mappers.toFaq
@@ -18,6 +19,7 @@ import io.ktor.client.request.header
 import io.ktor.client.request.parameter
 import io.ktor.client.request.url
 import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.request
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
 import io.ktor.utils.io.errors.IOException
@@ -26,15 +28,19 @@ class SupabaseKtroRepoImpl(
     private val httpClient: HttpClient,
 ) : TrivitroSupabaseRepo {
     override suspend fun getFilters(): Resource<List<PoolFilter>> {
+        println("API_KEY: $API_KEY")
         val result = try {
             httpClient.get() {
                 url(HttpRoutes.VF_FILTER_CHART)
-                header("apikey", HttpRoutes.API_KEY)
+                header("apikey", API_KEY)
             }
 
         } catch (e: IOException) {
             return Resource.Error(SupabaseException(NetworkError.SERVICE_UNAVAILABLE))
         }
+        println(result.status)
+        println(result.call)
+        println(result.request)
         val error = errorHandling(result)
         error?.let {
             return Resource.Error(error.throwable!!)
@@ -65,7 +71,7 @@ class SupabaseKtroRepoImpl(
         val result = try {
             httpClient.get {
                 url(HttpRoutes.FAQS)
-                parameter(key = "apikey", value = HttpRoutes.API_KEY)
+                parameter(key = "apikey", value =  API_KEY )
             }
         } catch (e: IOException) {
             return Resource.Error(SupabaseException(NetworkError.SERVICE_UNAVAILABLE))

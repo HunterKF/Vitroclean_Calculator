@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.SoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -56,7 +57,7 @@ fun NumberDisplay(
         ) {
             //Display to input the numbers
             TextField(
-                modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
+                modifier = Modifier.fillMaxWidth().focusRequester(focusRequester).testTag("number display"),
                 value = text,
                 onValueChange = { newText -> onClick(CalculateUiEvent.OnNumberChange(newText)) },
                 textStyle = MaterialTheme.typography.h1.copy(

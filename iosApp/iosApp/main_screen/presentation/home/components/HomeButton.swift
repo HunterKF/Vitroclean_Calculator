@@ -31,7 +31,7 @@ struct HomeButton: View {
             }
             .padding(.vertical, 12)
             .padding(.horizontal, 18)
-            .background(Color.surface)
+            .background(Color.background)
             .cornerRadius(8)
         }
             .shadow(radius: 2)

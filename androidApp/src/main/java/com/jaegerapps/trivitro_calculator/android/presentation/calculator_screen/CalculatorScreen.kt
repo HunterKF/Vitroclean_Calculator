@@ -16,7 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -84,6 +86,7 @@ fun ByFilterScreen(
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     Scaffold(
         snackbarHost = {
@@ -107,7 +110,7 @@ fun ByFilterScreen(
                         onCalculatorEvent(CalculateUiEvent.SelectManufacturer(it))
                     },
                     onToggleEvent = { onCalculatorEvent(CalculateUiEvent.ToggleManufacturerDropdown) },
-                    modifier = Modifier.fillMaxWidth(0.9f),
+                    modifier = Modifier.fillMaxWidth(0.9f).testTag(stringResource(R.string.dropdown_select_manufacturer)),
                     showDropDown = isChoosingManufacturer
                 )
                 Spacer(Modifier.height(12.dp))
@@ -124,14 +127,15 @@ fun ByFilterScreen(
                     onToggleEvent = {
                         if (manufacturerText.isNullOrEmpty()) {
                             scope.launch {
-                                snackbarHostState.showSnackbar("Select manufacturer first.")
+                                snackbarHostState.showSnackbar(context.getString(R.string.prompt_select_manufacturer_first))
                             }
                         } else {
                             onCalculatorEvent(CalculateUiEvent.ToggleFilterDropdown)
                         }
                     },
                     modifier = Modifier
-                        .fillMaxWidth(0.9f),
+                        .fillMaxWidth(0.9f)
+                        .testTag(stringResource(R.string.dropdown_select_model)),
                     showDropDown = isChoosingFilter
                 )
             }
@@ -146,7 +150,7 @@ fun ByFilterScreen(
                     StatDisplayColumn(selectedFilter)
                 } else {
                     EmptyPrompt(
-                        text = "Start calculating",
+                        text = stringResource(id = R.string.prompt_start_calculating),
                         icon = com.jaegerapps.trivitro_calculator.R.drawable.icon_calculator
                     )
                 }

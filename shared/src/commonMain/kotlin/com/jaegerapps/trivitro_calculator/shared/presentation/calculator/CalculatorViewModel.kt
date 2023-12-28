@@ -35,7 +35,6 @@ class CalculatorViewModel {
             }
 
             is CalculateUiEvent.SelectFilter -> {
-                println(event.filter)
                 _state.update {
                     it.copy(
                         selectedFilter = state.value.poolFilterList.first { poolFilter -> poolFilter.model == event.filter },
@@ -46,11 +45,13 @@ class CalculatorViewModel {
                 }
             }
             CalculateUiEvent.ToggleFilterDropdown -> {
-                _state.update {
-                    it.copy(
-                        isChoosingFilter = !it.isChoosingFilter,
-                        isChoosingManufacturer = false
-                    )
+                if (!state.value.manufacturerText.isNullOrEmpty()) {
+                    _state.update {
+                        it.copy(
+                            isChoosingFilter = !it.isChoosingFilter,
+                            isChoosingManufacturer = false
+                        )
+                    }
                 }
             }
             is CalculateUiEvent.OnNumberChange -> {

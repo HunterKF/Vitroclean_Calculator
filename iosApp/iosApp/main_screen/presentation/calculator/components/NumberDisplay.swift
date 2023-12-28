@@ -45,10 +45,11 @@ struct NumberDisplay: View {
                 .multilineTextAlignment(.center)
                 .font(.title).padding()
                 .focused($focusedField, equals: .calculator)
+                .accessibilityIdentifier("number display")
             Divider()
             Text(subtext).padding()
         }
-        .background()
+        .background(Color.surface)
         .cornerRadius(5)
         .toolbar {
             ToolbarItem(placement: .keyboard) {

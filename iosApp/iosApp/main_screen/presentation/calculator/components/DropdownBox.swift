@@ -44,10 +44,10 @@ struct DropDownBox: View {
                         Spacer()
                         Image(systemName: "arrowtriangle.down.fill")
                             .rotationEffect(.degrees(showDropDown ? 180 : 0))
+                            .foregroundColor(Color.primaryColor)
                     }
                     .padding()
                 }
-                .background(Color(.systemBackground))
                 if showDropDown, let list {
                     ScrollView(.vertical, showsIndicators: true) {
                         VStack {
@@ -72,10 +72,10 @@ struct DropDownBox: View {
                             }
                         }
                     }
-                    .background(Color(.systemBackground))
                     .frame(maxHeight: 150)
                 }
             }
+            .background(Color.background)
                 .fixedSize(horizontal: false, vertical: true)
             .cornerRadius(5)
 

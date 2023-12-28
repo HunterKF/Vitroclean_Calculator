@@ -69,15 +69,12 @@ object Deps {
 
     const val hiltTesting = "com.google.dagger:hilt-android-testing:$hiltVersion"
 
+
     //Mockative
     private const val mockativeVersion = "2.0.1"
     const val mockative = "io.mockative:mockative:$mockativeVersion"
 
-    //KSP
+    //KSP - This is used for Mockative, though it might not be needed...
     const val kspVersion = "1.9.21-1.0.15"
 
-    //Secret Gradle
-    private const val secretGradleVersion = "2.0.1"
-    const val secretGradlePlugin = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin"
-    const val secretGradle = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:$secretGradleVersion"
 }

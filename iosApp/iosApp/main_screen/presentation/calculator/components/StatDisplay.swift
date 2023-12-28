@@ -30,7 +30,7 @@ struct StatDisplay: View {
             .padding(EdgeInsets(top: 12, leading: 0, bottom: 12, trailing: 0))
             .background(Color.secondarySeaGreen)
         }
-        .background(Color.surface)
+        .background(Color.background)
         .cornerRadius(5)
         .shadow(radius: 5)
     }
