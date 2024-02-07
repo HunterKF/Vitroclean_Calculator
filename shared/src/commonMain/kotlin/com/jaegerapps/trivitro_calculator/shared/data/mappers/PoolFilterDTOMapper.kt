@@ -10,8 +10,8 @@ fun PoolFilterDto.toPoolFilter(): PoolFilter {
         recommendedVitrocleanVfaLoad = this.recommended_vitroclean_vfa_load_lbs,
         recommendedSandLoad = this.recommended_sand_load_lbs,
         recommendedPebble = this.recommended_vitroclean_pebble_vfeight_load_lbs,
-        fiftyBagVitroclean = this.fifty_lb_bags_of_vitroclean_vfa,
-        fiftyBagPebble = this.fifty_lb_bags_of_pebble_vfeight
+        fiftyBagVitroclean = this.fifty_lb_bags_of_vitroclean_vfa.toDouble(),
+        fiftyBagPebble = this.fifty_lb_bags_of_pebble_vfeight.toDouble()
     )
 }
 

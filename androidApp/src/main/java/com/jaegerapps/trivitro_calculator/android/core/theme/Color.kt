@@ -12,14 +12,15 @@ val LightGray = Color(Colors.LightGray)
 val TextBlack = Color(Colors.TextBlack)
 val DarkGrey = Color(Colors.DarkGray)
 val Gray = Color(Colors.Gray)
-
+/*TODO - Change iOS onSecondary color*/
 val lightColors = lightColors(
     primary = TrivitroBlue,
     background = Color.White,
     onPrimary = Color.White,
     onBackground = TextBlack,
     surface = LightGray,
-    onSurface = TextBlack
+    onSurface = TextBlack,
+    onSecondary = Color.Black
 )
 
 val darkColors = darkColors(
@@ -28,5 +29,7 @@ val darkColors = darkColors(
     onPrimary = Color.White,
     onBackground = Color.White,
     surface = DarkGrey,
-    onSurface = Color.White
+    onSurface = Color.White,
+    onSecondary = Color.Black
+
 )

@@ -24,7 +24,6 @@ class SharedViewModel(
 
 
     fun onEvent(event: SharedUiEvent) {
-        println()
         when (event) {
             SharedUiEvent.LoadData -> {
                 if (state.value.poolFilterList.isNotEmpty() && state.value.faqsList.isNotEmpty() && state.value.error == null) {
@@ -115,4 +114,6 @@ class SharedViewModel(
         }
         return emptyList()
     }
+
 }
+

@@ -34,9 +34,9 @@ class FakeSupabaseRepo : TrivitroSupabaseRepo {
         )
     )
     private val filterExample = listOf(
-        PoolFilter("Pentair", "TR40", 175, 140, 0, 0, 3),
-        PoolFilter("Pentair", "TR50", 225, 180, 0, 0, 4),
-        PoolFilter("Pentair", "TR60", 325, 260, 182, 78, 4),
+        PoolFilter("Pentair", "TR40", 175, 140, 0, 0.0, 3.0),
+        PoolFilter("Pentair", "TR50", 225, 180, 0, 0.0, 4.0),
+        PoolFilter("Pentair", "TR60", 325, 260, 182, 78.0, 4.0),
     )
     override suspend fun getFilters(): Resource<List<PoolFilter>> {
         return Resource.Success(filterExample)

@@ -6,6 +6,6 @@ data class PoolFilter(
     val recommendedSandLoad: Int,
     val recommendedVitrocleanVfaLoad: Int,
     val recommendedPebble: Int,
-    val fiftyBagVitroclean: Int,
-    val fiftyBagPebble: Int,
+    val fiftyBagVitroclean: Double,
+    val fiftyBagPebble: Double,
 )

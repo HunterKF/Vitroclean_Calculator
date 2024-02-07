@@ -28,7 +28,6 @@ class SupabaseKtroRepoImpl(
     private val httpClient: HttpClient,
 ) : TrivitroSupabaseRepo {
     override suspend fun getFilters(): Resource<List<PoolFilter>> {
-        println("API_KEY: $API_KEY")
         val result = try {
             httpClient.get() {
                 url(HttpRoutes.VF_FILTER_CHART)

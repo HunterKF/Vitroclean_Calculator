@@ -50,18 +50,18 @@ fun TopBarCalc(
 @Composable
 fun TopBarCalc() {
     val exampleList = listOf(
-        PoolFilter("Pentair", "TR40", 175, 140, 0, 0, 3),
-        PoolFilter("Pentair", "TR50", 225, 180, 0, 0, 4),
-        PoolFilter("Pentair", "TR60", 325, 260, 182, 78, 4),
-        PoolFilter("Pentair", "TR60 ClearPro", 325, 260, 182, 78, 4),
-        PoolFilter("Pentair", "TR100", 600, 480, 336, 144, 7),
-        PoolFilter("Pentair", "TR100HD", 600, 480, 336, 144, 7),
-        PoolFilter("Pentair", "TR100C-3", 600, 480, 336, 144, 7),
-        PoolFilter("Pentair", "TR-140", 925, 740, 518, 222, 11),
-        PoolFilter("Pentair", "TR140C-3", 925, 740, 518, 222, 11),
-        PoolFilter("Hayward", "S144T", 50, 40, 40, 0, 1),
-        PoolFilter("Hayward", "S160T", 150, 120, 120, 0, 3),
-        PoolFilter("Waterway Carefree Top-Mount", "FS02629-B (26\")", 300, 240, 168, 72, 4)
+        PoolFilter("Pentair", "TR40", 175, 140, 0, 0.0, 3.0),
+        PoolFilter("Pentair", "TR50", 225, 180, 0, 0.0, 4.0),
+        PoolFilter("Pentair", "TR60", 325, 260, 182, 78.0, 4.0),
+        PoolFilter("Pentair", "TR60 ClearPro", 325, 260, 182, 78.0, 4.0),
+        PoolFilter("Pentair", "TR100", 600, 480, 336, 144.0, 7.0),
+        PoolFilter("Pentair", "TR100HD", 600, 480, 336, 144.0, 7.0),
+        PoolFilter("Pentair", "TR100C-3", 600, 480, 336, 144.0, 7.0),
+        PoolFilter("Pentair", "TR-140", 925, 740, 518, 222.0, 11.0),
+        PoolFilter("Pentair", "TR140C-3", 925, 740, 518, 222.0, 11.0),
+        PoolFilter("Hayward", "S144T", 50, 40, 40, 0.0, 1.0),
+        PoolFilter("Hayward", "S160T", 150, 120, 120, 0.0, 3.0),
+        PoolFilter("Waterway Carefree Top-Mount", "FS02629-B (26\")", 300, 240, 168, 72.0, 4.0)
     )
 
 

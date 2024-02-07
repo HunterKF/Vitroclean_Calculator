@@ -171,8 +171,8 @@ class CalculatorViewModelTest {
                 recommendedVitrocleanVfaLoad = 0,
                 recommendedSandLoad = 1,
                 recommendedPebble = 2,
-                fiftyBagPebble = 0,
-                fiftyBagVitroclean = 12
+                fiftyBagPebble = 0.0,
+                fiftyBagVitroclean = 12.0
 
             )
             assertThat(oneDigitState.selectedFilter).isEqualTo(oneExpectedResult)
@@ -185,8 +185,8 @@ class CalculatorViewModelTest {
                 recommendedVitrocleanVfaLoad = 5,
                 recommendedSandLoad = 10,
                 recommendedPebble = 20,
-                fiftyBagPebble = 5,
-                fiftyBagVitroclean = 125
+                fiftyBagPebble = 5.0,
+                fiftyBagVitroclean = 125.0
 
             )
             assertThat(twoDigitState.selectedFilter).isEqualTo(twoExpectedResult)
@@ -217,8 +217,8 @@ class CalculatorViewModelTest {
                 recommendedVitrocleanVfaLoad = 52,
                 recommendedSandLoad = 104,
                 recommendedPebble = 208,
-                fiftyBagPebble = 52,
-                fiftyBagVitroclean = 1305
+                fiftyBagPebble = 52.0,
+                fiftyBagVitroclean = 1305.0
 
             )
             assertThat(oneDigitState.selectedFilter).isEqualTo(oneExpectedResult)
@@ -300,8 +300,8 @@ class CalculatorViewModelTest {
                 recommendedVitrocleanVfaLoad = 2,
                 recommendedSandLoad = 3,
                 recommendedPebble = 4,
-                fiftyBagPebble = 5,
-                fiftyBagVitroclean = 6
+                fiftyBagPebble = 5.0,
+                fiftyBagVitroclean = 6.0
 
             )
             assertThat(oneDigitState.selectedFilter).isEqualTo(oneExpectedResult)
@@ -314,8 +314,8 @@ class CalculatorViewModelTest {
                 recommendedVitrocleanVfaLoad = 20,
                 recommendedSandLoad = 30,
                 recommendedPebble = 40,
-                fiftyBagPebble = 50,
-                fiftyBagVitroclean = 60
+                fiftyBagPebble = 50.0,
+                fiftyBagVitroclean = 60.0
 
             )
             assertThat(twoDigitState.selectedFilter).isEqualTo(twoExpectedResult)
@@ -346,8 +346,8 @@ class CalculatorViewModelTest {
                 recommendedVitrocleanVfaLoad = 200,
                 recommendedSandLoad = 300,
                 recommendedPebble = 400,
-                fiftyBagPebble = 500,
-                fiftyBagVitroclean = 600
+                fiftyBagPebble = 500.0,
+                fiftyBagVitroclean = 600.0
 
             )
             assertThat(oneDigitState.selectedFilter).isEqualTo(oneExpectedResult)

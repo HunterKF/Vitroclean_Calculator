@@ -1,7 +1,7 @@
 package com.jaegerapps.trivitro_calculator.shared.presentation.calculator
 
 import com.jaegerapps.trivitro_calculator.core.domain.util.toCommonStateFlow
-import com.jaegerapps.trivitro_calculator.shared.domain.use_cases.CalcuatorFunctions
+import com.jaegerapps.trivitro_calculator.shared.domain.use_cases.CalculatorFunctions
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
@@ -54,16 +54,16 @@ class CalculatorViewModel {
                     }
                 }
             }
+
             is CalculateUiEvent.OnNumberChange -> {
-                println("Coming from the VM: ${event.value}")
                 if (event.value.isNotBlank()) {
-                    var value = event.value.filter { it.isDigit() }.take(3)
+                    val value = event.value.filter { it.isDigit() }.take(7)
                     when (state.value.mode) {
                         CalculatorMode.BY_CUBIC_FEET -> {
                             _state.update {
                                 it.copy(
                                     input = if (!value.isNullOrBlank()) value else "0",
-                                    selectedFilter = if (value != "") CalcuatorFunctions.createStatsByCubicFeet(
+                                    selectedFilter = if (value != "") CalculatorFunctions.createStatsByCubicFeet(
                                         value.toInt()
                                     ) else null
                                 )
@@ -73,7 +73,7 @@ class CalculatorViewModel {
                             _state.update {
                                 it.copy(
                                     input = if (!value.isNullOrBlank()) value else "0",
-                                    selectedFilter = if (value != "") CalcuatorFunctions.createStatsBySandNeeded(
+                                    selectedFilter = if (value != "") CalculatorFunctions.createStatsBySandNeeded(
                                         value.toInt()
                                     ) else null
                                 )

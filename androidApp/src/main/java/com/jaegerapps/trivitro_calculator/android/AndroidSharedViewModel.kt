@@ -1,5 +1,7 @@
 package com.jaegerapps.trivitro_calculator.android
 
+import android.os.Bundle
+import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jaegerapps.trivitro_calculator.shared.domain.use_cases.GetFaqs
@@ -14,7 +16,7 @@ import javax.inject.Inject
 class AndroidSharedViewModel @Inject constructor(
     private val getFilters: GetFilters,
     private val getFaqs: GetFaqs,
-) : ViewModel() {
+) : ViewModel(), LifecycleObserver {
     private val viewModel by lazy {
         SharedViewModel(
             getFilters = getFilters,
@@ -28,4 +30,6 @@ class AndroidSharedViewModel @Inject constructor(
     fun onEvent(event: SharedUiEvent) {
         viewModel.onEvent(event)
     }
+
+
 }

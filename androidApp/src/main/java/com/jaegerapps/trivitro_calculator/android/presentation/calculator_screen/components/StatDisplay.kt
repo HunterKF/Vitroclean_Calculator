@@ -57,7 +57,7 @@ fun StatDisplay(
                 Text(
                     text = subtext,
                     style = MaterialTheme.typography.body2,
-                    color = MaterialTheme.colors.onPrimary
+                    color = MaterialTheme.colors.onSecondary
                 )
             }
         }
