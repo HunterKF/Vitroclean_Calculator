@@ -24,21 +24,21 @@ struct HomeScreen: View {
                     NavigationLink {
                         CalculatorScreen(sharedState: sharedState, mode: "by_filter")
                     } label: {
-                        HomeButton(text: "Caculate by filter", icon: "plus.forwardslash.minus", onClick: {}, contentDescription: "")
+                        HomeButton(text: "Caculate by filter", image: nil, icon: "plus.forwardslash.minus", onClick: {}, contentDescription: "")
                             .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                             .accessibilityIdentifier("by filter")
                     }
                     NavigationLink {
                         CalculatorScreen(sharedState: sharedState, mode: "by_cubic_feet")
                     } label: {
-                        HomeButton(text: "Caculate by cubic feet", icon: "cube", onClick: {}, contentDescription: "")
+                        HomeButton(text: "Caculate by cubic feet", image: nil,icon: "cube", onClick: {}, contentDescription: "")
                             .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                             .accessibilityIdentifier("by cubic feet")
                     }
                     NavigationLink {
                         CalculatorScreen(sharedState: sharedState, mode: "by_sand")
                     } label: {
-                        HomeButton(text: "Caculate by sand needed", icon: "sand", onClick: {}, contentDescription: "")
+                        HomeButton(text: "Caculate by sand needed", image: "icon_sand_template", icon: "icon_sand", onClick: {}, contentDescription: "")
                             .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                             .accessibilityIdentifier("by sand")
                     }
@@ -46,7 +46,7 @@ struct HomeScreen: View {
                     NavigationLink {
                         FAQsScreen(list: sharedState.faqsList)
                     } label: {
-                        HomeButton(text: "FAQs", icon: "questionmark.circle", onClick: {}, contentDescription: "")
+                        HomeButton(text: "FAQs",image: nil, icon: "questionmark.circle", onClick: {}, contentDescription: "")
                             .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                         
                             .accessibilityIdentifier("FAQs")
@@ -54,7 +54,7 @@ struct HomeScreen: View {
                     NavigationLink {
                         ContactScreen()
                     } label: {
-                        HomeButton(text: "Contact Us", icon: "message", onClick: {}, contentDescription: "")
+                        HomeButton(text: "Contact Us", image: nil,icon: "message", onClick: {}, contentDescription: "")
                             .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
                             .accessibilityIdentifier("Contact Us")
                     }
@@ -73,6 +73,7 @@ struct HomeScreen: View {
                     }
             .background(Color.surface)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(.white)
         
     }

@@ -16,7 +16,7 @@ struct FilterTextModifier: ViewModifier {
             .keyboardType(.numberPad)
             .onChange(of: text) { newValue in
                             let numbers = "0123456789"
-                            let filtered = newValue.filter { numbers.contains($0) }.prefix(3)
+                            let filtered = newValue.filter { numbers.contains($0) }.prefix(7)
                             if filtered != newValue {
                                 self.text = String(filtered)
                             }

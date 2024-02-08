@@ -1,6 +1,7 @@
 package com.jaegerapps.trivitro_calculator.android.presentation.home_screen.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
@@ -29,9 +30,11 @@ fun GuideLinkBox(
         .boxShadow()) {
 
         Box(
-            modifier = Modifier.aspectRatio(1.8f)
+            modifier = Modifier.aspectRatio(1.8f),
+            contentAlignment = Alignment.Center
         ) {
             Image(
+                modifier = Modifier.fillMaxWidth(),
                 painter = painterResource(id = com.jaegerapps.trivitro_calculator.R.drawable.photo_pool),
                 contentDescription = "pool",
                 contentScale = ContentScale.Crop
@@ -62,12 +65,14 @@ fun GuideLinkBox(
 @Composable
 fun GuideLinkBoxPreview() {
     TrivitroTheme() {
-        GuideLinkBox(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(12.dp),
-            onClick = {}
-        )
+        Column(modifier = Modifier.fillMaxSize().background(Color.LightGray)) {
+            GuideLinkBox(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(12.dp),
+                onClick = {}
+            )
+        }
     }
 
 }

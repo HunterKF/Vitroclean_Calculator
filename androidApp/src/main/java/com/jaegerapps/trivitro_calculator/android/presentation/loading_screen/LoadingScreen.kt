@@ -1,7 +1,5 @@
 package com.jaegerapps.trivitro_calculator.android.presentation.loading_screen
 
-import android.content.Intent
-import android.net.Uri
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,14 +24,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Popup
 import com.jaegerapps.trivitro_calculator.android.R
 import com.jaegerapps.trivitro_calculator.android.TrivitroTheme
-import com.jaegerapps.trivitro_calculator.android.presentation.components.PopUpContent
 import com.jaegerapps.trivitro_calculator.shared.domain.NetworkError
 import com.jaegerapps.trivitro_calculator.shared.presentation.SharedUiState
-import com.jaegerapps.trivitro_calculator.shared.presentation.SharedUiEvent
-import com.jaegerapps.trivitro_calculator.shared.presentation.home.HomeUiEvent
 import kotlinx.coroutines.delay
 
 @Composable
@@ -45,7 +39,7 @@ fun LoadingScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(MaterialTheme.colors.surface)
             .padding(horizontal = 12.dp, vertical = 16.dp),
         contentAlignment = Alignment.Center
     ) {

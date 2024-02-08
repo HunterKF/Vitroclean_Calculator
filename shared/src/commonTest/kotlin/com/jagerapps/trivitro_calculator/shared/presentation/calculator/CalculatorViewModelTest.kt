@@ -15,6 +15,7 @@ import com.jagerapps.trivitro_calculator.shared.filterExample
 import kotlinx.coroutines.runBlocking
 import kotlin.test.BeforeTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class CalculatorViewModelTest {
 
@@ -24,13 +25,6 @@ class CalculatorViewModelTest {
     fun setup() {
         viewModel = CalculatorViewModel()
     }
-    /*
-    * viewModel.state.test {
-            val initialState = awaitItem()
-            assertThat(initialState).isEqualTo(CalculatorState())
-            viewModel.onEvent(CalculateUiEvent.AddList(filterExample))
-        }
-    * */
     @Test
     fun `AddList - Expect state to have list`() = runBlocking {
         viewModel.state.test {
@@ -67,9 +61,7 @@ class CalculatorViewModelTest {
             val toggleManufacturerState = awaitItem()
             assertThat(toggleManufacturerState.isChoosingManufacturer).isTrue()
             viewModel.onEvent(CalculateUiEvent.ToggleFilterDropdown)
-            val toggleFilterState = awaitItem()
-            assertThat(toggleFilterState.isChoosingFilter).isTrue()
-            assertThat(toggleFilterState.isChoosingManufacturer).isFalse()
+            //EXPECT NOTHING TO HAPPEN - Can't select filter w/o manufacturer text
 
             viewModel.onEvent(CalculateUiEvent.SelectManufacturer(text = filterExample.first().manufacturer))
             val selectState = awaitItem()
@@ -89,13 +81,14 @@ class CalculatorViewModelTest {
             viewModel.onEvent(CalculateUiEvent.AddList(filterExample))
             val listState = awaitItem()
             assertThat(listState.poolFilterList).isEqualTo(filterExample)
+            //Drop down the man
             viewModel.onEvent(CalculateUiEvent.ToggleManufacturerDropdown)
             val toggleManufacturerState = awaitItem()
             assertThat(toggleManufacturerState.isChoosingManufacturer).isTrue()
+
             viewModel.onEvent(CalculateUiEvent.ToggleFilterDropdown)
-            val toggleFilterState = awaitItem()
-            assertThat(toggleFilterState.isChoosingFilter).isTrue()
-            assertThat(toggleFilterState.isChoosingManufacturer).isFalse()
+            /*EXPECT NOTHING TO HAPPEN - The state doesn't change at all, b/c you can't select the filter without selecting a manufacturer*/
+
 
             viewModel.onEvent(CalculateUiEvent.SelectManufacturer(text = filterExample.first().manufacturer))
             val selectState = awaitItem()
@@ -168,11 +161,11 @@ class CalculatorViewModelTest {
             val oneExpectedResult = PoolFilter(
                 manufacturer = "",
                 model = "",
-                recommendedVitrocleanVfaLoad = 0,
-                recommendedSandLoad = 1,
-                recommendedPebble = 2,
+                recommendedVitrocleanVfaLoad = 4,
+                recommendedSandLoad = 5,
+                recommendedPebble = 0,
                 fiftyBagPebble = 0.0,
-                fiftyBagVitroclean = 12.0
+                fiftyBagVitroclean = 0.1
 
             )
             assertThat(oneDigitState.selectedFilter).isEqualTo(oneExpectedResult)
@@ -182,12 +175,11 @@ class CalculatorViewModelTest {
             val twoExpectedResult = PoolFilter(
                 manufacturer = "",
                 model = "",
-                recommendedVitrocleanVfaLoad = 5,
-                recommendedSandLoad = 10,
-                recommendedPebble = 20,
-                fiftyBagPebble = 5.0,
-                fiftyBagVitroclean = 125.0
-
+                recommendedVitrocleanVfaLoad = 40,
+                recommendedSandLoad = 50,
+                recommendedPebble = 0,
+                fiftyBagPebble = 0.0,
+                fiftyBagVitroclean = 0.8
             )
             assertThat(twoDigitState.selectedFilter).isEqualTo(twoExpectedResult)
             assertThat(twoDigitState.input).isEqualTo("50")
@@ -209,20 +201,15 @@ class CalculatorViewModelTest {
             viewModel.onEvent(CalculateUiEvent.ChangeMode("by_sand"))
             val modeState = awaitItem()
             assertThat(modeState.mode).isEqualTo(CalculatorMode.BY_SAND)
-            viewModel.onEvent(CalculateUiEvent.OnNumberChange("5222"))
+            viewModel.onEvent(CalculateUiEvent.OnNumberChange("300"))
             val oneDigitState = awaitItem()
-            val oneExpectedResult = PoolFilter(
-                manufacturer = "",
-                model = "",
-                recommendedVitrocleanVfaLoad = 52,
-                recommendedSandLoad = 104,
-                recommendedPebble = 208,
-                fiftyBagPebble = 52.0,
-                fiftyBagVitroclean = 1305.0
 
-            )
-            assertThat(oneDigitState.selectedFilter).isEqualTo(oneExpectedResult)
-            assertThat(oneDigitState.input).isEqualTo("522")
+            assertThat(240).isEqualTo(oneDigitState.selectedFilter?.recommendedVitrocleanVfaLoad) // (300 * .80)
+            assertThat(300).isEqualTo(oneDigitState.selectedFilter?.recommendedSandLoad)
+            assertThat(0, ).isEqualTo(oneDigitState.selectedFilter?.recommendedPebble)
+            assertThat(0.0).isEqualTo(oneDigitState.selectedFilter?.fiftyBagPebble)
+            assertThat(4.8).isEqualTo(oneDigitState.selectedFilter?.fiftyBagVitroclean)
+            assertThat(oneDigitState.input).isEqualTo("300")
         }
     }
     @Test
@@ -292,43 +279,37 @@ class CalculatorViewModelTest {
             viewModel.onEvent(CalculateUiEvent.ChangeMode("by_cubic_feet"))
             val modeState = awaitItem()
             assertThat(modeState.mode).isEqualTo(CalculatorMode.BY_CUBIC_FEET)
-            viewModel.onEvent(CalculateUiEvent.OnNumberChange("1"))
+            viewModel.onEvent(CalculateUiEvent.OnNumberChange("5"))
             val oneDigitState = awaitItem()
-            val oneExpectedResult = PoolFilter(
-                manufacturer = "",
-                model = "",
-                recommendedVitrocleanVfaLoad = 2,
-                recommendedSandLoad = 3,
-                recommendedPebble = 4,
-                fiftyBagPebble = 5.0,
-                fiftyBagVitroclean = 6.0
 
-            )
-            assertThat(oneDigitState.selectedFilter).isEqualTo(oneExpectedResult)
-            assertThat(oneDigitState.input).isEqualTo("1")
-            viewModel.onEvent(CalculateUiEvent.OnNumberChange("10"))
+            assertThat(oneDigitState.selectedFilter?.recommendedVitrocleanVfaLoad).isEqualTo(2) // (300 * .80)
+            assertThat(oneDigitState.selectedFilter?.recommendedSandLoad).isEqualTo(500)
+            assertThat(oneDigitState.selectedFilter?.recommendedPebble ).isEqualTo(1)
+            assertThat(oneDigitState.selectedFilter?.fiftyBagPebble).isEqualTo(0.1)
+            assertThat(oneDigitState.selectedFilter?.fiftyBagVitroclean).isEqualTo(0.0)
+            assertThat(oneDigitState.input).isEqualTo("5")
+            viewModel.onEvent(CalculateUiEvent.OnNumberChange("50"))
             val twoDigitState = awaitItem()
-            val twoExpectedResult = PoolFilter(
-                manufacturer = "",
-                model = "",
-                recommendedVitrocleanVfaLoad = 20,
-                recommendedSandLoad = 30,
-                recommendedPebble = 40,
-                fiftyBagPebble = 50.0,
-                fiftyBagVitroclean = 60.0
 
-            )
-            assertThat(twoDigitState.selectedFilter).isEqualTo(twoExpectedResult)
-            assertThat(twoDigitState.input).isEqualTo("10")
+            assertThat(twoDigitState.selectedFilter?.recommendedVitrocleanVfaLoad).isEqualTo(28) // (300 * .80)
+            assertThat(twoDigitState.selectedFilter?.recommendedSandLoad).isEqualTo(5000)
+            assertThat(twoDigitState.selectedFilter?.recommendedPebble ).isEqualTo(12)
+            assertThat(twoDigitState.selectedFilter?.fiftyBagPebble).isEqualTo(0.6)
+            assertThat(twoDigitState.selectedFilter?.fiftyBagVitroclean).isEqualTo(0.2)
+            assertThat(twoDigitState.input).isEqualTo("50")
 
-            viewModel.onEvent(CalculateUiEvent.OnNumberChange("1"))
+            viewModel.onEvent(CalculateUiEvent.OnNumberChange("5"))
             val returnOneDigitState = awaitItem()
-            assertThat(returnOneDigitState.selectedFilter).isEqualTo(oneExpectedResult)
-            assertThat(returnOneDigitState.input).isEqualTo("1")
+            assertThat(returnOneDigitState.selectedFilter?.recommendedVitrocleanVfaLoad).isEqualTo(2) // (300 * .80)
+            assertThat(returnOneDigitState.selectedFilter?.recommendedSandLoad).isEqualTo(500)
+            assertThat(returnOneDigitState.selectedFilter?.recommendedPebble ).isEqualTo(1)
+            assertThat(returnOneDigitState.selectedFilter?.fiftyBagPebble).isEqualTo(0.1)
+            assertThat(returnOneDigitState.selectedFilter?.fiftyBagVitroclean).isEqualTo(0.0)
+            assertThat(returnOneDigitState.input).isEqualTo("5")
         }
     }
     @Test
-    fun `OnNumberChange - Mode BY_CUBIC_FEET - Enter 4 char - except taker 3`() = runBlocking {
+    fun `OnNumberChange - Mode BY_CUBIC_FEET - Enter 8 char - except taker 7`() = runBlocking {
         viewModel.state.test {
             val initialState = awaitItem()
             assertThat(initialState).isEqualTo(CalculatorState())
@@ -338,20 +319,20 @@ class CalculatorViewModelTest {
             viewModel.onEvent(CalculateUiEvent.ChangeMode("by_cubic_feet"))
             val modeState = awaitItem()
             assertThat(modeState.mode).isEqualTo(CalculatorMode.BY_CUBIC_FEET)
-            viewModel.onEvent(CalculateUiEvent.OnNumberChange("1001"))
+            viewModel.onEvent(CalculateUiEvent.OnNumberChange("12345678"))
             val oneDigitState = awaitItem()
             val oneExpectedResult = PoolFilter(
                 manufacturer = "",
                 model = "",
-                recommendedVitrocleanVfaLoad = 200,
-                recommendedSandLoad = 300,
-                recommendedPebble = 400,
-                fiftyBagPebble = 500.0,
-                fiftyBagVitroclean = 600.0
+                recommendedVitrocleanVfaLoad = 691357,
+                recommendedSandLoad = 123456700,
+                recommendedPebble = 296296,
+                fiftyBagPebble = 13827.2,
+                fiftyBagVitroclean = 5925.9
 
             )
             assertThat(oneDigitState.selectedFilter).isEqualTo(oneExpectedResult)
-            assertThat(oneDigitState.input).isEqualTo("100")
+            assertThat(oneDigitState.input).isEqualTo("1234567")
         }
     }
     @Test

@@ -38,11 +38,12 @@ struct FAQsContainer: View {
             }
             
         }
+        
         .padding(18)
         .foregroundColor(isOpen ? Color.onPrimary : Color.primaryColor)
         .background(isOpen ? Color.primaryColor : Color.background)
-        .animation(.easeInOut, value: isOpen)
         .transition(.slide)
+        .animation(.easeInOut, value: isOpen)
         .cornerRadius(5)
         .shadow(radius: 5)
         .onTapGesture {

@@ -32,6 +32,7 @@ extension Color {
     static let primaryColor = Color(light: .trivitroBlue, dark: .trivitroBlueDark)
     static let background = Color(light: .white, dark: .regularGrey)
     static let onPrimary = Color(light: .white, dark: .white)
+    static let onSecondary = Color(light: .textBlack, dark: .textBlack)
     static let onBackground = Color(light: .textBlack, dark: .white)
     static let surface = Color(light: .lightGray, dark: .darkGrey)
     static let onSurface = Color(light: .textBlack, dark: .white)

@@ -13,8 +13,8 @@ struct GuideLinkBox: View {
 
     var body: some View {
         Button(action: onClick) {
-            VStack {
-                Image("photo_pool") // Replace with your image name
+            ZStack(alignment: .bottomLeading) {
+                Image("photo_pool")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(maxWidth: .infinity, maxHeight: 200)
@@ -23,9 +23,19 @@ struct GuideLinkBox: View {
                 HStack {
                     Text("Vitroclean Specifications and Installation")
                         .font(.title2)
-                        .foregroundColor(.onSurface)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .padding(.bottom)
+                
+                .padding(EdgeInsets(top: 0, leading: 12, bottom: 12, trailing: 12))
+                .frame(maxWidth: .infinity)
+                .background(
+                    LinearGradient(
+                        colors: [.black.opacity(0.0), .black.opacity(0.4)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
             }
         }
         .accessibilityIdentifier("link")

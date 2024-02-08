@@ -11,6 +11,7 @@ import SwiftUI
 
 struct HomeButton: View {
     let text: String
+    let image: String?
     let icon: String
     let onClick: () -> Void
     let contentDescription: String
@@ -18,10 +19,20 @@ struct HomeButton: View {
     var body: some View {
         ZStack {
             HStack {
-                Image(systemName: icon)
-                    .foregroundColor(color)
-                    .frame(width: 32, height: 32)
-                    .padding(.trailing, 18)
+                if (image != nil) {
+                    Image(image!)
+                        .resizable()
+                        .foregroundColor(color)
+                        .frame(width: 32, height: 32)
+                        .padding(.trailing, 18)
+                } else {
+                    Image(systemName: icon)
+                        .resizable()
+                        .foregroundColor(color)
+                        .frame(width: 32, height: 32)
+                        .padding(.trailing, 18)
+                }
+               
 
                 Text(text)
                     .foregroundColor(color)
@@ -41,11 +52,11 @@ struct HomeButton: View {
 struct HomeButton_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            HomeButton(text: "Caculate by filter", icon: "plus.forwardslash.minus", onClick: {}, contentDescription: "")
-            HomeButton(text: "Caculate by cubic feet", icon: "cube", onClick: {}, contentDescription: "")
-            HomeButton(text: "Caculate by sand needed", icon: "sand", onClick: {}, contentDescription: "")
-            HomeButton(text: "FAQs", icon: "questionmark.circle", onClick: {}, contentDescription: "")
-            HomeButton(text: "Contact Us", icon: "message", onClick: {}, contentDescription: "")
+            HomeButton(text: "Caculate by filter", image: nil,icon: "plus.forwardslash.minus", onClick: {}, contentDescription: "")
+            HomeButton(text: "Caculate by cubic feet", image: nil,icon: "cube", onClick: {}, contentDescription: "")
+            HomeButton(text: "Caculate by sand needed", image: nil,icon: "sand", onClick: {}, contentDescription: "")
+            HomeButton(text: "FAQs", image: nil,icon: "questionmark.circle", onClick: {}, contentDescription: "")
+            HomeButton(text: "Contact Us", image: nil,icon: "message", onClick: {}, contentDescription: "")
         }
         .padding(12)
         .background(Color.background)

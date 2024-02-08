@@ -26,8 +26,10 @@ struct LoadingScreen: View {
         
         VStack {
             Image("logo_vitroclean")
+        
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: 350)
             ZStack {
                 
             }.padding(32)
@@ -41,7 +43,10 @@ struct LoadingScreen: View {
                     }
             
         }
+        
         .padding(48)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.surface)
         .alert("Whoops...", isPresented: $showErrorAlert) {
             Button("Retry") {
                 onClick()

@@ -19,7 +19,7 @@ struct StatDisplay: View {
                 .padding()
             ZStack {
                 Text(subtext)
-                    .foregroundColor(.onPrimary)
+                    .foregroundColor(.onSecondary)
             }
             .frame(
                 minWidth: 0,
