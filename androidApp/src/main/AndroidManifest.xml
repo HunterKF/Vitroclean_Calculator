@@ -4,6 +4,8 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".TrivitroApp"
+        android:label="@string/app_label_vitroclean"
+        android:icon="@mipmap/ic_vitroclean_launcher"
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">

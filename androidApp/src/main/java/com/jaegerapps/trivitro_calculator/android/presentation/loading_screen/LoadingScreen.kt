@@ -64,9 +64,11 @@ fun LoadingScreen(
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
                         Box(
-                            modifier = Modifier.fillMaxWidth().clickable {
-                                onRetry()
-                            },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    onRetry()
+                                },
                             contentAlignment = Alignment.Center
                         ) {
                             Text("Retry")

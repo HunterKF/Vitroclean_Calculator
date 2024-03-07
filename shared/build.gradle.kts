@@ -7,7 +7,6 @@ buildscript {
     dependencies {
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.21")
         classpath("com.codingfeline.buildkonfig:buildkonfig-gradle-plugin:0.15.1")
-
     }
 }
 
