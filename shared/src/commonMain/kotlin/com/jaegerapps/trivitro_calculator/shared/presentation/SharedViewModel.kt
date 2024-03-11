@@ -51,7 +51,6 @@ class SharedViewModel(
     }
 
     private fun loadData() {
-        println("Load data is being called")
 
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
@@ -66,13 +65,10 @@ class SharedViewModel(
                     loaded = filters.isNotEmpty() && faqs.isNotEmpty() && state.value.error == null
                 )
             }
-            println("loadData is complete")
-            println("final state: ${state.value}")
         }
     }
 
     private suspend fun getFaqs(): List<Faq> {
-        println("getFaqs")
 
         when (val result = getFaqs.invoke()) {
             is Resource.Success -> {

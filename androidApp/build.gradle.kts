@@ -12,8 +12,9 @@ android {
     defaultConfig {
         applicationId = "com.jaegerapps.trivitro_calculator.android"
         minSdk = 24
-        versionCode = 1
-        versionName = "1.0"
+        targetSdk = 33
+        versionCode = 2
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "com.jaegerapps.trivitro_calculator.shared.TestHiltRunner"
     }
