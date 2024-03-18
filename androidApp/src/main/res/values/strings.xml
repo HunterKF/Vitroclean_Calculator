@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_label_vitroclean">VitroClean</string>
+    <string name="app_label_vitroclean">Vitroclean</string>
     <string name="choose_manufacturer">Choose manufacturer</string>
     <string name="choose_filter">Choose filter</string>
     <string name="spec_vitroclean_vfa_text">Vitroclean VFA</string>
@@ -19,7 +19,7 @@
     <string name="content_desc_cancel">Cancel</string>
     <string name="content_desc_accept">Accept</string>
     <string name="content_desc_vitroclean_logo">VitroClean Logo</string>
-    <string name="title_error">Whoops...</string>
+    <string name="title_error">Whoops…</string>
     <string name="error_message">An error occurred. Error: %1$s</string>
     <string name="content_desc_back_button">back button</string>
     <string name="retry">Retry</string>
