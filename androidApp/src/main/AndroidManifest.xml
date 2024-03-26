@@ -3,15 +3,14 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
-        android:name=".TrivitroApp"
-
+        android:name="com.jaegerapps.vitroclean.android.TrivitroApp"
         android:label="@string/app_label_vitroclean"
         android:icon="@mipmap/ic_vitroclean_launcher"
         android:allowBackup="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.jaegerapps.vitroclean.android.MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

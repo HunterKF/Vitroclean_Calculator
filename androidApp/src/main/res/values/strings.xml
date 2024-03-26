@@ -15,10 +15,10 @@
     <string name="faqs">FAQs</string>
     <string name="contact_us">"Contact Us "</string>
     <string name="title_navigate_out_of_app">Navigating out of app</string>
-    <string name="explanation_navigate_out_of_app">You are about to leave the app to go to to the Trivitro website. Do you want to proceed?</string>
+    <string name="explanation_navigate_out_of_app">You are about to leave the app to go to the TriVitro website. Do you want to proceed?</string>
     <string name="content_desc_cancel">Cancel</string>
     <string name="content_desc_accept">Accept</string>
-    <string name="content_desc_vitroclean_logo">VitroClean Logo</string>
+    <string name="content_desc_vitroclean_logo">Vitroclean Logo</string>
     <string name="title_error">Whoops…</string>
     <string name="error_message">An error occurred. Error: %1$s</string>
     <string name="content_desc_back_button">back button</string>

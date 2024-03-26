@@ -7,16 +7,16 @@ plugins {
 }
 
 android {
-    namespace = "com.jaegerapps.trivitro_calculator.android"
+    namespace = "com.jaegerapps.vitroclean.android"
     compileSdk = 34
     defaultConfig {
-        applicationId = "com.jaegerapps.trivitro_calculator.android"
+        applicationId = "com.jaegerapps.vitroclean.android"
         minSdk = 24
         targetSdk = 33
         versionCode = 2
         versionName = "1.0.1"
 
-        testInstrumentationRunner = "com.jaegerapps.trivitro_calculator.shared.TestHiltRunner"
+        testInstrumentationRunner = "com.jaegerapps.vitroclean.shared.TestHiltRunner"
     }
     buildFeatures {
         compose = true

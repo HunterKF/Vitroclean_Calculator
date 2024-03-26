@@ -110,7 +110,7 @@ dependencies {
 
 
 android {
-    namespace = "com.jaegerapps.trivitro_calculator"
+    namespace = "com.jaegerapps.vitroclean"
     compileSdk = 34
     defaultConfig {
         minSdk = 24
@@ -121,7 +121,7 @@ android {
 
 
 buildkonfig {
-    packageName = "com.jaegerapps.trivitro_calculator"
+    packageName = "com.jaegerapps.vitroclean"
 
     defaultConfigs {
         val localProperties = Properties()
