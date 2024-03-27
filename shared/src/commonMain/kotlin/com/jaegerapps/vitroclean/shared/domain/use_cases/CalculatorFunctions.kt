@@ -40,14 +40,15 @@ class CalculatorFunctions {
             return round(value * 10) / 10
         }
         fun createStatsByCubicFeet(value: Int): PoolFilter {
+            val sandValue = value * 100
             return PoolFilter(
                 manufacturer = "",
                 model = "",
                 recommendedVitrocleanVfaLoad = lowValueVFLoad(value).toInt(),
-                recommendedSandLoad = (value * 100),
-                recommendedPebble = lowValueVPLoad(value).toInt(),
-                fiftyBagPebble = roundToNearestTenth((lowValueVFLoad(value) / 50)),
-                fiftyBagVitroclean = roundToNearestTenth((lowValueVPLoad(value) / 50))
+                recommendedSandLoad = sandValue,
+                recommendedPebble = sandVPLoad(sandValue).toInt(),
+                fiftyBagPebble = roundToNearestTenth((sandVPLoad(sandValue) / 50)),
+                fiftyBagVitroclean = roundToNearestTenth((sandLoadVFLoad(sandValue) / 50))
             )
         }
         fun createStatsBySandNeeded(value: Int): PoolFilter {

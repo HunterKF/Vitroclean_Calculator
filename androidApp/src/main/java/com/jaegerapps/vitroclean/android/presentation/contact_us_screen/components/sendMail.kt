@@ -8,7 +8,7 @@ import com.jaegerapps.vitroclean.shared.presentation.contact_us.ContactUiEvent
 import com.jaegerapps.vitroclean.shared.presentation.contact_us.ContactError
 
 fun Context.sendMail(
-    trivitroEmail: String = "cdihunterfreas@gmail.com",
+    trivitroEmail: String = "sales@vitroclean.com",
     to: String,
     subject: String,
     content: String,
@@ -17,7 +17,7 @@ fun Context.sendMail(
     /*Creates an intent for sending an email. Not sure how to do the error handling tbh*/
     try {
         val intent = Intent(Intent.ACTION_SEND)
-        val subjectConstruct = "TriVitro Inquiry - $subject"
+        val subjectConstruct = "Vitroclean Inquiry - $subject"
         intent.type = "message/rfc822" // or "message/rfc822"
         intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(trivitroEmail))
         intent.putExtra(Intent.EXTRA_SUBJECT, subjectConstruct)
