@@ -29,10 +29,10 @@
     <string name="subtext_cubic_feet">cubic feet</string>
     <string name="subtext_sand_needed">sand needed</string>
     <string name="recommended_sand_load_lbs">Recommended Sand Load Lbs.</string>
-    <string name="recommended_vitroclean_vfa_load_lbs">Recommended Vitroclean (VFA) Load Lbs.</string>
-    <string name="recommended_vitroclean_pebble_vf8_load_lbs">Recommended Vitroclean Pebble (VF8) Load Lbs.</string>
-    <string name="recommended_50_lb_bags_of_vitroclean_vfa">50 lb. Bags of Vitroclean VFA</string>
-    <string name="recommended_50_lb_bags_of_pebble_vf8">50 lb. Bags of Pebble (VF8).</string>
+    <string name="recommended_vitroclean_vfa_load_lbs">Recommended Vitroclean (VF) Load Lbs.</string>
+    <string name="recommended_vitroclean_pebble_vf8_load_lbs">Recommended Vitroclean Pebble (VFP) Load Lbs.</string>
+    <string name="recommended_50_lb_bags_of_vitroclean_vfa">50 lb. Bags of Vitroclean VF</string>
+    <string name="recommended_50_lb_bags_of_pebble_vf8">50 lb. Bags of Pebble (VFP).</string>
     <string name="prompt_select_manufacturer_first">Select manufacturer first.</string>
     <string name="email_subject">Subject</string>
     <string name="email_content">Content</string>
