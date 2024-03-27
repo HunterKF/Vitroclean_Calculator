@@ -21,6 +21,12 @@ struct HomeScreen: View {
         NavigationView {
             ScrollView(.vertical){
                 VStack {
+                    Image("logo_vitroclean")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: UIScreen.main.bounds.width/1.8)
+                        .clipped()
+                    Spacer(minLength: 16)
                     NavigationLink {
                         CalculatorScreen(sharedState: sharedState, mode: "by_filter")
                     } label: {
