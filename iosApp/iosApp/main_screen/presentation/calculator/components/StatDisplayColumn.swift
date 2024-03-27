@@ -29,10 +29,10 @@ struct StatDisplayColumn: View {
                 }
                 
                 StatDisplay(text: "\(selectedFilter.recommendedSandLoad)", subtext: "Recommend Sand Load Lbs.")
-                StatDisplay(text: "\(selectedFilter.recommendedVitrocleanVfaLoad)", subtext: "Recommended Vitroclean (VFA) Load Lbs.")
-                StatDisplay(text: "\(selectedFilter.recommendedPebble)", subtext: "Recommended Vitroclean Pebble (VF8) Load Lbs.")
-                StatDisplay(text: "\(selectedFilter.fiftyBagVitroclean)", subtext: "50 lb. Bags of Vitroclean VFA")
-                StatDisplay(text: "\(selectedFilter.fiftyBagPebble)", subtext: "50 lb. Bags of Pebble (VF8).")
+                StatDisplay(text: "\(selectedFilter.recommendedVitrocleanVfaLoad)", subtext: "Recommended Vitroclean (VF) Load Lbs.")
+                StatDisplay(text: "\(selectedFilter.recommendedPebble)", subtext: "Recommended Vitroclean Pebble (VFP) Load Lbs.")
+                StatDisplay(text: "\(selectedFilter.fiftyBagVitroclean)", subtext: "50 lb. Bags of Vitroclean VF")
+                StatDisplay(text: "\(selectedFilter.fiftyBagPebble)", subtext: "50 lb. Bags of Pebble (VFP).")
                 Spacer(minLength: 12)
             }.padding(EdgeInsets(top: 0, leading: padding, bottom: 0, trailing: padding))
             
