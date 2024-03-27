@@ -13,14 +13,6 @@ class CalculatorFunctions {
                 (value * .80).toDouble()
             }
         }
-        private fun lowValueVPLoad(value: Int): Double {
-            return if (value >= 5) {
-                ((value * .80) * .3)
-            } else {
-                0.0
-            }
-        }
-
         private fun sandLoadVFLoad(value: Int): Double {
             return if (value >= 400) {
                 ((value * .80) * .7)
