@@ -10,7 +10,7 @@ class CalculatorFunctions {
             return if (value >= 5) {
                 (value * .80) * .7
             } else {
-                (value * .80).toDouble()
+                (value * .80)
             }
         }
         private fun sandLoadVFLoad(value: Int): Double {
@@ -36,7 +36,7 @@ class CalculatorFunctions {
             return PoolFilter(
                 manufacturer = "",
                 model = "",
-                recommendedVitrocleanVfaLoad = lowValueVFLoad(value).toInt(),
+                recommendedVitrocleanVfaLoad = lowValueVFLoad(sandValue).toInt(),
                 recommendedSandLoad = sandValue,
                 recommendedPebble = sandVPLoad(sandValue).toInt(),
                 fiftyBagPebble = roundToNearestTenth((sandVPLoad(sandValue) / 50)),
