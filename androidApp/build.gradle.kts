@@ -13,8 +13,8 @@ android {
         applicationId = "com.jaegerapps.vitroclean.android"
         minSdk = 24
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0.1"
+        versionCode = 3
+        versionName = "1.0.3"
 
         testInstrumentationRunner = "com.jaegerapps.vitroclean.shared.TestHiltRunner"
     }
