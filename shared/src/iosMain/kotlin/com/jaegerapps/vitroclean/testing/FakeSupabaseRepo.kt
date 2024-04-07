@@ -1,11 +1,11 @@
 package com.jaegerapps.vitroclean.testing
 
 import com.jaegerapps.vitroclean.core.domain.util.Resource
-import com.jaegerapps.vitroclean.shared.domain.TrivitroSupabaseRepo
+import com.jaegerapps.vitroclean.shared.domain.VitrocleanRepo
 import com.jaegerapps.vitroclean.shared.domain.models.Faq
 import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
 
-class FakeSupabaseRepo : TrivitroSupabaseRepo {
+class FakeSupabaseRepo : VitrocleanRepo {
 
     private val faqsExample = listOf(
         Faq(

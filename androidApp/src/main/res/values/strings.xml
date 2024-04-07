@@ -41,4 +41,6 @@
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="get_started">Get Started</string>
+    <string name="onboarding_message">Here for all your pool filter needs, Vitroclean strives to make your job easier. Search by your pool filter model or by the cubic feet or sand needed.</string>
+    <string name="onboarding_title">Welcome to Vitroclean</string>
 </resources>

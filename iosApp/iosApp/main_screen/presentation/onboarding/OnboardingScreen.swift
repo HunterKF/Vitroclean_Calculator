@@ -17,12 +17,12 @@ struct OnboardingScreen: View {
                 Image("onboarding_screen")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                Text("Welcome")
+                Text("Welcome to Vitroclean")
                     .font(.title)
                     .foregroundColor(.primaryColor)
                     .bold()
                     .font(.largeTitle)
-                Text("Welcome to Vitroclean's calculator, your seamless solution for precisely determining the right amount of glass filter media for your pool, tailored by filter model, sand requirements, or cubic feet.")
+                Text("Here for all your pool filter needs, Vitroclean strives to make your job easier. Search by your pool filter model or by the cubic feet or sand needed.")
                     .multilineTextAlignment(.center)
                 
             

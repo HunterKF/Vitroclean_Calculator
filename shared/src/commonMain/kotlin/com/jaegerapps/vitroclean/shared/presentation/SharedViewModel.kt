@@ -26,10 +26,12 @@ class SharedViewModel(
     val state = _state.toCommonStateFlow()
 
 
+
     fun onEvent(event: SharedUiEvent) {
         when (event) {
             SharedUiEvent.LoadData -> {
                 if (state.value.poolFilterList.isNotEmpty() && state.value.faqsList.isNotEmpty() && state.value.error == null) {
+                    println("Updating the state")
                     _state.update {
                         it.copy(
                             error = null,
@@ -52,23 +54,18 @@ class SharedViewModel(
             }
 
             SharedUiEvent.ToggleOnboarding -> {
-                coroutineScope?.launch {
-                    toggleOnboarding.invoke()
-                    _state.update {
-                        it.copy(
-                            showOnboarding = false
-                        )
-                    }
-
-                }
+                changeOnboarding()
             }
         }
     }
 
     private fun loadData() {
 
+        println("loadData has been called")
+        _state.update { it.copy(isLoading = true) }
+        println("State has been updated: ${_state.value}")
         viewModelScope.launch {
-            _state.update { it.copy(isLoading = true) }
+
             val filters = async { getFilters() }.await()
             val faqs = async { getFaqs() }.await()
             val showOnboarding = async { getOnboarding() }.await()
@@ -82,7 +79,6 @@ class SharedViewModel(
                     showOnboarding = showOnboarding
                 )
             }
-            println("State has been updated: ${state.value}")
         }
     }
 
@@ -98,7 +94,7 @@ class SharedViewModel(
             is Resource.Error -> {
                 _state.update {
                     it.copy(
-                        error = (result.throwable as? SupabaseException)?.error
+                        error = result.networkError
                     )
                 }
                 return emptyList()
@@ -120,7 +116,7 @@ class SharedViewModel(
             is Resource.Error -> {
                 _state.update {
                     it.copy(
-                        error = (result.throwable as? SupabaseException)?.error
+                        error = result.networkError
                     )
                 }
                 return emptyList()
@@ -130,16 +126,29 @@ class SharedViewModel(
     }
 
     private suspend fun getOnboarding(): Boolean {
-        when (val result = getOnboarding.invoke()) {
+        return when (val result = getOnboarding.invoke()) {
             is Resource.Error -> {
-                _state.update { it.copy(showOnboarding = true) }
+                true
             }
-            is Resource.Success -> {
-                return result.data ?: true
 
+            is Resource.Success -> {
+                result.data ?: true
             }
         }
-        return false
+    }
+    private fun changeOnboarding() {
+        viewModelScope.launch {
+            toggleOnboarding()
+            _state.update {
+                it.copy(
+                    showOnboarding = false
+                )
+            }
+        }
+    }
+
+    private suspend fun toggleOnboarding() {
+        toggleOnboarding.invoke()
     }
 }
 

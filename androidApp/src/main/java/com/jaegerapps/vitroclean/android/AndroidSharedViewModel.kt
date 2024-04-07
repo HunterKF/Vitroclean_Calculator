@@ -1,6 +1,7 @@
 package com.jaegerapps.vitroclean.android
 
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jaegerapps.vitroclean.shared.domain.use_cases.GetFaqs
@@ -18,8 +19,8 @@ class AndroidSharedViewModel @Inject constructor(
     private val getFilters: GetFilters,
     private val getFaqs: GetFaqs,
     private val getOnboarding: GetOnboarding,
-    private val toggleOnboarding: ToggleOnboarding
-) : ViewModel(), LifecycleObserver {
+    private val toggleOnboarding: ToggleOnboarding,
+) : ViewModel() {
     private val viewModel by lazy {
         SharedViewModel(
             getFilters = getFilters,
@@ -30,11 +31,11 @@ class AndroidSharedViewModel @Inject constructor(
         )
     }
 
+
     val state = viewModel.state
 
     fun onEvent(event: SharedUiEvent) {
         viewModel.onEvent(event)
     }
-
 
 }

@@ -5,7 +5,7 @@ import assertk.assertions.isEqualTo
 import com.jaegerapps.vitroclean.core.domain.util.Resource
 import com.jaegerapps.vitroclean.shared.domain.NetworkError
 import com.jaegerapps.vitroclean.shared.domain.SupabaseException
-import com.jaegerapps.vitroclean.shared.domain.TrivitroSupabaseRepo
+import com.jaegerapps.vitroclean.shared.domain.VitrocleanRepo
 import com.jaegerapps.vitroclean.shared.domain.use_cases.GetFaqs
 import com.jagerapps.vitroclean.shared.faqsExample
 import io.mockative.Mock
@@ -19,7 +19,7 @@ import kotlin.test.Test
 class GetFaqsTest {
 
     @Mock
-    val repo = mock(classOf<TrivitroSupabaseRepo>())
+    val repo = mock(classOf<VitrocleanRepo>())
 
     private lateinit var getFaqs: GetFaqs
 
@@ -36,30 +36,30 @@ class GetFaqsTest {
     }
     @Test
     fun `GetFaqs - Return error SERVER_ERROR`() = runBlocking {
-        coEvery { repo.getFaqs() }.returns(Resource.Error(throwable = SupabaseException(error = NetworkError.SERVER_ERROR)))
+        coEvery { repo.getFaqs() }.returns(Resource.Error(networkError = NetworkError.SERVER_ERROR))
         val result = getFaqs.invoke()
 
-        assertThat((result.throwable as? SupabaseException)?.error).isEqualTo(NetworkError.SERVER_ERROR)
+        assertThat(result.networkError).isEqualTo(NetworkError.SERVER_ERROR)
     }
     @Test
     fun `GetFaqs - Return error CLIENT_ERROR`() = runBlocking {
-        coEvery { repo.getFaqs() }.returns(Resource.Error(throwable = SupabaseException(error = NetworkError.CLIENT_ERROR)))
+        coEvery { repo.getFaqs() }.returns(Resource.Error(networkError = NetworkError.CLIENT_ERROR))
         val result = getFaqs.invoke()
 
-        assertThat((result.throwable as? SupabaseException)?.error).isEqualTo(NetworkError.CLIENT_ERROR)
+        assertThat(result.networkError).isEqualTo(NetworkError.CLIENT_ERROR)
     }
     @Test
     fun `GetFaqs - Return error SERVICE_UNAVAILABLE`() = runBlocking {
-        coEvery { repo.getFaqs() }.returns(Resource.Error(throwable = SupabaseException(error = NetworkError.SERVICE_UNAVAILABLE)))
+        coEvery { repo.getFaqs() }.returns(Resource.Error(networkError = NetworkError.SERVICE_UNAVAILABLE))
         val result = getFaqs.invoke()
 
-        assertThat((result.throwable as? SupabaseException)?.error).isEqualTo(NetworkError.SERVICE_UNAVAILABLE)
+        assertThat(result.networkError).isEqualTo(NetworkError.SERVICE_UNAVAILABLE)
     }
     @Test
     fun `GetFaqs - Return error UNKNOWN_ERROR`() = runBlocking {
-        coEvery { repo.getFaqs() }.returns(Resource.Error(throwable = SupabaseException(error = NetworkError.UNKNOWN_ERROR)))
+        coEvery { repo.getFaqs() }.returns(Resource.Error(networkError =NetworkError.UNKNOWN_ERROR))
         val result = getFaqs.invoke()
 
-        assertThat((result.throwable as? SupabaseException)?.error).isEqualTo(NetworkError.UNKNOWN_ERROR)
+        assertThat(result.networkError).isEqualTo(NetworkError.UNKNOWN_ERROR)
     }
 }

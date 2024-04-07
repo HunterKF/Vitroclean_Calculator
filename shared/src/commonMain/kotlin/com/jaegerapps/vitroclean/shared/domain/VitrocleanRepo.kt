@@ -4,7 +4,7 @@ import com.jaegerapps.vitroclean.core.domain.util.Resource
 import com.jaegerapps.vitroclean.shared.domain.models.Faq
 import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
 
-interface TrivitroSupabaseRepo {
+interface VitrocleanRepo {
     suspend fun getFilters(): Resource<List<PoolFilter>>
     suspend fun getFaqs(): Resource<List<Faq>>
     suspend fun getOnBoarding(): Resource<Boolean>

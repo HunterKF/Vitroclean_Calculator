@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jaegerapps.vitroclean.android.TrivitroTheme
@@ -38,7 +39,9 @@ fun EmptyPrompt(
         )
         Text(
             text = text,
-            style = MaterialTheme.typography.h1,
+            style = MaterialTheme.typography.h1.copy(
+                textAlign = TextAlign.Center
+            ),
             color = MaterialTheme.colors.onSurface
         )
     }

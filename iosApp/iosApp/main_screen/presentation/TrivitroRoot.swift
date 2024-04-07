@@ -17,11 +17,15 @@ struct TrivitroRoot: View {
     init(appModule: AppModule) {
         self.appModule = appModule
         self.sharedVM = IosSharedViewModel(getFilters: appModule.getFilters, getFaqs: appModule.getFaqs, getOnboarding: appModule.getOnboarding, toggleOnboarding: appModule.toggleOnboarding)
+        
     }
     
     var body: some View {
-        if sharedVM.state.isLoading || !sharedVM.state.loaded && sharedVM.state.showOnboarding {
+        if sharedVM.state.showOnboarding {
+            
+            let _ = print("here is the current state: \(sharedVM.state)!")
             OnboardingScreen(onClick: {
+                print("Toggling has happened!")
                 sharedVM.onEvent(event: SharedUiEvent.ToggleOnboarding())
             })
         } else if  sharedVM.state.isLoading && !sharedVM.state.loaded && !sharedVM.state.showOnboarding {
@@ -29,7 +33,7 @@ struct TrivitroRoot: View {
                 sharedVM.onEvent(event: SharedUiEvent.LoadData())
                 sharedVM.startObserving()
             }
-        } else if !sharedVM.state.isLoading && sharedVM.state.loaded && !sharedVM.state.showOnboarding{
+        } else {
             HomeScreen(sharedState: sharedVM.state)
         }
             
@@ -37,4 +41,3 @@ struct TrivitroRoot: View {
     }
     
 }
-

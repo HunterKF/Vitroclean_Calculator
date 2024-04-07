@@ -17,7 +17,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.jaegerapps.vitroclean.android.MainActivity
 import com.jaegerapps.vitroclean.android.R
 import com.jaegerapps.vitroclean.android.di.AppModule
-import com.jaegerapps.vitroclean.shared.domain.TrivitroSupabaseRepo
+import com.jaegerapps.vitroclean.shared.domain.VitrocleanRepo
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
@@ -38,7 +38,7 @@ class E2ETests {
     val hiltRule = HiltAndroidRule(this)
 
     @Inject
-    lateinit var fakeRepo: TrivitroSupabaseRepo
+    lateinit var fakeRepo: VitrocleanRepo
     @Before
     fun setup() {
         hiltRule.inject()

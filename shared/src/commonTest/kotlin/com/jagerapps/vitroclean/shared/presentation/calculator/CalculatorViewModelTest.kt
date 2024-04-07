@@ -280,29 +280,30 @@ class CalculatorViewModelTest {
             viewModel.onEvent(CalculateUiEvent.OnNumberChange("5"))
             val oneDigitState = awaitItem()
 
-            assertThat(oneDigitState.selectedFilter?.recommendedVitrocleanVfaLoad).isEqualTo(2) // (300 * .80)
+            assertThat(oneDigitState.selectedFilter?.recommendedVitrocleanVfaLoad).isEqualTo(280)
             assertThat(oneDigitState.selectedFilter?.recommendedSandLoad).isEqualTo(500)
-            assertThat(oneDigitState.selectedFilter?.recommendedPebble ).isEqualTo(1)
-            assertThat(oneDigitState.selectedFilter?.fiftyBagPebble).isEqualTo(0.1)
-            assertThat(oneDigitState.selectedFilter?.fiftyBagVitroclean).isEqualTo(0.0)
+            assertThat(oneDigitState.selectedFilter?.recommendedPebble ).isEqualTo(120)
+            assertThat(oneDigitState.selectedFilter?.fiftyBagPebble).isEqualTo(2.4)
+            assertThat(oneDigitState.selectedFilter?.fiftyBagVitroclean).isEqualTo(5.6)
             assertThat(oneDigitState.input).isEqualTo("5")
             viewModel.onEvent(CalculateUiEvent.OnNumberChange("50"))
             val twoDigitState = awaitItem()
-
-            assertThat(twoDigitState.selectedFilter?.recommendedVitrocleanVfaLoad).isEqualTo(28) // (300 * .80)
-            assertThat(twoDigitState.selectedFilter?.recommendedSandLoad).isEqualTo(5000)
-            assertThat(twoDigitState.selectedFilter?.recommendedPebble ).isEqualTo(12)
-            assertThat(twoDigitState.selectedFilter?.fiftyBagPebble).isEqualTo(0.6)
-            assertThat(twoDigitState.selectedFilter?.fiftyBagVitroclean).isEqualTo(0.2)
             assertThat(twoDigitState.input).isEqualTo("50")
+
+            assertThat(twoDigitState.selectedFilter?.recommendedVitrocleanVfaLoad).isEqualTo(2800)
+            assertThat(twoDigitState.selectedFilter?.recommendedSandLoad).isEqualTo(5000)
+            assertThat(twoDigitState.selectedFilter?.recommendedPebble ).isEqualTo(1200)
+            assertThat(twoDigitState.selectedFilter?.fiftyBagPebble).isEqualTo(24.0)
+            assertThat(twoDigitState.selectedFilter?.fiftyBagVitroclean).isEqualTo(56.0)
 
             viewModel.onEvent(CalculateUiEvent.OnNumberChange("5"))
             val returnOneDigitState = awaitItem()
-            assertThat(returnOneDigitState.selectedFilter?.recommendedVitrocleanVfaLoad).isEqualTo(2) // (300 * .80)
+
+            assertThat(returnOneDigitState.selectedFilter?.recommendedVitrocleanVfaLoad).isEqualTo(280)
             assertThat(returnOneDigitState.selectedFilter?.recommendedSandLoad).isEqualTo(500)
-            assertThat(returnOneDigitState.selectedFilter?.recommendedPebble ).isEqualTo(1)
-            assertThat(returnOneDigitState.selectedFilter?.fiftyBagPebble).isEqualTo(0.1)
-            assertThat(returnOneDigitState.selectedFilter?.fiftyBagVitroclean).isEqualTo(0.0)
+            assertThat(returnOneDigitState.selectedFilter?.recommendedPebble ).isEqualTo(120)
+            assertThat(returnOneDigitState.selectedFilter?.fiftyBagPebble).isEqualTo(2.4)
+            assertThat(returnOneDigitState.selectedFilter?.fiftyBagVitroclean).isEqualTo(5.6)
             assertThat(returnOneDigitState.input).isEqualTo("5")
         }
     }
@@ -317,20 +318,20 @@ class CalculatorViewModelTest {
             viewModel.onEvent(CalculateUiEvent.ChangeMode("by_cubic_feet"))
             val modeState = awaitItem()
             assertThat(modeState.mode).isEqualTo(CalculatorMode.BY_CUBIC_FEET)
-            viewModel.onEvent(CalculateUiEvent.OnNumberChange("12345678"))
+            viewModel.onEvent(CalculateUiEvent.OnNumberChange("10000000"))
             val oneDigitState = awaitItem()
             val oneExpectedResult = PoolFilter(
                 manufacturer = "",
                 model = "",
-                recommendedVitrocleanVfaLoad = 691357,
-                recommendedSandLoad = 123456700,
-                recommendedPebble = 296296,
-                fiftyBagPebble = 13827.2,
-                fiftyBagVitroclean = 5925.9
+                recommendedVitrocleanVfaLoad = 56000000,
+                recommendedSandLoad = 100000000,
+                recommendedPebble = 24000000,
+                fiftyBagPebble = 480000.0,
+                fiftyBagVitroclean = 1120000.0
 
             )
             assertThat(oneDigitState.selectedFilter).isEqualTo(oneExpectedResult)
-            assertThat(oneDigitState.input).isEqualTo("1234567")
+            assertThat(oneDigitState.input).isEqualTo("1000000")
         }
     }
     @Test
