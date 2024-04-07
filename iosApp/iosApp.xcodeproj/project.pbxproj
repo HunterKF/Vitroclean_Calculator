@@ -12,6 +12,7 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		9C0FA747DC8A0DDFBC218CBB /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457061C6BBFCAE6BEE3D3455 /* Pods_iosApp.framework */; };
+		DF0250E42BBCFCA9008BD213 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0250E32BBCFCA9008BD213 /* OnboardingScreen.swift */; };
 		DF0A39F42B2A9BBE009AD36F /* FAQsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0A39F32B2A9BBE009AD36F /* FAQsScreen.swift */; };
 		DF0A39F72B2A9BD1009AD36F /* FAQsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0A39F62B2A9BD1009AD36F /* FAQsContainer.swift */; };
 		DF57A03B2B3BA7D000D5ED66 /* textEditorBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF57A03A2B3BA7D000D5ED66 /* textEditorBackground.swift */; };
@@ -64,6 +65,7 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EEEE195597BD71CBD0CAFE3 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		CF3490E4D6046114D1A058D6 /* Pods-iosApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.debug.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.debug.xcconfig"; sourceTree = "<group>"; };
+		DF0250E32BBCFCA9008BD213 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		DF0A39F32B2A9BBE009AD36F /* FAQsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQsScreen.swift; sourceTree = "<group>"; };
 		DF0A39F62B2A9BD1009AD36F /* FAQsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQsContainer.swift; sourceTree = "<group>"; };
 		DF57A03A2B3BA7D000D5ED66 /* textEditorBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textEditorBackground.swift; sourceTree = "<group>"; };
@@ -167,6 +169,14 @@
 			path = iosApp;
 			sourceTree = "<group>";
 		};
+		DF0250E22BBCFC98008BD213 /* onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DF0250E32BBCFCA9008BD213 /* OnboardingScreen.swift */,
+			);
+			path = onboarding;
+			sourceTree = "<group>";
+		};
 		DF0A39F22B2A9BAB009AD36F /* FAQs */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +214,7 @@
 		DF5A5CAB2ADF7845004302B1 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				DF0250E22BBCFC98008BD213 /* onboarding */,
 				DF914FF92B316D5D00D2AF97 /* contact */,
 				DF0A39F22B2A9BAB009AD36F /* FAQs */,
 				DFEC3FB32B26C95200469136 /* calculator */,
@@ -502,6 +513,7 @@
 				DF57A03B2B3BA7D000D5ED66 /* textEditorBackground.swift in Sources */,
 				DF0A39F42B2A9BBE009AD36F /* FAQsScreen.swift in Sources */,
 				DFB90C782AFF390400C4461E /* GuideLinkBox.swift in Sources */,
+				DF0250E42BBCFCA9008BD213 /* OnboardingScreen.swift in Sources */,
 				DF57A04C2B3C1CDC00D5ED66 /* ToastView.swift in Sources */,
 				DFB90C642AF85AA700C4461E /* SharedVM.swift in Sources */,
 				DFB90C712AF9F99D00C4461E /* HomeScreen.swift in Sources */,

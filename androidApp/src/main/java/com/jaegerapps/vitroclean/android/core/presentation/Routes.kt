@@ -2,6 +2,7 @@ package com.jaegerapps.vitroclean.android.core.presentation
 
 object Routes {
     const val HOME = "home"
+    const val ONBOARDING = "onboarding"
     const val LOADING = "loading"
     const val CALCULATOR = "calculator"
     const val FILTER = "by_filter"

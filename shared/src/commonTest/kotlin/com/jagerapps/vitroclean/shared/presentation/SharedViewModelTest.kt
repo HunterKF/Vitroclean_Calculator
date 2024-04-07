@@ -13,6 +13,7 @@ import com.jaegerapps.vitroclean.shared.domain.SupabaseException
 import com.jaegerapps.vitroclean.shared.domain.TrivitroSupabaseRepo
 import com.jaegerapps.vitroclean.shared.domain.use_cases.GetFaqs
 import com.jaegerapps.vitroclean.shared.domain.use_cases.GetFilters
+import com.jaegerapps.vitroclean.shared.domain.use_cases.GetOnboarding
 import com.jaegerapps.vitroclean.shared.presentation.SharedUiEvent
 import com.jaegerapps.vitroclean.shared.presentation.SharedUiState
 import com.jaegerapps.vitroclean.shared.presentation.SharedViewModel
@@ -35,6 +36,7 @@ class SharedViewModelTest {
     private lateinit var viewModel: SharedViewModel
     private lateinit var getFaqs: GetFaqs
     private lateinit var getFilters: GetFilters
+    private lateinit var getOnboarding: GetOnboarding
 
     @Mock
     val repo = mock(classOf<TrivitroSupabaseRepo>())
@@ -43,7 +45,8 @@ class SharedViewModelTest {
     fun setup() {
         getFilters = GetFilters(repo)
         getFaqs = GetFaqs(repo)
-        viewModel = SharedViewModel(getFilters, getFaqs, CoroutineScope(Dispatchers.Default))
+        getOnboarding = GetOnboarding(repo)
+        viewModel = SharedViewModel(getFilters, getFaqs,getOnboarding, CoroutineScope(Dispatchers.Default))
     }
 
 

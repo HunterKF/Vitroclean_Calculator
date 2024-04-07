@@ -48,4 +48,13 @@ class FakeSupabaseRepo : TrivitroSupabaseRepo {
 
     }
 
+    override suspend fun getOnBoarding(): Resource<Boolean> {
+        println("Onboarding now false")
+        return Resource.Success(false)
+    }
+
+    override suspend fun toggleOnboarding() {
+        println("Onboarding now false")
+    }
+
 }

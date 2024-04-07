@@ -7,4 +7,6 @@ import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
 interface TrivitroSupabaseRepo {
     suspend fun getFilters(): Resource<List<PoolFilter>>
     suspend fun getFaqs(): Resource<List<Faq>>
+    suspend fun getOnBoarding(): Resource<Boolean>
+    suspend fun toggleOnboarding()
 }

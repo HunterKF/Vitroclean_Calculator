@@ -76,5 +76,9 @@ object Deps {
 
     //KSP - This is used for Mockative, though it might not be needed...
     const val kspVersion = "1.9.21-1.0.15"
+    //Multiplatform Settings
+    private const val settingsVersion ="1.1.1"
+    const val settingsNoArgs = "com.russhwolf:multiplatform-settings-no-arg:settingsVersion"
+    const val settings = "com.russhwolf:multiplatform-settings:settingsVersion"
 
 }

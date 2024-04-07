@@ -9,5 +9,6 @@ data class SharedUiState(
     val faqsList: List<Faq> = emptyList(),
     val isLoading: Boolean = true,
     val loaded: Boolean = false,
+    val showOnboarding: Boolean = false,
     val error: NetworkError? = null
 )

@@ -11,6 +11,7 @@ import com.jaegerapps.vitroclean.shared.domain.NetworkError
 import com.jaegerapps.vitroclean.shared.domain.SupabaseException
 import com.jaegerapps.vitroclean.shared.domain.models.Faq
 import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
+import com.russhwolf.settings.Settings
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -23,7 +24,10 @@ import io.ktor.utils.io.errors.IOException
 
 class SupabaseKtroRepoImpl(
     private val httpClient: HttpClient,
+
 ) : TrivitroSupabaseRepo {
+    private val settings = Settings()
+
     override suspend fun getFilters(): Resource<List<PoolFilter>> {
         val result = try {
             httpClient.get() {
@@ -82,6 +86,15 @@ class SupabaseKtroRepoImpl(
         } catch (e: Exception) {
             return Resource.Error(SupabaseException(NetworkError.SERVER_ERROR))
         }
+    }
+
+    override suspend fun getOnBoarding(): Resource<Boolean> {
+        val showOnboarding = settings.getBoolean("show_onboarding", true)
+        return Resource.Success(showOnboarding)
+    }
+
+    override suspend fun toggleOnboarding() {
+       settings.putBoolean("show_onboarding", false)
     }
 
 }

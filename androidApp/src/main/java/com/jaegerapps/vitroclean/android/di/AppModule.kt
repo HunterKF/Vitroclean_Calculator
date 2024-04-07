@@ -5,6 +5,8 @@ import com.jaegerapps.vitroclean.shared.data.remote.HttpClientFactory
 import com.jaegerapps.vitroclean.shared.domain.use_cases.GetFaqs
 import com.jaegerapps.vitroclean.shared.domain.TrivitroSupabaseRepo
 import com.jaegerapps.vitroclean.shared.domain.use_cases.GetFilters
+import com.jaegerapps.vitroclean.shared.domain.use_cases.GetOnboarding
+import com.jaegerapps.vitroclean.shared.domain.use_cases.ToggleOnboarding
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,5 +43,15 @@ object AppModule {
     @Singleton
     fun provideGetFaqs(repo: TrivitroSupabaseRepo): GetFaqs {
         return GetFaqs(repo)
+    }
+    @Provides
+    @Singleton
+    fun provideGetOnboarding(repo: TrivitroSupabaseRepo): GetOnboarding {
+        return GetOnboarding(repo)
+    }
+    @Provides
+    @Singleton
+    fun provideToggleOnboarding(repo: TrivitroSupabaseRepo): ToggleOnboarding {
+        return ToggleOnboarding(repo)
     }
 }

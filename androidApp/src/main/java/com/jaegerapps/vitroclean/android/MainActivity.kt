@@ -25,6 +25,7 @@ import com.jaegerapps.vitroclean.android.presentation.faqs_screen.FaqsScreen
 import com.jaegerapps.vitroclean.android.presentation.home_screen.HomeScreen
 import com.jaegerapps.vitroclean.android.presentation.home_screen.AndroidHomeScreenViewModel
 import com.jaegerapps.vitroclean.android.presentation.loading_screen.LoadingScreen
+import com.jaegerapps.vitroclean.android.presentation.onboarding_screen.OnboardingScreen
 import com.jaegerapps.vitroclean.shared.presentation.calculator.CalculateUiEvent
 import com.jaegerapps.vitroclean.shared.presentation.home.HomeUiEvent
 import com.jaegerapps.vitroclean.shared.presentation.SharedUiEvent
@@ -60,7 +61,11 @@ fun TrivitroRoot() {
                 sharedViewModel.onEvent(SharedUiEvent.LoadData)
             }
             LaunchedEffect(key1 = sharedState.loaded) {
-                if (sharedState.loaded && sharedState.error == null) {
+                if (sharedState.loaded && sharedState.error == null && sharedState.showOnboarding) {
+                    navController.navigate(Routes.ONBOARDING) {
+                        navController.popBackStack()
+                    }
+                } else if (sharedState.loaded && sharedState.error == null) {
                     navController.navigate(Routes.HOME) {
                         navController.popBackStack()
                     }
@@ -74,6 +79,14 @@ fun TrivitroRoot() {
                 onRetry = {
                     sharedViewModel.onEvent(SharedUiEvent.OnRetry)
                 })
+        }
+        composable(Routes.ONBOARDING) {
+            OnboardingScreen {
+                sharedViewModel.onEvent(event = SharedUiEvent.ToggleOnboarding)
+                navController.navigate(Routes.HOME) {
+                    navController.popBackStack()
+                }
+            }
         }
         composable(Routes.HOME) {
             val homeState by androidHomeScreenViewModel.state.collectAsState()

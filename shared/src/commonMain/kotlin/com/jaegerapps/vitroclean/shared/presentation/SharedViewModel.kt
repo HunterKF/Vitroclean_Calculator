@@ -7,6 +7,8 @@ import com.jaegerapps.vitroclean.shared.domain.use_cases.GetFilters
 import com.jaegerapps.vitroclean.shared.domain.SupabaseException
 import com.jaegerapps.vitroclean.shared.domain.models.Faq
 import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
+import com.jaegerapps.vitroclean.shared.domain.use_cases.GetOnboarding
+import com.jaegerapps.vitroclean.shared.domain.use_cases.ToggleOnboarding
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
@@ -14,6 +16,8 @@ import kotlinx.coroutines.flow.update
 class SharedViewModel(
     private val getFilters: GetFilters,
     private val getFaqs: GetFaqs,
+    private val getOnboarding: GetOnboarding,
+    private val toggleOnboarding: ToggleOnboarding,
     private val coroutineScope: CoroutineScope?,
 ) {
     private val viewModelScope = coroutineScope ?: CoroutineScope(Dispatchers.Main)
@@ -46,6 +50,18 @@ class SharedViewModel(
                 }
                 loadData()
             }
+
+            SharedUiEvent.ToggleOnboarding -> {
+                coroutineScope?.launch {
+                    toggleOnboarding.invoke()
+                    _state.update {
+                        it.copy(
+                            showOnboarding = false
+                        )
+                    }
+
+                }
+            }
         }
     }
 
@@ -55,15 +71,18 @@ class SharedViewModel(
             _state.update { it.copy(isLoading = true) }
             val filters = async { getFilters() }.await()
             val faqs = async { getFaqs() }.await()
+            val showOnboarding = async { getOnboarding() }.await()
             // Update the state after successful loading
             _state.update {
                 it.copy(
                     isLoading = false,
                     faqsList = faqs,
                     poolFilterList = filters,
-                    loaded = filters.isNotEmpty() && faqs.isNotEmpty() && state.value.error == null
+                    loaded = filters.isNotEmpty() && faqs.isNotEmpty() && state.value.error == null,
+                    showOnboarding = showOnboarding
                 )
             }
+            println("State has been updated: ${state.value}")
         }
     }
 
@@ -110,5 +129,17 @@ class SharedViewModel(
         return emptyList()
     }
 
+    private suspend fun getOnboarding(): Boolean {
+        when (val result = getOnboarding.invoke()) {
+            is Resource.Error -> {
+                _state.update { it.copy(showOnboarding = true) }
+            }
+            is Resource.Success -> {
+                return result.data ?: true
+
+            }
+        }
+        return false
+    }
 }
 

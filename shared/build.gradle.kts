@@ -53,6 +53,8 @@ kotlin {
                 implementation(Deps.ktorSerializationJson)
                 implementation(Deps.kotlinDateTime)
                 implementation(Deps.supabasePostgrest)
+                implementation(Deps.settings)
+                implementation(Deps.settingsNoArgs)
 
             }
 
