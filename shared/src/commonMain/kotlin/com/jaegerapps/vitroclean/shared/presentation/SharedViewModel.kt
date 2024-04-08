@@ -4,7 +4,6 @@ import com.jaegerapps.vitroclean.core.domain.util.Resource
 import com.jaegerapps.vitroclean.core.domain.util.toCommonStateFlow
 import com.jaegerapps.vitroclean.shared.domain.use_cases.GetFaqs
 import com.jaegerapps.vitroclean.shared.domain.use_cases.GetFilters
-import com.jaegerapps.vitroclean.shared.domain.SupabaseException
 import com.jaegerapps.vitroclean.shared.domain.models.Faq
 import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
 import com.jaegerapps.vitroclean.shared.domain.use_cases.GetOnboarding
@@ -13,6 +12,8 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
+/*The SharedViewModel is responsible for managing 1) list of filters (dbP 2) list of faqs (db) 3) showOnboarding boolean
+* This is how we share data between the different screens. Seems the easiest way.*/
 class SharedViewModel(
     private val getFilters: GetFilters,
     private val getFaqs: GetFaqs,
@@ -29,12 +30,15 @@ class SharedViewModel(
 
     fun onEvent(event: SharedUiEvent) {
         when (event) {
+            //LaunchedEffect triggers this, will check if the data is already loaded or not
+            //If not, loads data
             SharedUiEvent.LoadData -> {
                 if (state.value.poolFilterList.isNotEmpty() && state.value.faqsList.isNotEmpty() && state.value.error == null) {
                     println("Updating the state")
                     _state.update {
                         it.copy(
                             error = null,
+
                             isLoading = true
                         )
                     }
@@ -44,6 +48,7 @@ class SharedViewModel(
             }
 
             is SharedUiEvent.OnRetry -> {
+                //If an error appears, the user can retry loading the data.
                 _state.update {
                     it.copy(
                         error = null,
@@ -54,6 +59,7 @@ class SharedViewModel(
             }
 
             SharedUiEvent.ToggleOnboarding -> {
+                //Changes showOnboarding to false
                 changeOnboarding()
             }
         }
@@ -65,6 +71,7 @@ class SharedViewModel(
         _state.update { it.copy(isLoading = true) }
         println("State has been updated: ${_state.value}")
         viewModelScope.launch {
+
 
             val filters = async { getFilters() }.await()
             val faqs = async { getFaqs() }.await()
@@ -98,7 +105,6 @@ class SharedViewModel(
                     )
                 }
                 return emptyList()
-
             }
         }
         return emptyList()

@@ -1,6 +1,8 @@
 package com.jaegerapps.vitroclean.android.core.presentation
 
 object Routes {
+    //navigation routes
+    //I use this because it is easier to keep track of spelling and to find where you are navigating
     const val HOME = "home"
     const val ONBOARDING = "onboarding"
     const val LOADING = "loading"

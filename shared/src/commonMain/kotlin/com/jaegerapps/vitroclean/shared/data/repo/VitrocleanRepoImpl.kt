@@ -13,7 +13,6 @@ import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
 class VitrocleanRepoImpl(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource
-
     ) : VitrocleanRepo {
 
     override suspend fun getFilters(): Resource<List<PoolFilter>> {

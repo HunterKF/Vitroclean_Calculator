@@ -19,6 +19,9 @@ import com.jaegerapps.vitroclean.android.TrivitroTheme
 import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
 import com.jaegerapps.vitroclean.android.R
 
+/*This is the container for the calculator.
+* It is just a blue background that takes in different calculator content
+* Ex. we pass in the number display or the manufacturer/model drop downs*/
 @Composable
 fun TopBarCalc(
     modifier: Modifier = Modifier,
@@ -32,6 +35,7 @@ fun TopBarCalc(
             .padding(bottom = 20.dp, top = 4.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        //Back button to go to the previous screen, displayed in upper right hand corner
         Box(Modifier.fillMaxWidth()) {
             IconButton(onClick = { onBackClick() }, modifier = Modifier.align(Alignment.TopEnd)) {
                 Icon(

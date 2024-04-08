@@ -28,12 +28,14 @@ import com.jaegerapps.vitroclean.android.presentation.faqs_screen.components.Faq
 import com.jaegerapps.vitroclean.shared.domain.models.Faq
 import com.jaegerapps.vitroclean.android.R
 
+/*FAQ screen to display FAQs gotten from remote db */
 @Composable
 fun FaqsScreen(
     modifier: Modifier = Modifier,
     faqsList: List<Faq>,
     onBack: () -> Unit
 ) {
+    /*Expand used to allow only one FAQ to be opened at a time*/
     var expand by remember {
         mutableStateOf(-1)
     }
@@ -44,7 +46,7 @@ fun FaqsScreen(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         item {
-            /*Title and back button*/
+            /*Screen Title and back button*/
             Column {
                 Box(Modifier.fillMaxWidth()) {
                     IconButton(
@@ -66,6 +68,7 @@ fun FaqsScreen(
                 )
             }
         }
+        /*FAQ list*/
         itemsIndexed(faqsList) { index, item ->
             FaqContainer(
                 title = item.question,

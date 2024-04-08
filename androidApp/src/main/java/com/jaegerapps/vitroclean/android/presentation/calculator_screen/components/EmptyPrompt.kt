@@ -17,6 +17,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jaegerapps.vitroclean.android.TrivitroTheme
 
+/*If there is nothing to display, aka the user just navigated to the screen,
+* we display this prompt. It takes in an icon and text.
+* Ex. icon = icon_calculator and text "find your filter"*/
 @Composable
 fun EmptyPrompt(
     modifier: Modifier = Modifier,

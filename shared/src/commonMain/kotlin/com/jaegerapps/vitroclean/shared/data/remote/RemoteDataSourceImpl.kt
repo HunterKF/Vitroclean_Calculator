@@ -6,7 +6,6 @@ import com.jaegerapps.vitroclean.shared.data.HttpRoutes
 import com.jaegerapps.vitroclean.shared.data.remote.dtos.FaqDto
 import com.jaegerapps.vitroclean.shared.data.remote.dtos.PoolFilterDto
 import com.jaegerapps.vitroclean.shared.domain.NetworkError
-import com.jaegerapps.vitroclean.shared.domain.SupabaseException
 import io.github.jan.supabase.exceptions.HttpRequestException
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body

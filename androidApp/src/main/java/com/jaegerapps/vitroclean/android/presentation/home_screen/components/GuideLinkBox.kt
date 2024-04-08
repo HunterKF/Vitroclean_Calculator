@@ -20,6 +20,10 @@ import com.jaegerapps.vitroclean.android.presentation.components.boxShadow
 import com.jaegerapps.vitroclean.shared.presentation.home.HomeUiEvent
 import com.jaegerapps.vitroclean.android.R
 
+
+/*This guide link box displays an image of a pool.
+When a user clicks on it, an alert will open asking the user if they want to navigate
+to vitroclean's website*/
 @Composable
 fun GuideLinkBox(
     modifier: Modifier = Modifier,

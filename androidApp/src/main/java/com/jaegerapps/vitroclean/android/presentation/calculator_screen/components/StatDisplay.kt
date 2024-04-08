@@ -21,6 +21,9 @@ import com.jaegerapps.vitroclean.android.presentation.components.boxShadow
 import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
 import com.jaegerapps.vitroclean.android.R
 
+/*Displays a single stat for the calculated total
+* On the top is the outputted number
+* On the bottom is a string defining what the number represents*/
 @Composable
 fun StatDisplay(
     text: String,

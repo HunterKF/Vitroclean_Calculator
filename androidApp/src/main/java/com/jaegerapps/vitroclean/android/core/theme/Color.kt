@@ -12,7 +12,6 @@ val LightGray = Color(Colors.LightGray)
 val TextBlack = Color(Colors.TextBlack)
 val DarkGrey = Color(Colors.DarkGray)
 val Gray = Color(Colors.Gray)
-/*TODO - Change iOS onSecondary color*/
 val lightColors = lightColors(
     primary = TrivitroBlue,
     background = Color.White,

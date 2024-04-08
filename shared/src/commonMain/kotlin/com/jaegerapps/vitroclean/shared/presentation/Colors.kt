@@ -1,6 +1,7 @@
 package com.jaegerapps.vitroclean.shared.presentation
 
 object Colors {
+    //Shared colors on iOS and Android
     const val TrivitroBlue = 0xFF006BA6
     const val TrivitroBlueDarkMode = 0xFF60C8df
     const val SecondarySeaGreen = 0xFF9ADBE8

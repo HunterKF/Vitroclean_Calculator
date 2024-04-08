@@ -1,5 +1,6 @@
 package com.jaegerapps.vitroclean.android.presentation.calculator_screen.components
 
+import android.content.res.Configuration
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
@@ -24,6 +25,9 @@ import androidx.compose.ui.unit.sp
 import com.jaegerapps.vitroclean.android.TrivitroTheme
 import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
 
+/*Used for calculator select filter mode
+* Displays a list, the selected item is highlighted at the top
+* The default text is a prompt for the user to select something if nothing is selected*/
 @Composable
 fun DropDownBox(
     list: List<String>? = null,
@@ -34,6 +38,7 @@ fun DropDownBox(
     onEvent: (String) -> Unit,
     onToggleEvent: () -> Unit
 ) {
+    /*This will rotate the drop down arrows*/
     val animation: Float by animateFloatAsState(if (showDropDown) 180f else 0f)
     Column(
         modifier = modifier
@@ -89,7 +94,9 @@ fun DropDownBox(
                                 ) {
                                     Text(
                                         text = it,
-                                        style = MaterialTheme.typography.body1,
+                                        style = MaterialTheme.typography.body1.copy(
+                                            color = MaterialTheme.colors.onSurface
+                                        ),
                                         fontSize = 16.sp
                                     )
                                 }
@@ -110,6 +117,69 @@ fun DropDownBox(
 @Preview
 @Composable
 fun DropDownBoxPreview() {
+    val exampleList = listOf(
+        PoolFilter("Pentair", "TR40", 175, 140, 0, 0.0, 3.0),
+        PoolFilter("Pentair", "TR50", 225, 180, 0, 0.0, 4.0),
+        PoolFilter("Pentair", "TR60", 325, 260, 182, 78.0, 4.0),
+        PoolFilter("Pentair", "TR60 ClearPro", 325, 260, 182, 78.0, 4.0),
+        PoolFilter("Pentair", "TR100", 600, 480, 336, 144.0, 7.0),
+        PoolFilter("Pentair", "TR100HD", 600, 480, 336, 144.0, 7.0),
+        PoolFilter("Pentair", "TR100C-3", 600, 480, 336, 144.0, 7.0),
+        PoolFilter("Pentair", "TR-140", 925, 740, 518, 222.0, 11.0),
+        PoolFilter("Pentair", "TR140C-3", 925, 740, 518, 222.0, 11.0),
+        PoolFilter("Hayward", "S144T", 50, 40, 40, 0.0, 1.0),
+        PoolFilter("Hayward", "S160T", 150, 120, 120, 0.0, 3.0),
+        PoolFilter("Waterway Carefree Top-Mount", "FS02629-B (26\")", 300, 240, 168, 72.0, 4.0)
+    )
+    TrivitroTheme {
+        Column {
+
+            DropDownBox(
+                list = exampleList.map { it.model },
+                currentItem = null,
+                defaultText = "Select model",
+                onEvent = {},
+                onToggleEvent = {},
+                modifier = Modifier.fillMaxWidth(),
+                showDropDown = false
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            DropDownBox(
+                list = exampleList.map { it.model },
+                currentItem = null,
+                defaultText = "Select model",
+                onEvent = {},
+                onToggleEvent = {},
+                modifier = Modifier.fillMaxWidth(),
+                showDropDown = true
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            DropDownBox(
+                list = exampleList.map { it.model },
+                currentItem = "TR40",
+                defaultText = "Select model",
+                onEvent = {},
+                onToggleEvent = {},
+                modifier = Modifier.fillMaxWidth(),
+                showDropDown = true
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            DropDownBox(
+                list = exampleList.map { it.model },
+                currentItem = "TR40",
+                defaultText = "Select model",
+                onEvent = {},
+                onToggleEvent = {},
+                modifier = Modifier.fillMaxWidth(),
+                showDropDown = false
+            )
+        }
+    }
+}
+
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun DropDownBoxPreviewDark() {
     val exampleList = listOf(
         PoolFilter("Pentair", "TR40", 175, 140, 0, 0.0, 3.0),
         PoolFilter("Pentair", "TR50", 225, 180, 0, 0.0, 4.0),

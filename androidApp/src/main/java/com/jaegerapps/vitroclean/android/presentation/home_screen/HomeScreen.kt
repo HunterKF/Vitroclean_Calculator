@@ -42,6 +42,7 @@ fun HomeScreen(
 ) {
     val context = LocalContext.current
     if (homeState.showPopUp) {
+        /*Alert is happens when user clicks on guide link. Asks if they want to leave the app*/
         AlertDialog(onDismissRequest = { onUiEvent(HomeUiEvent.OnDismiss) },
             title = {
                 Text(stringResource(R.string.title_navigate_out_of_app))
@@ -107,6 +108,7 @@ fun HomeScreen(
         ) {
             item {
                 Spacer(Modifier.height(16.dp))
+                /*Displays the Vitroclean logo*/
                 Image(
                     modifier = Modifier
                         .fillMaxWidth(0.6f),
@@ -116,7 +118,7 @@ fun HomeScreen(
                 )
             }
             item {
-
+                /*Navigate to calculator - mode by filter*/
                 HomeButton(
                     text = stringResource(R.string.calculate_by_filter),
                     icon = com.jaegerapps.vitroclean.R.drawable.icon_calculator,
@@ -132,7 +134,7 @@ fun HomeScreen(
                 )
             }
             item {
-
+                /*Navigate to calculator - mode by cubic feet*/
                 HomeButton(
                     text = stringResource(R.string.calculate_by_cubic_feet),
                     icon = com.jaegerapps.vitroclean.R.drawable.icon_cube,
@@ -148,6 +150,7 @@ fun HomeScreen(
                 )
             }
             item {
+                /*Navigate to calculator - mode by sand needed*/
 
                 HomeButton(
                     text = stringResource(R.string.calculate_by_sand),
@@ -157,6 +160,8 @@ fun HomeScreen(
                 )
             }
             item {
+                /*Navigate to FAQs screen*/
+
                 HomeButton(
                     text = stringResource(R.string.faqs),
                     icon = com.jaegerapps.vitroclean.R.drawable.icon_question,
@@ -166,6 +171,8 @@ fun HomeScreen(
             }
 
             item {
+                /*Navigate to Contact Us screen*/
+
                 HomeButton(
                     text = stringResource(R.string.contact_us),
                     icon = com.jaegerapps.vitroclean.R.drawable.icon_message,
@@ -174,7 +181,8 @@ fun HomeScreen(
                 )
             }
             item {
-
+                /*On click will open the toggle the alert pop up.
+                * Used to navigate to Vitroclean website*/
                 GuideLinkBox(onClick = {
                     onUiEvent(HomeUiEvent.OnClick)
                 })

@@ -17,6 +17,8 @@ import androidx.compose.ui.unit.dp
 import com.jaegerapps.vitroclean.android.TrivitroTheme
 import com.jaegerapps.vitroclean.android.presentation.components.boxShadow
 
+/*Home Button is for displaying navigation buttons to the user from the home screen
+* They take an icon and a string to show where the user is navigating to*/
 @Composable
 fun HomeButton(
     text: String,

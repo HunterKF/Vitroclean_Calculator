@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import com.jaegerapps.vitroclean.android.TrivitroTheme
 import com.jaegerapps.vitroclean.android.presentation.components.boxShadow
 
+/*Container to display a single FAQ item*/
 @Composable
 fun FaqContainer(
     modifier: Modifier = Modifier,
@@ -35,6 +36,8 @@ fun FaqContainer(
     isOpen: Boolean,
     onClick: () -> Unit,
 ) {
+    /*When closed, background is white, foreground is blue
+    * On open, arrow flips, background is blue, foreground is white*/
     val fgColor: Color by animateColorAsState(if (isOpen) MaterialTheme.colors.onPrimary else MaterialTheme.colors.primary)
     val bgColor: Color by animateColorAsState(if (!isOpen) MaterialTheme.colors.background else MaterialTheme.colors.primary)
     val animateFloat: Float by animateFloatAsState(if (isOpen) 180f else 0f)
@@ -47,6 +50,7 @@ fun FaqContainer(
                 animationSpec = tween(350)
             )
     ) {
+        /*FAQ title - The question*/
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -68,6 +72,7 @@ fun FaqContainer(
             )
         }
         if (isOpen) {
+            /*FAQ content*/
             Column(
                 modifier = Modifier
                     .padding(start = 12.dp, end = 12.dp, bottom = 12.dp, top = 0.dp)

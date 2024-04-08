@@ -30,6 +30,11 @@ import com.jaegerapps.vitroclean.shared.domain.NetworkError
 import com.jaegerapps.vitroclean.shared.presentation.SharedUiState
 import kotlinx.coroutines.delay
 
+/*Loading screen. Displays dot to show that the app is loading
+* During this screen, 3 things happen
+* 1) Faqs are gotten from remote dn
+* 2) Filters are gotten from remote db
+* 3) Checks if onboarding should be shown*/
 @Composable
 fun LoadingScreen(
     isLoading: Boolean,

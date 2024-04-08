@@ -30,6 +30,9 @@ import androidx.compose.ui.unit.sp
 import com.jaegerapps.vitroclean.android.TrivitroTheme
 import com.jaegerapps.vitroclean.shared.presentation.calculator.CalculateUiEvent
 
+/*Displays the number for the user to input and a text below representing the mode
+* Ex. sanded needed is for sand mode, cubic feet is for cubic feet mode
+* On launch, it requests focus*/
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun NumberDisplay(

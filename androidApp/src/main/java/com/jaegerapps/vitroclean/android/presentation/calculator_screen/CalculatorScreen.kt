@@ -30,6 +30,7 @@ import com.jaegerapps.vitroclean.shared.presentation.calculator.CalculatorState
 import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
 import kotlinx.coroutines.launch
 
+/*Calculator screen root*/
 @Composable
 fun CalculatorScreen(
     calculatorState: CalculatorState,
@@ -37,6 +38,7 @@ fun CalculatorScreen(
 ) {
 
     Surface(color = MaterialTheme.colors.surface) {
+        /*We have one screen that changes based on the mode.*/
         when (calculatorState.mode) {
             CalculatorMode.BY_FILTER -> {
                 ByFilterScreen(
@@ -88,6 +90,7 @@ fun ByFilterScreen(
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
 
+    /*Snackbar how is to display an error if the user tries to select a filter before a manufacturer*/
     Scaffold(
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
@@ -96,12 +99,14 @@ fun ByFilterScreen(
     ) { innerPadding ->
 
         Column {
+            /*Blue background area*/
             TopBarCalc(
                 onBackClick = { onCalculatorEvent(CalculateUiEvent.OnNavigate) },
                 modifier = Modifier
                     .padding(innerPadding)
                     .shadow(5.dp)
             ) {
+                /*Drop down boxes*/
                 DropDownBox(
                     list = poolFilterList.map { it.manufacturer }.distinct(),
                     currentItem = manufacturerText,
@@ -149,10 +154,12 @@ fun ByFilterScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 if (selectedFilter != null) {
+                    /*Displays the stats when they are not null*/
                     StatDisplayColumn(selectedFilter)
                 } else {
+                    /*Empty prompt to suggest user to find a filter*/
                     EmptyPrompt(
-                        text = stringResource(id = R.string.prompt_start_calculating),
+                        text = stringResource(id = R.string.prompt_find_filter),
                         icon = com.jaegerapps.vitroclean.R.drawable.icon_calculator
                     )
                 }
@@ -233,16 +240,19 @@ fun ByNumber(
 ) {
     //ByNumber is used for all number cases. Inside the ViewModel, we have access to the mode
     //So in the ViewModel, we do calculations based on the mode, not here.
+
+    /*Access the keyboard here to close it when we leave the screen*/
     val controller = LocalSoftwareKeyboardController.current
 
     Column {
         TopBarCalc(
             onBackClick = {
-                onCalculatorEvent(CalculateUiEvent.OnNavigate)
                 controller?.hide()
+                onCalculatorEvent(CalculateUiEvent.OnNavigate)
             },
             modifier = Modifier.shadow(5.dp)
         ) {
+            //Displays the area where the user will input their numbers
             NumberDisplay(
                 text = displayText,
                 subtext = subtext,

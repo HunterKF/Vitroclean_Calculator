@@ -3,6 +3,8 @@ package com.jaegerapps.vitroclean.shared.domain.use_cases
 import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
 import kotlin.math.round
 
+//When calculator is in by cubic feet or by sand, we use these.
+//They are being called from the CalculatorViewModel
 class CalculatorFunctions {
 
     companion object {

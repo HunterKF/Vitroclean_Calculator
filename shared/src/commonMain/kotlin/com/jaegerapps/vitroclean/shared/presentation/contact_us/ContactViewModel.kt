@@ -10,8 +10,8 @@ class ContactViewModel {
     val state = _state.toCommonStateFlow()
     fun onEvent(event: ContactUiEvent) {
         when (event) {
-            ContactUiEvent.EmailSent -> TODO()
             is ContactUiEvent.OnContentChange -> {
+                //Changes the state's email content/message textfield. If it exceeds 500, error is LENGTH_TOO_LONG
                 _state.update {
                     it.copy(
                         content = event.value.take(state.value.maxMessageCount),
@@ -22,6 +22,7 @@ class ContactViewModel {
 
 
             is ContactUiEvent.OnSubjectChange -> {
+                //Changes the state's email subject textfield. If it exceeds 120, error is LENGTH_TOO_LONG
                 _state.update {
                     it.copy(
                         subject = event.value.take(state.value.maxSubjectCount),
@@ -30,7 +31,9 @@ class ContactViewModel {
                 }
             }
 
-            is ContactUiEvent.OnNameChange -> _state.update {
+           /* Originally the app was going to send an email from the app, but this was tabled. Keeping it in to add feature later if desired.
+           is ContactUiEvent.OnNameChange -> _state.update {
+
                 it.copy(
                     name = event.value
                 )
@@ -41,7 +44,7 @@ class ContactViewModel {
                         email = event.value
                     )
                 }
-            }
+            }*/
 
 
             is ContactUiEvent.ClearError -> {
@@ -96,6 +99,8 @@ class ContactViewModel {
             }
 
             is ContactUiEvent.AttemptToSend -> {
+                //Loads local email apps. If it doesn't exist, it will throw an error inside the intent.
+                // Not sure if this is the best way to do that though.
                 checkEmailTextFields()
                 if (!state.value.nameError && !state.value.subjectError && !state.value.emailError && !state.value.contentError) {
                     event.intent()
@@ -103,6 +108,7 @@ class ContactViewModel {
             }
 
             is ContactUiEvent.SendError -> {
+                //Sends an error from inside the intent on failure.
                 _state.update {
                     it.copy(
                         error = event.error
@@ -113,6 +119,8 @@ class ContactViewModel {
     }
 
     private fun checkEmailTextFields() {
+        /*This shouldn't really matter because the button isn't enabled unless everything is filled, but keeping it in just in case.
+        * User could still just have a lot of "      "s*/
         /*It doesn't seem like we need the name or email, so I have taken this out for now
         if (state.value.name.isBlank()) {
             _state.update {
@@ -131,6 +139,7 @@ class ContactViewModel {
             }
         }*/
         if (state.value.subject.isBlank()) {
+
             _state.update {
                 it.copy(
                     subjectError = true,
@@ -148,6 +157,7 @@ class ContactViewModel {
         }
     }
 
+    /*Email was removed
     private fun checkEmail(email: String): Boolean {
         val emailAddressRegex = Regex(
             "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
@@ -159,5 +169,5 @@ class ContactViewModel {
                     ")+"
         )
         return email.matches(emailAddressRegex)
-    }
+    }*/
 }

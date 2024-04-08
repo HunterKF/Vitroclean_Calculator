@@ -64,32 +64,36 @@ fun ContactScreen(
         if (state.error != null) {
             val message =
                 when (state.error) {
+                    /*Since the button is disabled if nothing is there, this shouldn't really display ever. Here for later use if desired.*/
                     ContactError.INVALID_EMAIL -> {
-                        "Please check your email"
+                        //Not used right now...
+                        context.getString(R.string.error_check_email)
                     }
-
                     ContactError.DATA_MISSING -> {
-                        "Fill out all of the fields"
+                        //If some fields aren't filled. Not user right now.
+                        context.getString(R.string.error_data_missing)
                     }
                     ContactError.LENGTH_TOO_LONG -> {
-                        "Reached maximum length."
+                        //User exceeded char limit
+                        context.getString(R.string.error_max_length_reached)
                     }
                     ContactError.NO_EMAIL_APP -> {
-                        "Couldn't find email app. Please go to website to contact us."
+                        //No local email app found
+                        context.getString(R.string.error_no_email_app)
                     }
                     else -> {
-                        "An unexpected error occurred, try again later."
+                        //A different error occurred.
+                        context.getString(R.string.error_unexpected_error)
                     }
                 }
-
             snackbarHostState.showSnackbar(message)
+            //Clears the error in the viewmodel
             onEvent(ContactUiEvent.ClearSnackbar)
         }
 
     }
     /*Added scaffold to display the snackbar*/
     Scaffold(
-
         snackbarHost = {
             SnackbarHost(hostState = snackbarHostState)
         },
@@ -174,11 +178,13 @@ fun ContactScreen(
                                 }
                             )
                         )*/
+                        //Subject for the email. Will be added to the email's subject in the app.
                         ContactTextField(
                             text = state.subject,
                             error = state.subjectError,
                             defaultText = stringResource(R.string.email_subject),
                             extraContent = {
+                                //Displays the max subject character length. Length is set to 120
                                 Text((state.maxSubjectCount- state.subject.length).toString())
                             },
                             onValueChange = {
@@ -190,11 +196,13 @@ fun ContactScreen(
                                 }
                             )
                         )
+                        //Content of email, the message.
                         ContactTextField(
                             modifier = Modifier.height(200.dp),
                             text = state.content,
                             error = state.contentError,
                             extraContent = {
+                                //Displays the max content message character length. Length is set to 500
                                 Text((state.maxMessageCount- state.content.length).toString())
                             },
                             defaultText = stringResource(R.string.email_content),
@@ -216,6 +224,7 @@ fun ContactScreen(
                 }
 
                 item {
+                    //Send button. Will launch an intent to send. Keeping with the design, I send the intent as a lambda function to be done in the viewmodel
                     ActionButton(
                         text = stringResource(R.string.action_send),
                         isEnabled = /*state.email.isNotBlank() && state.name.isNotBlank() &&*/ state.subject.isNotBlank() && state.content.isNotBlank()

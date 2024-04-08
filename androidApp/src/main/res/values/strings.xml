@@ -35,12 +35,18 @@
     <string name="recommended_50_lb_bags_of_pebble_vf8">50 lb. Bags of Pebble (VFP).</string>
     <string name="prompt_select_manufacturer_first">Select manufacturer first.</string>
     <string name="email_subject">Subject</string>
-    <string name="email_content">Content</string>
+    <string name="email_content">Message</string>
     <string name="action_send">Send</string>
     <string name="prompt_link_to_site">Vitroclean Specifications and Installation</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="get_started">Get Started</string>
-    <string name="onboarding_message">Here for all your pool filter needs, Vitroclean strives to make your job easier. Search by your pool filter model or by the cubic feet or sand needed.</string>
+    <string name="onboarding_message">Here for all your pool filter needs, Vitroclean strives to make your job easier. Calculate how much Vitroclean to use by your pool filter model, cubic feet or sand needed.</string>
     <string name="onboarding_title">Welcome to Vitroclean</string>
+    <string name="error_check_email">Please check your email</string>
+    <string name="error_data_missing">Fill out all of the fields</string>
+    <string name="error_max_length_reached">Reached maximum length.</string>
+    <string name="error_no_email_app">Couldn\'t find email app. Please go to website to contact us.</string>
+    <string name="error_unexpected_error">An unexpected error occurred, try again later.</string>
+    <string name="prompt_find_filter">Find your filter</string>
 </resources>

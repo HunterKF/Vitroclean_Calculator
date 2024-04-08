@@ -1,5 +1,6 @@
 package com.jaegerapps.vitroclean.android.presentation.components
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
@@ -17,6 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.jaegerapps.vitroclean.android.TrivitroTheme
 
+/*Popup used throughout the app
+* Since each pop up is different, we pass in the buttons as content*/
 @Composable
 fun PopUpContent(
     title: String,
@@ -38,13 +41,17 @@ fun PopUpContent(
             ) {
                 Text(
                     text = title,
-                    style = MaterialTheme.typography.h2,
+                    style = MaterialTheme.typography.h2.copy(
+                        color = MaterialTheme.colors.onSurface
+                    ),
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(Modifier.height(16.dp))
                 Text(
                     text = text,
-                    style = MaterialTheme.typography.body1,
+                    style = MaterialTheme.typography.body1.copy(
+                        color = MaterialTheme.colors.onSurface
+                    ),
                 )
             }
             Column {
@@ -103,7 +110,55 @@ fun PopUpPreview() {
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceEvenly
                 ) {
-                    Text(text = "OK", style = MaterialTheme.typography.body1)
+                    Text(text = "OK", style = MaterialTheme.typography.body1.copy(
+                        color = MaterialTheme.colors.onSurface
+                    ))
+                }
+            }
+        }
+    }
+}
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+fun PopUpPreview_Dark() {
+    TrivitroTheme {
+        Column() {
+            PopUpContent(
+                title = "Navigating out of app",
+                text = "You are about to leave the app to go to to the Trivitro website. Do you want to proceed?"
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.Cancel,
+                        contentDescription = "Cancel",
+                        tint = MaterialTheme.colors.primary,
+                        modifier = Modifier.size(24.dp)
+                    )
+                    Icon(
+                        imageVector = Icons.Rounded.Check,
+                        contentDescription = "Accept",
+                        tint = MaterialTheme.colors.primary,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+            }
+            Spacer(Modifier.height(32.dp))
+            PopUpContent(
+                title = "There was a problem...",
+                text = "Couldn't connect to the network. Please try again later."
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    Text(text = "OK", style = MaterialTheme.typography.body1.copy(
+                        color = MaterialTheme.colors.onSurface
+                    ))
                 }
             }
         }

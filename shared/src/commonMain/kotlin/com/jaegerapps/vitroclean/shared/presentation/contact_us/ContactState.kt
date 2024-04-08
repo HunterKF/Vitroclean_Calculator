@@ -15,6 +15,7 @@ data class ContactState(
     val maxSubjectCount: Int = 120
 )
 
+//enum class for errors, will use a when statement to get the string in the UI
 enum class ContactError {
     INVALID_EMAIL,
     LENGTH_TOO_LONG,
