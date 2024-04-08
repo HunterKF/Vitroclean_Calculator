@@ -98,7 +98,7 @@ fun OnboardingScreen(
             modifier = Modifier.padding(top = 24.dp),
             onClick = { onClick() },
             isEnabled = true,
-            text = stringResource(R.string.get_started)
+            text = stringResource(R.string.onboarding_button_prompt)
         )
         Spacer(modifier = Modifier.height(36.dp))
 

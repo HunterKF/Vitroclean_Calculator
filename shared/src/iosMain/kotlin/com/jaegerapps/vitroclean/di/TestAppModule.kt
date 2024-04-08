@@ -1,9 +1,7 @@
 package com.jaegerapps.vitroclean.di
 
 import com.jaegerapps.vitroclean.shared.data.local.LocalDataSource
-import com.jaegerapps.vitroclean.shared.data.local.LocalDataSourceImpl
 import com.jaegerapps.vitroclean.shared.data.remote.RemoteDataSource
-import com.jaegerapps.vitroclean.shared.data.remote.RemoteDataSourceImpl
 import com.jaegerapps.vitroclean.shared.domain.VitrocleanRepo
 import com.jaegerapps.vitroclean.shared.domain.use_cases.GetFaqs
 import com.jaegerapps.vitroclean.shared.domain.use_cases.GetFilters

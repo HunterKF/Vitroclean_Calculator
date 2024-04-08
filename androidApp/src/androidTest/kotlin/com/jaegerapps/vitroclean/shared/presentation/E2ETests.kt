@@ -47,6 +47,7 @@ class E2ETests {
     @Test
     fun goToFiltersAndSelect() = runBlocking<Unit> {
         val context = ApplicationProvider.getApplicationContext<Context>()
+        composeRule.onNodeWithText(context.getString(R.string.onboarding_button_prompt)).performClick()
         composeRule.onNodeWithContentDescription(context.getString(R.string.content_desc_vitroclean_logo))
         composeRule.onNodeWithText(context.getString(R.string.calculate_by_filter)).performClick()
         composeRule.onNodeWithText(context.getString(R.string.dropdown_select_manufacturer)).assertExists()
@@ -60,6 +61,8 @@ class E2ETests {
     @Test
     fun goToFiltersAndSelectModelFirst() = runBlocking<Unit> {
         val context = ApplicationProvider.getApplicationContext<Context>()
+        composeRule.onNodeWithText(context.getString(R.string.onboarding_button_prompt)).performClick()
+
         composeRule.onNodeWithContentDescription(context.getString(R.string.content_desc_vitroclean_logo))
         composeRule.onNodeWithText(context.getString(R.string.calculate_by_filter)).performClick()
         composeRule.onNodeWithText(context.getString(R.string.dropdown_select_model)).assertExists()
@@ -70,6 +73,8 @@ class E2ETests {
     @Test
     fun goToBySandTypeInNumber() = runBlocking<Unit> {
         val context = ApplicationProvider.getApplicationContext<Context>()
+        composeRule.onNodeWithText(context.getString(R.string.onboarding_button_prompt)).performClick()
+
         composeRule.onNodeWithContentDescription(context.getString(R.string.content_desc_vitroclean_logo))
         composeRule.onNodeWithText(context.getString(R.string.calculate_by_sand)).performClick()
         composeRule.onNodeWithTag("number display").performClick()
@@ -86,6 +91,8 @@ class E2ETests {
     @Test
     fun goToBySandTypeInNumberClearInput() = runBlocking<Unit> {
         val context = ApplicationProvider.getApplicationContext<Context>()
+        composeRule.onNodeWithText(context.getString(R.string.onboarding_button_prompt)).performClick()
+
         composeRule.onNodeWithContentDescription(context.getString(R.string.content_desc_vitroclean_logo))
         composeRule.onNodeWithText(context.getString(R.string.calculate_by_sand)).performClick()
         composeRule.onNodeWithTag("number display").performClick()
@@ -112,6 +119,7 @@ class E2ETests {
     @Test
     fun goToFaqsAndClickOnFaqs() = runBlocking<Unit> {
         val context = ApplicationProvider.getApplicationContext<Context>()
+        composeRule.onNodeWithText(context.getString(R.string.onboarding_button_prompt)).performClick()
         composeRule.onNodeWithContentDescription(context.getString(R.string.content_desc_vitroclean_logo))
         composeRule.onNodeWithText(context.getString(R.string.faqs)).assertExists()
         composeRule.onNodeWithText(context.getString(R.string.faqs)).performClick()
@@ -123,6 +131,7 @@ class E2ETests {
     @Test
     fun goToContactScreenEnterEmail() = runBlocking<Unit> {
         val context = ApplicationProvider.getApplicationContext<Context>()
+        composeRule.onNodeWithText(context.getString(R.string.onboarding_button_prompt)).performClick()
         composeRule.onNodeWithContentDescription(context.getString(R.string.content_desc_vitroclean_logo))
         composeRule.onNodeWithContentDescription(context.getString(R.string.contact_us)).performClick()
 
@@ -145,6 +154,7 @@ class E2ETests {
     @Test
     fun clickToLeaveAppToTrivitroSite() = runBlocking<Unit> {
         val context = ApplicationProvider.getApplicationContext<Context>()
+        composeRule.onNodeWithText(context.getString(R.string.onboarding_button_prompt)).performClick()
         composeRule.onNodeWithText(context.getString(R.string.prompt_link_to_site)).assertExists()
         composeRule.onNodeWithText(context.getString(R.string.prompt_link_to_site)).performClick()
         //Pop up opened
@@ -158,6 +168,7 @@ class E2ETests {
     @Test
     fun goThroughEntireApp() = runBlocking<Unit> {
         val context = ApplicationProvider.getApplicationContext<Context>()
+        composeRule.onNodeWithText(context.getString(R.string.onboarding_button_prompt)).performClick()
         //Home screen
         composeRule.onNodeWithText(context.getString(R.string.calculate_by_filter)).assertExists()
         composeRule.onNodeWithText(context.getString(R.string.calculate_by_filter)).performClick()

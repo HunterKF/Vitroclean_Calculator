@@ -40,7 +40,7 @@
     <string name="prompt_link_to_site">Vitroclean Specifications and Installation</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
-    <string name="get_started">Get Started</string>
+    <string name="onboarding_button_prompt">Get Started</string>
     <string name="onboarding_message">Here for all your pool filter needs, Vitroclean strives to make your job easier. Calculate how much Vitroclean to use by your pool filter model, cubic feet or sand needed.</string>
     <string name="onboarding_title">Welcome to Vitroclean</string>
     <string name="error_check_email">Please check your email</string>

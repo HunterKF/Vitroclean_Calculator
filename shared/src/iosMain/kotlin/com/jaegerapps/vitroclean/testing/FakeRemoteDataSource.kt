@@ -4,8 +4,6 @@ import com.jaegerapps.vitroclean.core.domain.util.Resource
 import com.jaegerapps.vitroclean.shared.data.remote.RemoteDataSource
 import com.jaegerapps.vitroclean.shared.data.remote.dtos.FaqDto
 import com.jaegerapps.vitroclean.shared.data.remote.dtos.PoolFilterDto
-import com.jaegerapps.vitroclean.shared.domain.models.Faq
-import com.jaegerapps.vitroclean.shared.domain.models.PoolFilter
 
 class FakeRemoteDataSource: RemoteDataSource {
 
