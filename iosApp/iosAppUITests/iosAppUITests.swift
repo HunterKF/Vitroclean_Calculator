@@ -50,10 +50,10 @@ final class iosAppUITests: XCTestCase {
         app.buttons["select model"].tap()
         app.buttons["TR40"].tap()
         XCTAssert(app.staticTexts["Recommend Sand Load Lbs."].exists)
-        XCTAssert(app.staticTexts["Recommended Vitroclean (VFA) Load Lbs."].exists)
-        XCTAssert(app.staticTexts["Recommended Vitroclean Pebble (VF8) Load Lbs."].exists)
-        XCTAssert(app.staticTexts["50 lb. Bags of Vitroclean VFA"].exists)
-        XCTAssert(app.staticTexts["50 lb. Bags of Pebble (VF8)."].exists)
+        XCTAssert(app.staticTexts["Recommended Vitroclean (VF) Load Lbs."].exists)
+        XCTAssert(app.staticTexts["Recommended Vitroclean Pebble (VFP) Load Lbs."].exists)
+        XCTAssert(app.staticTexts["50 lb. Bags of Vitroclean VF"].exists)
+        XCTAssert(app.staticTexts["50 lb. Bags of Pebble (VFP)."].exists)
     }
     func testGoToFiltersAndSelectModelFirst() {
         //Home Screen
@@ -78,10 +78,10 @@ final class iosAppUITests: XCTestCase {
         XCTAssertEqual(app.textFields["number display"].value as! String, "50")
         
         XCTAssert(app.staticTexts["Recommend Sand Load Lbs."].exists)
-        XCTAssert(app.staticTexts["Recommended Vitroclean (VFA) Load Lbs."].exists)
-        XCTAssert(app.staticTexts["Recommended Vitroclean Pebble (VF8) Load Lbs."].exists)
-        XCTAssert(app.staticTexts["50 lb. Bags of Vitroclean VFA"].exists)
-        XCTAssert(app.staticTexts["50 lb. Bags of Pebble (VF8)."].exists)
+        XCTAssert(app.staticTexts["Recommended Vitroclean (VF) Load Lbs."].exists)
+        XCTAssert(app.staticTexts["Recommended Vitroclean Pebble (VFP) Load Lbs."].exists)
+        XCTAssert(app.staticTexts["50 lb. Bags of Vitroclean VF"].exists)
+        XCTAssert(app.staticTexts["50 lb. Bags of Pebble (VFP)."].exists)
     }
     
     func testGoToBySandTypeInNumberClearInput() {
@@ -97,10 +97,10 @@ final class iosAppUITests: XCTestCase {
         XCTAssertEqual(app.textFields["number display"].value as! String, "50")
         //Check that the stats are displayed after numbers
         XCTAssert(app.staticTexts["Recommend Sand Load Lbs."].exists)
-        XCTAssert(app.staticTexts["Recommended Vitroclean (VFA) Load Lbs."].exists)
-        XCTAssert(app.staticTexts["Recommended Vitroclean Pebble (VF8) Load Lbs."].exists)
-        XCTAssert(app.staticTexts["50 lb. Bags of Vitroclean VFA"].exists)
-        XCTAssert(app.staticTexts["50 lb. Bags of Pebble (VF8)."].exists)
+        XCTAssert(app.staticTexts["Recommended Vitroclean (VF) Load Lbs."].exists)
+        XCTAssert(app.staticTexts["Recommended Vitroclean Pebble (VFP) Load Lbs."].exists)
+        XCTAssert(app.staticTexts["50 lb. Bags of Vitroclean VF"].exists)
+        XCTAssert(app.staticTexts["50 lb. Bags of Pebble (VFP)."].exists)
         // Remove numbers from number display
         app.textFields["number display"].tap()
         app.textFields["number display"].doubleTap()
@@ -118,10 +118,10 @@ final class iosAppUITests: XCTestCase {
         XCTAssertEqual(app.textFields["number display"].value as! String, "0")
         //Check that the stats are displayed after numbers
         XCTAssert(!app.staticTexts["Recommend Sand Load Lbs."].exists)
-        XCTAssert(!app.staticTexts["Recommended Vitroclean (VFA) Load Lbs."].exists)
-        XCTAssert(!app.staticTexts["Recommended Vitroclean Pebble (VF8) Load Lbs."].exists)
-        XCTAssert(!app.staticTexts["50 lb. Bags of Vitroclean VFA"].exists)
-        XCTAssert(!app.staticTexts["50 lb. Bags of Pebble (VF8)."].exists)
+        XCTAssert(!app.staticTexts["Recommended Vitroclean (VF) Load Lbs."].exists)
+        XCTAssert(!app.staticTexts["Recommended Vitroclean Pebble (VFP) Load Lbs."].exists)
+        XCTAssert(!app.staticTexts["50 lb. Bags of Vitroclean VF"].exists)
+        XCTAssert(!app.staticTexts["50 lb. Bags of Pebble (VFP)."].exists)
         XCTAssert(app.staticTexts["Start calculating now!"].exists)
     }
     func testGoToFaqsAndClickOnFaqs() {
