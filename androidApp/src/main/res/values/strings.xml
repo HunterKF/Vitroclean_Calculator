@@ -21,7 +21,12 @@
     <string name="content_desc_vitroclean_logo">Vitroclean Logo</string>
     <string name="title_error">Whoops…</string>
     <string name="error_message">An error occurred. Error: %1$s</string>
-    <string name="content_desc_back_button">back button</string>
+    <string name="error_message_service_unavailable">Service currently unavailable. Please try again.</string>
+    <string name="error_message_client_error">Could not process request, please try again.</string>
+    <string name="error_message_server_error">Unexpected server error. Please give us some time to resolve this.</string>
+    <string name="error_message_unknown_error">An unknown error has occurred. Please try again.</string>
+
+    <string name="content_desc_back_button">back</string>
     <string name="retry">Retry</string>
     <string name="dropdown_select_manufacturer">Select manufacturer</string>
     <string name="dropdown_select_model">Select model</string>

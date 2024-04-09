@@ -14,7 +14,7 @@ fun Context.sendMail(
     content: String,
     onEvent: (ContactUiEvent) -> Unit,
 ) {
-    /*Creates an intent for sending an email. Not sure how to do the error handling tbh*/
+    /*Creates an intent for sending an email. If there is an error, we send it to the ViewModel*/
     try {
         val intent = Intent(Intent.ACTION_SEND)
         val subjectConstruct = "Vitroclean Inquiry - $subject"

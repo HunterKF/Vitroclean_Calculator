@@ -3,6 +3,8 @@ package com.jaegerapps.vitroclean.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -110,7 +112,19 @@ fun TrivitroRoot() {
                     type = NavType.StringType
                     defaultValue = "by_filter"
                 }
-            )
+            ),
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(200)
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(200)
+                )
+            }
         ) { backStackEntry ->
             val calculatorViewModel = hiltViewModel<AndroidCalculatorViewModel>()
             calculatorViewModel.onEvent(
@@ -140,10 +154,34 @@ fun TrivitroRoot() {
             )
 
         }
-        composable(Routes.FAQS) {
+        composable(Routes.FAQS,
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(200)
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(200)
+                )
+            }) {
             FaqsScreen(faqsList = sharedState.faqsList, onBack = { navController.popBackStack() })
         }
-        composable(Routes.CONTACT_US) {
+        composable(Routes.CONTACT_US,
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(200)
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(200)
+                )
+            }) {
             val contactViewModel = hiltViewModel<AndroidContactViewModel>()
             val contactState by contactViewModel.state.collectAsState()
             ContactScreen(

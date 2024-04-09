@@ -69,18 +69,22 @@ fun ContactScreen(
                         //Not used right now...
                         context.getString(R.string.error_check_email)
                     }
+
                     ContactError.DATA_MISSING -> {
                         //If some fields aren't filled. Not user right now.
                         context.getString(R.string.error_data_missing)
                     }
+
                     ContactError.LENGTH_TOO_LONG -> {
                         //User exceeded char limit
                         context.getString(R.string.error_max_length_reached)
                     }
+
                     ContactError.NO_EMAIL_APP -> {
                         //No local email app found
                         context.getString(R.string.error_no_email_app)
                     }
+
                     else -> {
                         //A different error occurred.
                         context.getString(R.string.error_unexpected_error)
@@ -185,7 +189,10 @@ fun ContactScreen(
                             defaultText = stringResource(R.string.email_subject),
                             extraContent = {
                                 //Displays the max subject character length. Length is set to 120
-                                Text((state.maxSubjectCount- state.subject.length).toString())
+                                Text(
+                                    (state.maxSubjectCount - state.subject.length).toString(),
+                                    color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)
+                                )
                             },
                             onValueChange = {
                                 onEvent(ContactUiEvent.OnSubjectChange(it))
@@ -203,7 +210,10 @@ fun ContactScreen(
                             error = state.contentError,
                             extraContent = {
                                 //Displays the max content message character length. Length is set to 500
-                                Text((state.maxMessageCount- state.content.length).toString())
+                                Text(
+                                    (state.maxMessageCount - state.content.length).toString(),
+                                    color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)
+                                )
                             },
                             defaultText = stringResource(R.string.email_content),
                             onValueChange = {
@@ -235,7 +245,7 @@ fun ContactScreen(
                                 to = state.email,
                                 subject = state.subject,
                                 content = state.content,
-                                onEvent = { onEvent(it)}
+                                onEvent = { onEvent(it) }
                             )
                         })
                     }
@@ -263,6 +273,7 @@ fun ContactScreenPreview() {
         ContactScreen(state = state, onEvent = { viewModel.onEvent(it) }, onBack = {})
     }
 }
+
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun ContactScreenPreview_DARK() {

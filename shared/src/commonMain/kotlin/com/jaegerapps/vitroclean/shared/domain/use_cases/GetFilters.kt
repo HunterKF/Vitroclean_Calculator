@@ -8,7 +8,15 @@ class GetFilters(
     private val repo: VitrocleanRepo
 ) {
     suspend operator fun invoke(): Resource<List<PoolFilter>> {
-        return repo.getFilters()
+
+        val filters = repo.getFilters()
+        if (!filters.data.isNullOrEmpty()) {
+            Resource.Success(filters.data)
+        } else {
+            Resource.Error(filters.networkError!!)
+        }
+        println("Attempting to get filters: $filters")
+        return filters
 
     }
 }

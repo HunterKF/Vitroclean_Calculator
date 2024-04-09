@@ -27,7 +27,7 @@ class RemoteDataSourceImpl(
                 header("apikey", BuildKonfig.API_KEY)
             }
 
-        } catch (e: HttpRequestException) {
+        } catch (e: Exception) {
             e.printStackTrace()
             return Resource.Error(NetworkError.SERVICE_UNAVAILABLE)
         }
@@ -50,7 +50,7 @@ class RemoteDataSourceImpl(
                 url(HttpRoutes.FAQS)
                 parameter(key = "apikey", value = BuildKonfig.API_KEY)
             }
-        } catch (e: IOException) {
+        } catch (e: Exception) {
             e.printStackTrace()
             return Resource.Error(NetworkError.SERVICE_UNAVAILABLE)
         }

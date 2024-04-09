@@ -7,6 +7,8 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
 
 
+//Box shadow that is on boxes over surfaces, makes the items a little more visible
+//Adds a shadow and clips the item to keep everything standardized.
 fun Modifier.boxShadow(): Modifier {
 
     return this then Modifier

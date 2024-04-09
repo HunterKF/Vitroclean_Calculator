@@ -12,12 +12,16 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -41,6 +45,19 @@ fun LoadingScreen(
     error: NetworkError? = null,
     onRetry: () -> Unit,
 ) {
+    var message: String? by remember { mutableStateOf(null) }
+    val context = LocalContext.current
+    LaunchedEffect(key1 = error) {
+
+        if (error != null) {
+           message =  when (error) {
+                NetworkError.SERVICE_UNAVAILABLE -> context.getString(R.string.error_message_service_unavailable)
+                NetworkError.CLIENT_ERROR -> context.getString(R.string.error_message_client_error)
+                NetworkError.SERVER_ERROR -> context.getString(R.string.error_message_server_error)
+                NetworkError.UNKNOWN_ERROR -> context.getString(R.string.error_message_unknown_error)
+            }
+        }
+    }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -57,7 +74,7 @@ fun LoadingScreen(
                     Text(stringResource(R.string.title_error))
                 },
                 text = {
-                    Text(stringResource(R.string.error_message, error))
+                    message?.let { Text(it) }
                 },
                 shape = RoundedCornerShape(5.dp),
                 buttons = {

@@ -33,6 +33,12 @@ import androidx.compose.ui.unit.sp
 import com.jaegerapps.vitroclean.android.TrivitroTheme
 import com.jaegerapps.vitroclean.android.presentation.components.boxShadow
 
+/*Base textfield for the contact us screen
+* Extra content is used to provide a UI character limit display. i.e, Text("400") in the lower right hand corner
+* To make it versatile, keyboard, singleLine, and keyboardActions are going to be passed in
+* If there is an error, the box will be highlighted on the bottom red
+* Errors are not used currently though
+* defaultText is the abel of the textfield. So, "Subject", "Message"*/
 @Composable
 fun ContactTextField(
     modifier: Modifier = Modifier,
@@ -94,6 +100,7 @@ fun ContactTextField(
                 .padding(end = 8.dp)
                 .align(Alignment.BottomEnd)
         ) {
+            //This displays the char limit
             extraContent()
         }
     }
@@ -112,7 +119,7 @@ fun ContactTextFieldPreview() {
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
 
-            ContactTextField(
+            /*ContactTextField(
                 text = "3232",
                 extraContent = {  },
                 defaultText = "E-Mail",
@@ -132,7 +139,7 @@ fun ContactTextFieldPreview() {
                     onNext = {}
                 ),
                 singleLine = true
-            )
+            )*/
             ContactTextField(
                 text = "12212122",
                 extraContent = {
@@ -148,8 +155,8 @@ fun ContactTextFieldPreview() {
             ContactTextField(
                 modifier = Modifier.height(150.dp),
                 text = state,
-                extraContent = { Text("400", color = Color.Gray) },
-                defaultText = "Email Content",
+                extraContent = { Text("400", color =  MaterialTheme.colors.onSurface.copy(alpha = 0.5f)) },
+                defaultText = "Message",
                 onValueChange = {},
                 keyboardActions = KeyboardActions(
                     onDone = {}
@@ -176,7 +183,7 @@ fun ContactTextFieldPreview_DARK() {
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
 
-            ContactTextField(
+            /*ContactTextField(
                 text = "3232",
                 extraContent = {  },
                 defaultText = "E-Mail",
@@ -196,7 +203,7 @@ fun ContactTextFieldPreview_DARK() {
                     onNext = {}
                 ),
                 singleLine = true
-            )
+            )*/
             ContactTextField(
                 text = "12212122",
                 extraContent = {
@@ -212,7 +219,7 @@ fun ContactTextFieldPreview_DARK() {
             ContactTextField(
                 modifier = Modifier.height(150.dp),
                 text = state,
-                extraContent = { Text("400", color = Color.Gray) },
+                extraContent = { Text("400", color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f)) },
                 defaultText = "Email Content",
                 onValueChange = {},
                 keyboardActions = KeyboardActions(

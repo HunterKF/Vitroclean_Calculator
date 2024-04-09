@@ -5,6 +5,7 @@ import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import com.jaegerapps.vitroclean.shared.presentation.Colors
 
+//Colors come from shared module, letting us used them on both iOS and Android
 val TrivitroBlue = Color(Colors.TrivitroBlue)
 val TrivitroBlueDarkMode = Color(Colors.TrivitroBlueDarkMode)
 val SeaGreen = Color(Colors.SecondarySeaGreen)
