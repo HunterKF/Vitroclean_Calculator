@@ -12,7 +12,7 @@
 </p>
 
 ## Table of contents
-* [General info](#introduction)
+* [Introduction](#introduction)
 * [Features](#features)
 * [Technologies](#technologies)
 * [Contact Me](#contact-me)
