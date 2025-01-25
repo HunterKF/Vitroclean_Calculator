@@ -1,0 +1,67 @@
+[
+    {
+        "question": "Who is TriVitro?",
+        "answer": "TriVitro is a company specializing in producing and distributing products manufactured from recycled glass, specifially Vitrogrit industrial abrasives, and Vitroclean Advanced Filter Media, an advanced water filter media for sand media filters. Founded in 1996, it has a history of over 20 years in the recycling sector and operates a network of plants across North America",
+        "id": 1
+    },
+    {
+        "question": "Why should you use Vitroclean in your sand media filter?",
+        "answer": "Vitroclean improves water clarity by filtering out finer particles than traditional silica sand, resulting in cleaner water. It is an environmentally friendly option made from 100% recycled glass, lasts 50% longer than silica sand, and is safe and easy to use without clumping or channeling. Additionally, it's cost-effective, reducing the frequency of filter replacements and maintenance. Vitroclean Advanced Filter Media offers superior water clarity with DE quality filtration down to 5 microns, is longer-lasting and environmentally friendly, and is easy to use without the clumping or channeling of regular silica sand.",
+        "id": 2
+    },
+    {
+        "question": "How do I install Vitroclean into my filter?",
+        "answer": "1. Determine the Required Amount: First, you need to calculate the amount of Vitroclean needed for your filter. This is typically less than the amount of silica sand you would use. For example, 40 lbs of Vitroclean can replace 50 lbs of sand.\n\n2. Prepare the Filter: Before adding Vitroclean, make sure your filter is empty and any necessary repairs are made. Check that the laterals at the bottom of the filter are in good condition.\n\n3. Add Water and Base Layer: Fill the filter halfway with water. Then, slowly pour in Vitroclean Pebble or pea gravel to cover the laterals. This step is crucial, especially for larger filters, to ensure proper flow and diffusion.\n\n4. Add Vitroclean: After the base layer is in place, add the Vitroclean on top of it.\n\n5. Backwash the Filter: Once the Vitroclean is added, close the filter and backwash it until the water runs clear. This step is necessary to ensure that any residual dust from the Vitroclean is flushed out and the filter media is settled properly.",
+        "id": 3
+    },
+    {
+        "question": "What kind of filter uses Vitroclean Advanced Filter Media?",
+        "answer": "Vitroclean and Vitroclean Pebble can be installed in any standard sand media filter.",
+        "id": 4
+    },
+    {
+        "question": "How do I calculate the amount of Vitroclean I need for this filter?",
+        "answer": "Take the amount of sand recommended by the filter manufacturer and multiply by 0.80. Vitroclean has a bulk density of 80 lbs per cubic foot. Vitroclean Pebble has a bulk density of 90 lbs per cubic foot. #20 silica sand has a bulk density of 100 lbs per cubic foot. Pea gravel has a bulk density of 100 to 130 lbs per cubic foot depending on the material.",
+        "id": 5
+    },
+    {
+        "question": "How does Vitroclean compare to the other competitors?",
+        "answer": "Vitroclean, a recycled glass filter media, offers superior filtration efficiency of 3 to 5 microns, outperforming traditional silica sand and competing closely with DE filter. It's environmentally friendly due to its recycled material composition. With a longer lifespan of up to 10 years, it surpasses both silica sand and zeolite in durability, making it a cost-effective choice despite a higher initial price. Vitroclean requires less maintenance, further enhancing its long-term economic benefits compared to other filter media. Not all glass filter media is equal. Vitroclean is of superior quality and size consistancy compared to other glass filter media.",
+        "id": 6
+    },
+    {
+        "question": "Do I need to use pea gravel or Vitroclean Pebble in this installation?",
+        "answer": "We recommend using Vitroclean Pebble of 1/8 x 1/16 clean pea gravel in the bottom of filters which require more than 400 lbs of media. This provides better backwash flow.",
+        "id": 7
+    },
+    {
+        "question": "How does the use of Vitroclean impact the overall chemical balance of pool water?",
+        "answer": "Vitroclean, as a filter media, primarily enhances water clarity by removing finer particles, which may reduce the need for some chemicals. Regular testing and adjustment of pool chemicals remain essential for maintaining water quality and safety.",
+        "id": 8
+    },
+    {
+        "question": "How often should Vitroclean be replaced in a pool filter?",
+        "answer": "Vitroclean typically lasts 50% longer than traditional silica sand used in pool filters. Generally, it should be replaced every 7 to 10 years, depending on the usage and maintenance of the pool.",
+        "id": 9
+    },
+    {
+        "question": "Is Vitroclean NSF certified?",
+        "answer": "Vitroclean Green and Aquatic are certified to NSF Standard 50.",
+        "id": 10
+    },
+    {
+        "question": "How do I clean Vitroclean?",
+        "answer": "Vitroclean requires no special cleaning or maintenance regime. Standard sand filter cleaning products such as enzyme based cleaners work fine with Vitroclean.",
+        "id": 11
+    },
+    {
+        "question": "How do I dispose of used Vitroclean?",
+        "answer": "Used Vitroclean is completely non-hazardous and requires no special disposal regime. Dispose of it as you would ordinary used silica sand media.",
+        "id": 12
+    },
+    {
+        "question": "Where can I find more information?",
+        "answer": "The installation instructions are on the back of the bag. You can also find more documentation on our website: www.vitroclean.com",
+        "id": 13
+    }
+]
